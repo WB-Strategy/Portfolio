@@ -227,6 +227,27 @@
             gap: 35px;
         }
 
+        /* PROJECT CARD WRAPPER - Title Above Card */
+        .project-card-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            height: auto;
+        }
+
+        .project-title {
+            font-size: 1.6rem;
+            color: var(--primary-navy);
+            font-weight: 700;
+            font-family: Georgia, 'Times New Roman', serif;
+            text-align: center;
+            line-height: 1.3;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         /* FLIP CARDS WITH REAL PHOTOS */
         .flip-card {
             background-color: transparent;
@@ -234,14 +255,18 @@
             height: 380px;
             perspective: 1000px;
             cursor: pointer;
+            position: relative;
         }
 
         .flip-card-inner {
-            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             transition: transform 0.7s;
             transform-style: preserve-3d;
+            will-change: transform;
         }
 
         .flip-card:hover .flip-card-inner {
@@ -299,22 +324,17 @@
             background: linear-gradient(to top, rgba(30, 58, 95, 0.95) 0%, rgba(30, 58, 95, 0.7) 50%, transparent 100%);
             padding: 30px;
             z-index: 1;
-        }
-
-        .flip-card-front h3 {
-            font-size: 1.6rem;
-            margin-bottom: 8px;
-            color: var(--white);
-            font-weight: 700;
-            line-height: 1.3;
-            font-family: Georgia, 'Times New Roman', serif;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80px;
         }
 
         .flip-card-front .company {
-            font-size: 1.05rem;
-            color: rgba(255,255,255,0.9);
+            font-size: 1.3rem;
+            color: var(--white);
             font-weight: 600;
+            text-align: center;
         }
 
         .flip-card-back h3 {
@@ -442,7 +462,7 @@
         <div class="hero-container">
             <div class="hero-left">
                 <div class="headshot-container">
-                    <img src="https://u.cubeupload.com/wbeasley48/1615331581546.jpg" alt="William Beasley">
+                    <img src="https://u.cubeupload.com/wbeasley48/Headshot.png" alt="William Beasley">
                 </div>
             </div>
             <div class="hero-right">
@@ -526,164 +546,182 @@
         <h2>Portfolio Highlights</h2>
         <div class="portfolio-grid">
 
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="https://u.cubeupload.com/wbeasley48/GoodCube2.jpg" alt="Fortune 50 Tech COE" class="flip-card-photo">
-                        <div class="flip-card-overlay">
-                            <h3>Fortune 50 Tech Company Pricing COE</h3>
-                            <p class="company">Management Consulting</p>
+            <div class="project-card-wrapper">
+                <h3 class="project-title">Fortune 50 Tech Company Pricing COE</h3>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://u.cubeupload.com/wbeasley48/GoodCube2.jpg" alt="Fortune 50 Tech COE" class="flip-card-photo">
+                            <div class="flip-card-overlay">
+                                <p class="company">Management Consulting</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="flip-card-back">
-                        <h3>Challenge</h3>
-                        <p>Professional Services excluded from 75% of opportunities due to 10-day quotes and 1000+ inconsistent SKUs</p>
-                        <div class="impact">80% cycle time reduction<br>Doubled bid participation</div>
-                        <p class="learn-more">Swipe or tap for details →</p>
+                        <div class="flip-card-back">
+                            <h3>Challenge</h3>
+                            <p>Professional Services excluded from 75% of opportunities due to 10-day quotes and 1000+ inconsistent SKUs</p>
+                            <div class="impact">80% cycle time reduction<br>Doubled bid participation</div>
+                            <p class="learn-more">Swipe or tap for details →</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="https://u.cubeupload.com/wbeasley48/SelfCube1.jpg" alt="Custom Deal Desk" class="flip-card-photo">
-                        <div class="flip-card-overlay">
-                            <h3>Custom Deal Desk Manager</h3>
-                            <p class="company">AT&T</p>
+            <div class="project-card-wrapper">
+                <h3 class="project-title">Custom Deal Desk Manager</h3>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://u.cubeupload.com/wbeasley48/SelfCube1.jpg" alt="Custom Deal Desk" class="flip-card-photo">
+                            <div class="flip-card-overlay">
+                                <p class="company">AT&T</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="flip-card-back">
-                        <h3>Scope</h3>
-                        <p>Led $85M+ Wireline portfolio across Enterprise, Manufacturing, and Alliance Channel</p>
-                        <div class="impact">1,000+ deals annually<br>38-42% portfolio margin</div>
-                        <p class="learn-more">Swipe or tap for details →</p>
+                        <div class="flip-card-back">
+                            <h3>Scope</h3>
+                            <p>Led $85M+ Wireline portfolio across Enterprise, Manufacturing, and Alliance Channel</p>
+                            <div class="impact">1,000+ deals annually<br>38-42% portfolio margin</div>
+                            <p class="learn-more">Swipe or tap for details →</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="https://u.cubeupload.com/wbeasley48/Collabcube1.jpg" alt="Office@Hand" class="flip-card-photo">
-                        <div class="flip-card-overlay">
-                            <h3>Office@Hand Pricing Strategy</h3>
-                            <p class="company">AT&T</p>
+            <div class="project-card-wrapper">
+                <h3 class="project-title">Office@Hand Pricing Strategy</h3>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://u.cubeupload.com/wbeasley48/Collabcube1.jpg" alt="Office@Hand" class="flip-card-photo">
+                            <div class="flip-card-overlay">
+                                <p class="company">AT&T</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="flip-card-back">
-                        <h3>Challenge</h3>
-                        <p>Sales defaulting to heavy discounting, partnership dynamics undermining margin</p>
-                        <div class="impact">12% → 18% margin<br>50+ Sales Office Hours</div>
-                        <p class="learn-more">Swipe or tap for details →</p>
+                        <div class="flip-card-back">
+                            <h3>Challenge</h3>
+                            <p>Sales defaulting to heavy discounting, partnership dynamics undermining margin</p>
+                            <div class="impact">12% → 18% margin<br>50+ Sales Office Hours</div>
+                            <p class="learn-more">Swipe or tap for details →</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="https://u.cubeupload.com/wbeasley48/SelfCube4.jpg" alt="Business WiFi" class="flip-card-photo">
-                        <div class="flip-card-overlay">
-                            <h3>Business WiFi Process Optimization</h3>
-                            <p class="company">AT&T</p>
+            <div class="project-card-wrapper">
+                <h3 class="project-title">Business WiFi Process Optimization</h3>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://u.cubeupload.com/wbeasley48/SelfCube4.jpg" alt="Business WiFi" class="flip-card-photo">
+                            <div class="flip-card-overlay">
+                                <p class="company">AT&T</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="flip-card-back">
-                        <h3>Challenge</h3>
-                        <p>1-2 week quotes due to manual pricing across 1000+ SKUs with no CPQ</p>
-                        <div class="impact">85% cycle time reduction<br>1-2 weeks → 3 days</div>
-                        <p class="learn-more">Swipe or tap for details →</p>
+                        <div class="flip-card-back">
+                            <h3>Challenge</h3>
+                            <p>1-2 week quotes due to manual pricing across 1000+ SKUs with no CPQ</p>
+                            <div class="impact">85% cycle time reduction<br>1-2 weeks → 3 days</div>
+                            <p class="learn-more">Swipe or tap for details →</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="https://u.cubeupload.com/wbeasley48/GoodCube1.jpg" alt="Salesforce CPQ" class="flip-card-photo">
-                        <div class="flip-card-overlay">
-                            <h3>Salesforce CPQ Implementation</h3>
-                            <p class="company">Global Industrial Technology Company</p>
+            <div class="project-card-wrapper">
+                <h3 class="project-title">Salesforce CPQ Implementation</h3>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://u.cubeupload.com/wbeasley48/GoodCube1.jpg" alt="Salesforce CPQ" class="flip-card-photo">
+                            <div class="flip-card-overlay">
+                                <p class="company">Global Industrial Technology Company</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="flip-card-back">
-                        <h3>Scope</h3>
-                        <p>PM + Functional Lead for $10M+ program with 70+ consultants, partner channel</p>
-                        <div class="impact">200+ requirements<br>Multi-tiered pricing logic</div>
-                        <p class="learn-more">Swipe or tap for details →</p>
+                        <div class="flip-card-back">
+                            <h3>Scope</h3>
+                            <p>PM + Functional Lead for $10M+ program with 70+ consultants, partner channel</p>
+                            <div class="impact">200+ requirements<br>Multi-tiered pricing logic</div>
+                            <p class="learn-more">Swipe or tap for details →</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="https://u.cubeupload.com/wbeasley48/cube1.jpg" alt="Executive Dashboards" class="flip-card-photo">
-                        <div class="flip-card-overlay">
-                            <h3>Executive Pricing Dashboards</h3>
-                            <p class="company">AT&T</p>
+            <div class="project-card-wrapper">
+                <h3 class="project-title">Executive Pricing Dashboards</h3>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://u.cubeupload.com/wbeasley48/cube1.jpg" alt="Executive Dashboards" class="flip-card-photo">
+                            <div class="flip-card-overlay">
+                                <p class="company">AT&T</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="flip-card-back">
-                        <h3>Impact</h3>
-                        <p>Power BI dashboards driving +4% realization, +12% auto-approval usage</p>
-                        <div class="impact">Data-driven governance<br>VP-level visibility</div>
-                        <p class="learn-more">Swipe or tap for details →</p>
+                        <div class="flip-card-back">
+                            <h3>Impact</h3>
+                            <p>Power BI dashboards driving +4% realization, +12% auto-approval usage</p>
+                            <div class="impact">Data-driven governance<br>VP-level visibility</div>
+                            <p class="learn-more">Swipe or tap for details →</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="https://u.cubeupload.com/wbeasley48/Collabcube2.jpg" alt="Deal Desk Onboarding" class="flip-card-photo">
-                        <div class="flip-card-overlay">
-                            <h3>Deal Desk Onboarding Program</h3>
-                            <p class="company">AT&T</p>
+            <div class="project-card-wrapper">
+                <h3 class="project-title">Deal Desk Onboarding Program</h3>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://u.cubeupload.com/wbeasley48/Collabcube2.jpg" alt="Deal Desk Onboarding" class="flip-card-photo">
+                            <div class="flip-card-overlay">
+                                <p class="company">AT&T</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="flip-card-back">
-                        <h3>Context</h3>
-                        <p>95% turnover during downsizing - built 3-week training program</p>
-                        <div class="impact">30% ramp time reduction<br>92% certification rate</div>
-                        <p class="learn-more">Swipe or tap for details →</p>
+                        <div class="flip-card-back">
+                            <h3>Context</h3>
+                            <p>95% turnover during downsizing - built 3-week training program</p>
+                            <div class="impact">30% ramp time reduction<br>92% certification rate</div>
+                            <p class="learn-more">Swipe or tap for details →</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="https://u.cubeupload.com/wbeasley48/SelfCube3.jpg" alt="API Re-Monetization" class="flip-card-photo">
-                        <div class="flip-card-overlay">
-                            <h3>API Re-Monetization</h3>
-                            <p class="company">Sabre Corporation</p>
+            <div class="project-card-wrapper">
+                <h3 class="project-title">API Re-Monetization</h3>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://u.cubeupload.com/wbeasley48/SelfCube3.jpg" alt="API Re-Monetization" class="flip-card-photo">
+                            <div class="flip-card-overlay">
+                                <p class="company">Sabre Corporation</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="flip-card-back">
-                        <h3>Innovation</h3>
-                        <p>Transformed B2B SaaS pricing from per-passenger to per-API-call model</p>
-                        <div class="impact">10% margin uplift<br>Two-track pricing</div>
-                        <p class="learn-more">Swipe or tap for details →</p>
+                        <div class="flip-card-back">
+                            <h3>Innovation</h3>
+                            <p>Transformed B2B SaaS pricing from per-passenger to per-API-call model</p>
+                            <div class="impact">10% margin uplift<br>Two-track pricing</div>
+                            <p class="learn-more">Swipe or tap for details →</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="https://u.cubeupload.com/wbeasley48/SelfCube2.jpg" alt="oxyGEN Scholarship" class="flip-card-photo">
-                        <div class="flip-card-overlay">
-                            <h3>oxyGEN Scholarship Program</h3>
-                            <p class="company">AT&T ERG (501c3)</p>
+            <div class="project-card-wrapper">
+                <h3 class="project-title">oxyGEN Scholarship Program</h3>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://u.cubeupload.com/wbeasley48/SelfCube2.jpg" alt="oxyGEN Scholarship" class="flip-card-photo">
+                            <div class="flip-card-overlay">
+                                <p class="company">AT&T ERG (501c3)</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="flip-card-back">
-                        <h3>Leadership</h3>
-                        <p>Directed $55K annual STEAM scholarship, managing 500+ applications</p>
-                        <div class="impact">Cross-functional leadership<br>Nonprofit governance</div>
-                        <p class="learn-more">Swipe or tap for details →</p>
+                        <div class="flip-card-back">
+                            <h3>Leadership</h3>
+                            <p>Directed $55K annual STEAM scholarship, managing 500+ applications</p>
+                            <div class="impact">Cross-functional leadership<br>Nonprofit governance</div>
+                            <p class="learn-more">Swipe or tap for details →</p>
+                        </div>
                     </div>
                 </div>
             </div>
