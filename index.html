@@ -18,43 +18,75 @@
             background: #f8f9fa;
         }
 
-        /* Hero Section */
+        /* Hero Section - Split Layout */
         .hero {
-            background: linear-gradient(135deg, #003366 0%, #0066cc 100%);
+            background: linear-gradient(135deg, #1e3a5f 0%, #4a7ba7 100%);
             color: white;
-            padding: 80px 20px;
-            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-left {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-photo {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            border: 5px solid rgba(255,255,255,0.2);
+        }
+
+        .hero-right {
+            text-align: left;
         }
 
         .hero h1 {
+            font-family: Georgia, serif;
             font-size: 3.5rem;
             margin-bottom: 10px;
             font-weight: 700;
         }
 
         .hero .tagline {
+            font-family: Georgia, serif;
             font-size: 1.8rem;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             font-weight: 300;
+            color: #e8f4f8;
         }
 
         .hero .value-prop {
-            font-size: 1.2rem;
-            max-width: 900px;
-            margin: 0 auto 30px;
+            font-size: 1.15rem;
+            margin-bottom: 30px;
             line-height: 1.8;
+            color: #fff;
         }
 
         .contact-buttons {
             margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .contact-buttons a {
             display: inline-block;
             padding: 15px 30px;
-            margin: 0 10px;
             background: white;
-            color: #003366;
+            color: #1e3a5f;
             text-decoration: none;
             border-radius: 5px;
             font-weight: 600;
@@ -74,8 +106,9 @@
         }
 
         .about h2 {
+            font-family: Georgia, serif;
             font-size: 2.5rem;
-            color: #003366;
+            color: #1e3a5f;
             margin-bottom: 30px;
             text-align: center;
         }
@@ -105,20 +138,20 @@
             background: #e8f4f8;
             padding: 10px 20px;
             border-radius: 25px;
-            color: #003366;
+            color: #1e3a5f;
             font-weight: 600;
             font-size: 0.95rem;
         }
 
         .key-metrics {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             margin-top: 30px;
         }
 
         .metric {
-            background: linear-gradient(135deg, #0066cc 0%, #003366 100%);
+            background: linear-gradient(135deg, #4a7ba7 0%, #1e3a5f 100%);
             color: white;
             padding: 25px;
             border-radius: 10px;
@@ -126,14 +159,16 @@
         }
 
         .metric .number {
-            font-size: 2.5rem;
+            font-family: Georgia, serif;
+            font-size: 2.2rem;
             font-weight: 700;
             margin-bottom: 10px;
         }
 
         .metric .label {
-            font-size: 1rem;
-            opacity: 0.9;
+            font-size: 0.95rem;
+            opacity: 0.95;
+            line-height: 1.4;
         }
 
         /* Portfolio Section */
@@ -144,8 +179,9 @@
         }
 
         .portfolio h2 {
+            font-family: Georgia, serif;
             font-size: 2.5rem;
-            color: #003366;
+            color: #1e3a5f;
             margin-bottom: 50px;
             text-align: center;
         }
@@ -153,28 +189,52 @@
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
+            gap: 40px;
         }
 
-        /* Flip Card */
+        /* Project Card Container */
+        .project-card-container {
+            display: flex;
+            flex-direction: column;
+            contain: layout paint;
+        }
+
+        .project-title {
+            font-family: Georgia, serif;
+            font-size: 1.4rem;
+            color: #1e3a5f;
+            margin-bottom: 15px;
+            font-weight: 600;
+            text-align: center;
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Flip Card - NO JUMPING */
         .flip-card {
             background-color: transparent;
             width: 100%;
             height: 300px;
-            perspective: 1000px;
+            perspective: 1200px;
             cursor: pointer;
+            position: relative;
+            transform-style: preserve-3d;
+            overflow: hidden;
         }
 
         .flip-card-inner {
-            position: relative;
+            position: absolute;
             width: 100%;
             height: 100%;
             text-align: center;
             transition: transform 0.6s;
             transform-style: preserve-3d;
+            will-change: transform;
         }
 
-        .flip-card:hover .flip-card-inner {
+        .project-card-container:hover .flip-card-inner {
             transform: rotateY(180deg);
         }
 
@@ -185,6 +245,55 @@
             backface-visibility: hidden;
             border-radius: 15px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .flip-card-front {
+            background: white;
+            color: #1e3a5f;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .flip-card-front img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .flip-card-front::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, 
+                rgba(30, 58, 95, 0.3) 0%, 
+                rgba(30, 58, 95, 0.7) 70%, 
+                rgba(30, 58, 95, 0.9) 100%);
+            z-index: 1;
+        }
+
+        .flip-card-front .company {
+            position: relative;
+            z-index: 2;
+            font-size: 1.1rem;
+            color: white;
+            font-weight: 600;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .flip-card-back {
+            background: linear-gradient(135deg, #1e3a5f 0%, #4a7ba7 100%);
+            color: white;
+            transform: rotateY(180deg);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -192,54 +301,31 @@
             padding: 30px;
         }
 
-        .flip-card-front {
-            background: white;
-            color: #003366;
-        }
-
-        .flip-card-back {
-            background: linear-gradient(135deg, #003366 0%, #0066cc 100%);
-            color: white;
-            transform: rotateY(180deg);
-        }
-
-        .flip-card-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-        }
-
-        .flip-card-front h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #003366;
-        }
-
-        .flip-card-front .company {
-            font-size: 1rem;
-            color: #0066cc;
-            font-weight: 600;
-        }
-
         .flip-card-back h3 {
-            font-size: 1.3rem;
+            font-family: Georgia, serif;
+            font-size: 1.2rem;
             margin-bottom: 15px;
             border-bottom: 2px solid white;
             padding-bottom: 10px;
+            width: 100%;
+            text-align: center;
         }
 
         .flip-card-back p {
             font-size: 0.95rem;
             line-height: 1.6;
             margin-bottom: 15px;
+            text-align: center;
         }
 
         .flip-card-back .impact {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             margin-top: 15px;
             background: rgba(255,255,255,0.2);
-            padding: 10px;
+            padding: 12px;
             border-radius: 5px;
+            text-align: center;
         }
 
         .flip-card-back .learn-more {
@@ -286,17 +372,19 @@
         }
 
         .close:hover {
-            color: #003366;
+            color: #1e3a5f;
         }
 
         .modal-content h2 {
-            color: #003366;
+            font-family: Georgia, serif;
+            color: #1e3a5f;
             margin-bottom: 20px;
             font-size: 2rem;
         }
 
         .modal-content h3 {
-            color: #0066cc;
+            font-family: Georgia, serif;
+            color: #4a7ba7;
             margin-top: 30px;
             margin-bottom: 15px;
             font-size: 1.5rem;
@@ -319,7 +407,7 @@
         .modal-content .highlight-box {
             background: #e8f4f8;
             padding: 20px;
-            border-left: 5px solid #0066cc;
+            border-left: 5px solid #4a7ba7;
             margin: 25px 0;
             border-radius: 5px;
         }
@@ -332,7 +420,7 @@
         }
 
         .modal-content .metric-box {
-            background: linear-gradient(135deg, #0066cc 0%, #003366 100%);
+            background: linear-gradient(135deg, #4a7ba7 0%, #1e3a5f 100%);
             color: white;
             padding: 20px;
             border-radius: 8px;
@@ -340,6 +428,7 @@
         }
 
         .modal-content .metric-box .number {
+            font-family: Georgia, serif;
             font-size: 2rem;
             font-weight: 700;
             margin-bottom: 5px;
@@ -347,7 +436,7 @@
 
         /* Footer */
         footer {
-            background: #003366;
+            background: #1e3a5f;
             color: white;
             text-align: center;
             padding: 40px 20px;
@@ -358,8 +447,32 @@
             margin-bottom: 10px;
         }
 
+        footer a {
+            color: #e8f4f8;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
         /* Responsive */
+        @media (max-width: 1024px) {
+            .key-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .hero-right {
+                text-align: center;
+            }
+
             .hero h1 {
                 font-size: 2.5rem;
             }
@@ -368,12 +481,25 @@
                 font-size: 1.3rem;
             }
 
+            .contact-buttons {
+                justify-content: center;
+            }
+
             .portfolio-grid {
                 grid-template-columns: 1fr;
             }
 
+            .key-metrics {
+                grid-template-columns: 1fr;
+            }
+
             .flip-card {
-                height: 350px;
+                height: 280px;
+            }
+
+            .project-title {
+                font-size: 1.2rem;
+                min-height: 60px;
             }
         }
 
@@ -392,17 +518,24 @@
 </head>
 <body>
 
-    <!-- Hero Section -->
+    <!-- Hero Section - Split Layout -->
     <section class="hero">
-        <h1>WILLIAM BEASLEY</h1>
-        <div class="tagline">Strategic Pricing Leader</div>
-        <p class="value-prop">
-            10+ years building pricing functions, driving margin optimization, and enabling Sales organizations to win profitably across B2B SaaS, telecommunications, and professional services.
-        </p>
-        <div class="contact-buttons">
-            <a href="https://www.linkedin.com/in/williambeasley48" target="_blank">LinkedIn</a>
-            <a href="mailto:wnb1@ricealumni.net">Email Me</a>
-            <a href="William_Beasley_Strategic_Pricing_Portfolio.pdf" download>Download Portfolio PDF</a>
+        <div class="hero-container">
+            <div class="hero-left">
+                <img src="https://u.cubeupload.com/wbeasley48/1615331581546.jpg" alt="William Beasley" class="hero-photo">
+            </div>
+            <div class="hero-right">
+                <h1>WILLIAM BEASLEY</h1>
+                <div class="tagline">Strategic Pricing Leader</div>
+                <p class="value-prop">
+                    10+ years building pricing functions, driving margin optimization, and enabling Sales organizations to win profitably across B2B SaaS, telecommunications, and professional services.
+                </p>
+                <div class="contact-buttons">
+                    <a href="https://www.linkedin.com/in/williambeasley48" target="_blank">LinkedIn</a>
+                    <a href="/cdn-cgi/l/email-protection#3a4d54580b7a4853595f5b564f57545314545f4e">Email Me</a>
+                    <a href="William_Beasley_Strategic_Pricing_Portfolio.pdf" download>Download Portfolio PDF</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -414,7 +547,8 @@
                 I'm a strategic pricing leader with a proven track record of building pricing functions from scratch, optimizing existing operations, and driving measurable business impact. My expertise spans strategic pricing strategy, Deal Desk operations, CPQ implementation, pricing analytics, and Sales enablement.
             </p>
             <p>
-                Operating within the Fortune 100 ecosystem, I have spearheaded pricing strategies for the world’s largest enterprise software provider and a global leader in industrial geospatial technology. I bring a unique blend of strategic rigor and hands-on execution.  My approach consistently delivers margin improvements across $85M+ portfolios and personally securing seven-figure consulting projects through data-driven Sales enablement.            </p>
+                Operating within the Fortune 100 ecosystem, I have spearheaded pricing strategies for the world's largest enterprise software provider and a global leader in industrial geospatial technology. I bring a unique blend of strategic rigor and hands-on execution. My approach consistently delivers margin improvements across $85M+ portfolios and personally securing seven-figure consulting projects through data-driven Sales enablement.
+            </p>
 
             <div class="core-competencies">
                 <span class="competency">Strategic Pricing</span>
@@ -429,20 +563,40 @@
 
             <div class="key-metrics">
                 <div class="metric">
+                    <div class="number">5</div>
+                    <div class="label">Fortune 50 Clients Led</div>
+                </div>
+                <div class="metric">
                     <div class="number">$85M+</div>
-                    <div class="label">Revenue Portfolio Managed</div>
+                    <div class="label">Annual Revenue Portfolio</div>
+                </div>
+                <div class="metric">
+                    <div class="number">15</div>
+                    <div class="label">Product Pricing Launches</div>
+                </div>
+                <div class="metric">
+                    <div class="number">108+</div>
+                    <div class="label">Pricing Cycles Led</div>
+                </div>
+                <div class="metric">
+                    <div class="number">3</div>
+                    <div class="label">Pricing COEs Built</div>
+                </div>
+                <div class="metric">
+                    <div class="number">8</div>
+                    <div class="label">CRM/CPQ Systems Enabled</div>
                 </div>
                 <div class="metric">
                     <div class="number">18%</div>
-                    <div class="label">Margin Improvements Delivered</div>
+                    <div class="label">Margin Improvements</div>
+                </div>
+                <div class="metric">
+                    <div class="number">$10M+</div>
+                    <div class="label">Transformation Projects</div>
                 </div>
                 <div class="metric">
                     <div class="number">85%</div>
                     <div class="label">Cycle Time Reductions</div>
-                </div>
-                <div class="metric">
-                    <div class="number">1,000+</div>
-                    <div class="label">Complex Deals Annually</div>
                 </div>
             </div>
         </div>
@@ -454,154 +608,172 @@
         <div class="portfolio-grid">
 
             <!-- Card 1: Microsoft Pricing COE -->
-            <div class="flip-card" onclick="openModal('modal-ms-coe')">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div class="flip-card-icon">💼</div>
-                        <h3>Microsoft Pricing Center of Excellence</h3>
-                        <p class="company">PwC Consulting</p>
-                    </div>
-                    <div class="flip-card-back">
-                        <h3>Challenge</h3>
-                        <p>Microsoft Professional Services excluded from 75% of opportunities due to 10-day quote turnaround and 1000+ inconsistent SKUs</p>
-                        <div class="impact">80% cycle time reduction<br>Doubled bid participation</div>
-                        <p class="learn-more">Click to learn more →</p>
+            <div class="project-card-container">
+                <div class="project-title">Microsoft Pricing Center of Excellence</div>
+                <div class="flip-card" onclick="openModal('modal-ms-coe')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://u.cubeupload.com/wbeasley48/GoodCube2.jpg" alt="Microsoft COE Project">
+                            <div class="company">PwC Consulting</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Challenge</h3>
+                            <p>Microsoft Professional Services excluded from 75% of opportunities due to 10-day quote turnaround and 1000+ inconsistent SKUs</p>
+                            <div class="impact">80% cycle time reduction<br>Doubled bid participation</div>
+                            <p class="learn-more">Click to learn more →</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Card 2: AT&T Deal Desk -->
-            <div class="flip-card" onclick="openModal('modal-att-dealdesk')">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div class="flip-card-icon">📊</div>
-                        <h3>Custom Deal Desk Manager</h3>
-                        <p class="company">AT&T</p>
-                    </div>
-                    <div class="flip-card-back">
-                        <h3>Scope</h3>
-                        <p>Led pricing operations for $85M+ Wireline portfolio across Enterprise, Manufacturing, and Alliance Channel segments</p>
-                        <div class="impact">1,000+ deals annually<br>38-42% portfolio margin</div>
-                        <p class="learn-more">Click to learn more →</p>
+            <div class="project-card-container">
+                <div class="project-title">Custom Deal Desk Manager</div>
+                <div class="flip-card" onclick="openModal('modal-att-dealdesk')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://u.cubeupload.com/wbeasley48/SelfCube1.jpg" alt="AT&T Deal Desk">
+                            <div class="company">AT&T</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Scope</h3>
+                            <p>Led pricing operations for $85M+ Wireline portfolio across Enterprise, Manufacturing, and Alliance Channel segments</p>
+                            <div class="impact">1,000+ deals annually<br>38-42% portfolio margin</div>
+                            <p class="learn-more">Click to learn more →</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Card 3: Office@Hand -->
-            <div class="flip-card" onclick="openModal('modal-office-hand')">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div class="flip-card-icon">📱</div>
-                        <h3>Office@Hand Pricing Strategy</h3>
-                        <p class="company">AT&T</p>
-                    </div>
-                    <div class="flip-card-back">
-                        <h3>Challenge</h3>
-                        <p>Sales defaulting to heavy discounting vs. Microsoft Teams, RingCentral partnership undermining AT&T margin</p>
-                        <div class="impact">12% → 18% margin<br>50+ Sales Office Hours</div>
-                        <p class="learn-more">Click to learn more →</p>
+            <div class="project-card-container">
+                <div class="project-title">Office@Hand Pricing Strategy</div>
+                <div class="flip-card" onclick="openModal('modal-office-hand')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://u.cubeupload.com/wbeasley48/Collabcube1.jpg" alt="Office@Hand Strategy">
+                            <div class="company">AT&T</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Challenge</h3>
+                            <p>Sales defaulting to heavy discounting vs. Microsoft Teams, RingCentral partnership undermining AT&T margin</p>
+                            <div class="impact">12% → 18% margin<br>50+ Sales Office Hours</div>
+                            <p class="learn-more">Click to learn more →</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Card 4: Business WiFi -->
-            <div class="flip-card" onclick="openModal('modal-wifi')">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div class="flip-card-icon">📡</div>
-                        <h3>Business WiFi Process Optimization</h3>
-                        <p class="company">AT&T</p>
-                    </div>
-                    <div class="flip-card-back">
-                        <h3>Challenge</h3>
-                        <p>1-2 week quote turnaround due to manual pricing across 1000+ SKUs with no CPQ integration</p>
-                        <div class="impact">85% cycle time reduction<br>1-2 weeks → 3 days</div>
-                        <p class="learn-more">Click to learn more →</p>
+            <div class="project-card-container">
+                <div class="project-title">Business WiFi Process Optimization</div>
+                <div class="flip-card" onclick="openModal('modal-wifi')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://u.cubeupload.com/wbeasley48/SelfCube4.jpg" alt="Business WiFi">
+                            <div class="company">AT&T</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Challenge</h3>
+                            <p>1-2 week quote turnaround due to manual pricing across 1000+ SKUs with no CPQ integration</p>
+                            <div class="impact">85% cycle time reduction<br>1-2 weeks → 3 days</div>
+                            <p class="learn-more">Click to learn more →</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Card 5: Trimble CPQ -->
-            <div class="flip-card" onclick="openModal('modal-trimble')">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div class="flip-card-icon">⚙️</div>
-                        <h3>Salesforce CPQ Implementation</h3>
-                        <p class="company">PwC - Trimble Client</p>
-                    </div>
-                    <div class="flip-card-back">
-                        <h3>Scope</h3>
-                        <p>PM + Functional Lead for $10M+ Salesforce CPQ program with 70+ consultants, partner channel complexity</p>
-                        <div class="impact">200+ requirements translated<br>Multi-tiered pricing logic</div>
-                        <p class="learn-more">Click to learn more →</p>
+            <div class="project-card-container">
+                <div class="project-title">Salesforce CPQ Implementation</div>
+                <div class="flip-card" onclick="openModal('modal-trimble')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://u.cubeupload.com/wbeasley48/GoodCube1.jpg" alt="Trimble CPQ">
+                            <div class="company">PwC - Trimble Client</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Scope</h3>
+                            <p>PM + Functional Lead for $10M+ Salesforce CPQ program with 70+ consultants, partner channel complexity</p>
+                            <div class="impact">200+ requirements translated<br>Multi-tiered pricing logic</div>
+                            <p class="learn-more">Click to learn more →</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Card 6: Executive Dashboards -->
-            <div class="flip-card" onclick="openModal('modal-dashboards')">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div class="flip-card-icon">📈</div>
-                        <h3>Executive Pricing Dashboards</h3>
-                        <p class="company">AT&T</p>
-                    </div>
-                    <div class="flip-card-back">
-                        <h3>Impact</h3>
-                        <p>Built Power BI dashboards generating monthly insights that drove Office@Hand realization +4%, auto-approval +12%</p>
-                        <div class="impact">Data-driven governance<br>VP-level visibility</div>
-                        <p class="learn-more">Click to learn more →</p>
+            <div class="project-card-container">
+                <div class="project-title">Executive Pricing Dashboards</div>
+                <div class="flip-card" onclick="openModal('modal-dashboards')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://u.cubeupload.com/wbeasley48/cube1.jpg" alt="Executive Dashboards">
+                            <div class="company">AT&T</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Impact</h3>
+                            <p>Built Power BI dashboards generating monthly insights that drove Office@Hand realization +4%, auto-approval +12%</p>
+                            <div class="impact">Data-driven governance<br>VP-level visibility</div>
+                            <p class="learn-more">Click to learn more →</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Card 7: Onboarding -->
-            <div class="flip-card" onclick="openModal('modal-onboarding')">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div class="flip-card-icon">🎓</div>
-                        <h3>Deal Desk Onboarding Program</h3>
-                        <p class="company">AT&T</p>
-                    </div>
-                    <div class="flip-card-back">
-                        <h3>Context</h3>
-                        <p>95% workforce turnover during downsizing - built comprehensive 3-week training program</p>
-                        <div class="impact">30% ramp time reduction<br>92% certification rate</div>
-                        <p class="learn-more">Click to learn more →</p>
+            <div class="project-card-container">
+                <div class="project-title">Deal Desk Onboarding Program</div>
+                <div class="flip-card" onclick="openModal('modal-onboarding')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://u.cubeupload.com/wbeasley48/Collabcube2.jpg" alt="Onboarding Program">
+                            <div class="company">AT&T</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Context</h3>
+                            <p>95% workforce turnover during downsizing - built comprehensive 3-week training program</p>
+                            <div class="impact">30% ramp time reduction<br>92% certification rate</div>
+                            <p class="learn-more">Click to learn more →</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Card 8: Sabre API -->
-            <div class="flip-card" onclick="openModal('modal-sabre')">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div class="flip-card-icon">🔄</div>
-                        <h3>API Re-Monetization</h3>
-                        <p class="company">Sabre Corporation</p>
-                    </div>
-                    <div class="flip-card-back">
-                        <h3>Innovation</h3>
-                        <p>Transformed B2B SaaS pricing from per-passenger to per-API-call model, aligning value metric with cost structure</p>
-                        <div class="impact">10% margin uplift<br>Two-track pricing model</div>
-                        <p class="learn-more">Click to learn more →</p>
+            <div class="project-card-container">
+                <div class="project-title">API Re-Monetization</div>
+                <div class="flip-card" onclick="openModal('modal-sabre')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://u.cubeupload.com/wbeasley48/SelfCube3.jpg" alt="API Re-Monetization">
+                            <div class="company">Sabre Corporation</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Innovation</h3>
+                            <p>Transformed B2B SaaS pricing from per-passenger to per-API-call model, aligning value metric with cost structure</p>
+                            <div class="impact">10% margin uplift<br>Two-track pricing model</div>
+                            <p class="learn-more">Click to learn more →</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Card 9: oxyGEN -->
-            <div class="flip-card" onclick="openModal('modal-oxygen')">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div class="flip-card-icon">🎓</div>
-                        <h3>oxyGEN Scholarship Program</h3>
-                        <p class="company">AT&T ERG (501c3)</p>
-                    </div>
-                    <div class="flip-card-back">
-                        <h3>Leadership</h3>
-                        <p>Directed $55K annual STEAM scholarship fund for 5,000-member ERG, managing 500+ applications with nonprofit governance</p>
-                        <div class="impact">Cross-functional leadership<br>501(c)(3) compliance</div>
-                        <p class="learn-more">Click to learn more →</p>
+            <div class="project-card-container">
+                <div class="project-title">oxyGEN Scholarship Program</div>
+                <div class="flip-card" onclick="openModal('modal-oxygen')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://u.cubeupload.com/wbeasley48/SelfCube2.jpg" alt="oxyGEN Scholarship">
+                            <div class="company">AT&T ERG (501c3)</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Leadership</h3>
+                            <p>Directed $55K annual STEAM scholarship fund for 5,000-member ERG, managing 500+ applications with nonprofit governance</p>
+                            <div class="impact">Cross-functional leadership<br>501(c)(3) compliance</div>
+                            <p class="learn-more">Click to learn more →</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -998,11 +1170,11 @@
     <!-- Footer -->
     <footer>
         <p>&copy; 2026 William Beasley | Strategic Pricing Portfolio</p>
-        <p>Dallas, Texas | Atlanta, Georgia | <a href="mailto:wnb1@ricealumni.net" style="color: white;">wnb1@ricealumni.net</a></p>
-        <p><a href="https://www.linkedin.com/in/williambeasley48" target="_blank" style="color: white;">LinkedIn Profile</a></p>
+        <p>Dallas, Texas | Atlanta, Georgia | <a href="/cdn-cgi/l/email-protection#1d6a737f2c5d6f747e787c716870737433737869"><span class="__cf_email__" data-cfemail="087f666a39487a616b6d69647d65666126666d7c">[email&#160;protected]</span></a></p>
+        <p><a href="https://www.linkedin.com/in/williambeasley48" target="_blank">LinkedIn Profile</a></p>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Open modal
         function openModal(modalId) {
             document.getElementById(modalId).style.display = "block";
@@ -1027,23 +1199,19 @@
         const fadeElements = document.querySelectorAll('.fade-in');
         
         const appearOptions = {
-            threshold: 0.3
+            threshold: 0.2
         };
 
-        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+        const appearOnScroll = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
-                if (!entry.isIntersecting) {
-                    return;
-                } else {
-                    entry.target.classList.add('visible');
-                    appearOnScroll.unobserve(entry.target);
-                }
+                if (!entry.isIntersecting) return;
+
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
             });
         }, appearOptions);
 
-        fadeElements.forEach(element => {
-            appearOnScroll.observe(element);
-        });
+        fadeElements.forEach(el => appearOnScroll.observe(el));
     </script>
 
 </body>
