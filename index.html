@@ -454,7 +454,67 @@
         html {
             scroll-behavior: smooth;
         }
-    </style>
+    <style>
+/* --- FLIP CARD STABILITY FIX --- */
+.flip-card {
+    position: relative;
+    overflow: hidden;
+    contain: layout paint;
+}
+
+.flip-card-inner {
+    position: relative;
+}
+
+.flip-card-photo {
+    transform: scale(1);
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.flip-card:hover .flip-card-photo {
+    transform: scale(1.03);
+}
+
+/* --- MODAL STYLES --- */
+.project-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(30, 58, 95, 0.85);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-modal.open {
+    display: flex;
+}
+
+.project-modal-content {
+    background: #ffffff;
+    max-width: 900px;
+    width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 45px;
+    border-radius: 14px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+    position: relative;
+}
+
+.project-modal-close {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    font-size: 32px;
+    cursor: pointer;
+    color: #999;
+}
+
+.project-modal-close:hover {
+    color: #1e3a5f;
+}
+</style>
 </head>
 <body>
 
