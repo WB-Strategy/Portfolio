@@ -197,6 +197,7 @@
             display: flex;
             flex-direction: column;
             contain: layout paint;
+            height: 370px;
         }
 
         .project-title {
@@ -206,10 +207,11 @@
             margin-bottom: 15px;
             font-weight: 600;
             text-align: center;
-            min-height: 70px;
+            height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
         }
 
         /* Flip Card - NO JUMPING */
@@ -219,15 +221,19 @@
             height: 300px;
             position: relative;
             perspective: 1200px;
+            flex-shrink: 0;
         }
 
         .flip-card-inner {
-            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             text-align: center;
             transition: transform 0.6s;
             transform-style: preserve-3d;
+            transform-origin: center center;
         }
 
         .project-card-container:hover .flip-card-inner {
@@ -250,7 +256,11 @@
             flex-direction: column;
             justify-content: flex-end;
             overflow: hidden;
-            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
         }
 
         .flip-card-front img {
