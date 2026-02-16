@@ -221,13 +221,18 @@
             cursor: pointer;
             position: relative;
             transform-style: preserve-3d;
+        }
+
+        .flip-card-clip {
+            width: 100%;
+            height: 100%;
             overflow: hidden;
+            position: relative;
         }
 
         .flip-card-inner {
             position: absolute;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             text-align: center;
             transition: transform 0.6s;
             transform-style: preserve-3d;
@@ -522,7 +527,7 @@
     <section class="hero">
         <div class="hero-container">
             <div class="hero-left">
-                <img src="https://u.cubeupload.com/wbeasley48/Headshot.png" alt="William Beasley" class="hero-photo">
+                <img src="https://u.cubeupload.com/wbeasley48/1615331581546.jpg" alt="William Beasley" class="hero-photo">
             </div>
             <div class="hero-right">
                 <h1>WILLIAM BEASLEY</h1>
@@ -611,16 +616,18 @@
             <div class="project-card-container">
                 <div class="project-title">Microsoft Pricing Center of Excellence</div>
                 <div class="flip-card" onclick="openModal('modal-ms-coe')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="https://u.cubeupload.com/wbeasley48/GoodCube2.jpg" alt="Microsoft COE Project">
-                            <div class="company">PwC Consulting</div>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>Challenge</h3>
-                            <p>Microsoft Professional Services excluded from 75% of opportunities due to 10-day quote turnaround and 1000+ inconsistent SKUs</p>
-                            <div class="impact">80% cycle time reduction<br>Doubled bid participation</div>
-                            <p class="learn-more">Click to learn more →</p>
+                    <div class="flip-card-clip">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="https://u.cubeupload.com/wbeasley48/GoodCube2.jpg" alt="Microsoft COE Project">
+                                <div class="company">PwC Consulting</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <h3>Challenge</h3>
+                                <p>Microsoft Professional Services excluded from 75% of opportunities due to 10-day quote turnaround and 1000+ inconsistent SKUs</p>
+                                <div class="impact">80% cycle time reduction<br>Doubled bid participation</div>
+                                <p class="learn-more">Click to learn more →</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -630,16 +637,18 @@
             <div class="project-card-container">
                 <div class="project-title">Custom Deal Desk Manager</div>
                 <div class="flip-card" onclick="openModal('modal-att-dealdesk')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="https://u.cubeupload.com/wbeasley48/SelfCube1.jpg" alt="AT&T Deal Desk">
-                            <div class="company">AT&T</div>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>Scope</h3>
-                            <p>Led pricing operations for $85M+ Wireline portfolio across Enterprise, Manufacturing, and Alliance Channel segments</p>
-                            <div class="impact">1,000+ deals annually<br>38-42% portfolio margin</div>
-                            <p class="learn-more">Click to learn more →</p>
+                    <div class="flip-card-clip">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="https://u.cubeupload.com/wbeasley48/SelfCube1.jpg" alt="AT&T Deal Desk">
+                                <div class="company">AT&T</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <h3>Scope</h3>
+                                <p>Led pricing operations for $85M+ Wireline portfolio across Enterprise, Manufacturing, and Alliance Channel segments</p>
+                                <div class="impact">1,000+ deals annually<br>38-42% portfolio margin</div>
+                                <p class="learn-more">Click to learn more →</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -649,16 +658,18 @@
             <div class="project-card-container">
                 <div class="project-title">Office@Hand Pricing Strategy</div>
                 <div class="flip-card" onclick="openModal('modal-office-hand')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="https://u.cubeupload.com/wbeasley48/Collabcube1.jpg" alt="Office@Hand Strategy">
-                            <div class="company">AT&T</div>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>Challenge</h3>
-                            <p>Sales defaulting to heavy discounting vs. Microsoft Teams, RingCentral partnership undermining AT&T margin</p>
-                            <div class="impact">12% → 18% margin<br>50+ Sales Office Hours</div>
-                            <p class="learn-more">Click to learn more →</p>
+                    <div class="flip-card-clip">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="https://u.cubeupload.com/wbeasley48/Collabcube1.jpg" alt="Office@Hand Strategy">
+                                <div class="company">AT&T</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <h3>Challenge</h3>
+                                <p>Sales defaulting to heavy discounting vs. Microsoft Teams, RingCentral partnership undermining AT&T margin</p>
+                                <div class="impact">12% → 18% margin<br>50+ Sales Office Hours</div>
+                                <p class="learn-more">Click to learn more →</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -668,16 +679,18 @@
             <div class="project-card-container">
                 <div class="project-title">Business WiFi Process Optimization</div>
                 <div class="flip-card" onclick="openModal('modal-wifi')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="https://u.cubeupload.com/wbeasley48/SelfCube4.jpg" alt="Business WiFi">
-                            <div class="company">AT&T</div>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>Challenge</h3>
-                            <p>1-2 week quote turnaround due to manual pricing across 1000+ SKUs with no CPQ integration</p>
-                            <div class="impact">85% cycle time reduction<br>1-2 weeks → 3 days</div>
-                            <p class="learn-more">Click to learn more →</p>
+                    <div class="flip-card-clip">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="https://u.cubeupload.com/wbeasley48/SelfCube4.jpg" alt="Business WiFi">
+                                <div class="company">AT&T</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <h3>Challenge</h3>
+                                <p>1-2 week quote turnaround due to manual pricing across 1000+ SKUs with no CPQ integration</p>
+                                <div class="impact">85% cycle time reduction<br>1-2 weeks → 3 days</div>
+                                <p class="learn-more">Click to learn more →</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -687,16 +700,18 @@
             <div class="project-card-container">
                 <div class="project-title">Salesforce CPQ Implementation</div>
                 <div class="flip-card" onclick="openModal('modal-trimble')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="https://u.cubeupload.com/wbeasley48/GoodCube1.jpg" alt="Trimble CPQ">
-                            <div class="company">PwC - Trimble Client</div>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>Scope</h3>
-                            <p>PM + Functional Lead for $10M+ Salesforce CPQ program with 70+ consultants, partner channel complexity</p>
-                            <div class="impact">200+ requirements translated<br>Multi-tiered pricing logic</div>
-                            <p class="learn-more">Click to learn more →</p>
+                    <div class="flip-card-clip">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="https://u.cubeupload.com/wbeasley48/GoodCube1.jpg" alt="Trimble CPQ">
+                                <div class="company">PwC - Trimble Client</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <h3>Scope</h3>
+                                <p>PM + Functional Lead for $10M+ Salesforce CPQ program with 70+ consultants, partner channel complexity</p>
+                                <div class="impact">200+ requirements translated<br>Multi-tiered pricing logic</div>
+                                <p class="learn-more">Click to learn more →</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -706,16 +721,18 @@
             <div class="project-card-container">
                 <div class="project-title">Executive Pricing Dashboards</div>
                 <div class="flip-card" onclick="openModal('modal-dashboards')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="https://u.cubeupload.com/wbeasley48/cube1.jpg" alt="Executive Dashboards">
-                            <div class="company">AT&T</div>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>Impact</h3>
-                            <p>Built Power BI dashboards generating monthly insights that drove Office@Hand realization +4%, auto-approval +12%</p>
-                            <div class="impact">Data-driven governance<br>VP-level visibility</div>
-                            <p class="learn-more">Click to learn more →</p>
+                    <div class="flip-card-clip">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="https://u.cubeupload.com/wbeasley48/cube1.jpg" alt="Executive Dashboards">
+                                <div class="company">AT&T</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <h3>Impact</h3>
+                                <p>Built Power BI dashboards generating monthly insights that drove Office@Hand realization +4%, auto-approval +12%</p>
+                                <div class="impact">Data-driven governance<br>VP-level visibility</div>
+                                <p class="learn-more">Click to learn more →</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -725,16 +742,18 @@
             <div class="project-card-container">
                 <div class="project-title">Deal Desk Onboarding Program</div>
                 <div class="flip-card" onclick="openModal('modal-onboarding')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="https://u.cubeupload.com/wbeasley48/Collabcube2.jpg" alt="Onboarding Program">
-                            <div class="company">AT&T</div>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>Context</h3>
-                            <p>95% workforce turnover during downsizing - built comprehensive 3-week training program</p>
-                            <div class="impact">30% ramp time reduction<br>92% certification rate</div>
-                            <p class="learn-more">Click to learn more →</p>
+                    <div class="flip-card-clip">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="https://u.cubeupload.com/wbeasley48/Collabcube2.jpg" alt="Onboarding Program">
+                                <div class="company">AT&T</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <h3>Context</h3>
+                                <p>95% workforce turnover during downsizing - built comprehensive 3-week training program</p>
+                                <div class="impact">30% ramp time reduction<br>92% certification rate</div>
+                                <p class="learn-more">Click to learn more →</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -744,16 +763,18 @@
             <div class="project-card-container">
                 <div class="project-title">API Re-Monetization</div>
                 <div class="flip-card" onclick="openModal('modal-sabre')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="https://u.cubeupload.com/wbeasley48/SelfCube3.jpg" alt="API Re-Monetization">
-                            <div class="company">Sabre Corporation</div>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>Innovation</h3>
-                            <p>Transformed B2B SaaS pricing from per-passenger to per-API-call model, aligning value metric with cost structure</p>
-                            <div class="impact">10% margin uplift<br>Two-track pricing model</div>
-                            <p class="learn-more">Click to learn more →</p>
+                    <div class="flip-card-clip">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="https://u.cubeupload.com/wbeasley48/SelfCube3.jpg" alt="API Re-Monetization">
+                                <div class="company">Sabre Corporation</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <h3>Innovation</h3>
+                                <p>Transformed B2B SaaS pricing from per-passenger to per-API-call model, aligning value metric with cost structure</p>
+                                <div class="impact">10% margin uplift<br>Two-track pricing model</div>
+                                <p class="learn-more">Click to learn more →</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -763,16 +784,18 @@
             <div class="project-card-container">
                 <div class="project-title">oxyGEN Scholarship Program</div>
                 <div class="flip-card" onclick="openModal('modal-oxygen')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="https://u.cubeupload.com/wbeasley48/SelfCube2.jpg" alt="oxyGEN Scholarship">
-                            <div class="company">AT&T ERG (501c3)</div>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>Leadership</h3>
-                            <p>Directed $55K annual STEAM scholarship fund for 5,000-member ERG, managing 500+ applications with nonprofit governance</p>
-                            <div class="impact">Cross-functional leadership<br>501(c)(3) compliance</div>
-                            <p class="learn-more">Click to learn more →</p>
+                    <div class="flip-card-clip">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="https://u.cubeupload.com/wbeasley48/SelfCube2.jpg" alt="oxyGEN Scholarship">
+                                <div class="company">AT&T ERG (501c3)</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <h3>Leadership</h3>
+                                <p>Directed $55K annual STEAM scholarship fund for 5,000-member ERG, managing 500+ applications with nonprofit governance</p>
+                                <div class="impact">Cross-functional leadership<br>501(c)(3) compliance</div>
+                                <p class="learn-more">Click to learn more →</p>
+                            </div>
                         </div>
                     </div>
                 </div>
