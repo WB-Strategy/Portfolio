@@ -5,745 +5,782 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>William Beasley | Strategic Pricing Portfolio</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: #f8f9fa; }
-
-        /* HERO */
-        .hero { background: linear-gradient(135deg, #1e3a5f 0%, #4a7ba7 100%); color: white; padding: 60px 20px; }
-        .hero-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 60px; align-items: center; }
-        .hero-left { display: flex; justify-content: center; align-items: center; }
-        .hero-photo { width: 100%; max-width: 350px; height: auto; border-radius: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.3); border: 5px solid rgba(255,255,255,0.2); }
-        .hero-right { text-align: left; }
-        .hero h1 { font-family: Georgia, serif; font-size: 3.5rem; margin-bottom: 10px; font-weight: 700; }
-        .hero .tagline { font-family: Georgia, serif; font-size: 1.8rem; margin-bottom: 25px; font-weight: 300; color: #e8f4f8; }
-        .hero .value-prop { font-size: 1.15rem; margin-bottom: 30px; line-height: 1.8; color: #fff; }
-        .contact-buttons { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 15px; }
-        .contact-buttons a { display: inline-block; padding: 15px 30px; background: white; color: #1e3a5f; text-decoration: none; border-radius: 5px; font-weight: 600; transition: transform 0.3s, box-shadow 0.3s; }
-        .contact-buttons a:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-
-        /* ABOUT */
-        .about { max-width: 1200px; margin: 60px auto; padding: 0 20px; }
-        .about h2 { font-family: Georgia, serif; font-size: 2.5rem; color: #1e3a5f; margin-bottom: 30px; text-align: center; }
-        .about-content { background: white; padding: 40px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-bottom: 40px; }
-        .about-content p { font-size: 1.1rem; margin-bottom: 20px; color: #555; }
-        .core-competencies { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 30px; }
-        .competency { background: #e8f4f8; padding: 10px 20px; border-radius: 25px; color: #1e3a5f; font-weight: 600; font-size: 0.95rem; }
-        .key-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; }
-        .metric { background: linear-gradient(135deg, #4a7ba7 0%, #1e3a5f 100%); color: white; padding: 25px; border-radius: 10px; text-align: center; }
-        .metric .number { font-family: Georgia, serif; font-size: 2.2rem; font-weight: 700; margin-bottom: 10px; }
-        .metric .label { font-size: 0.95rem; opacity: 0.95; line-height: 1.4; }
-
-        /* EXPERTISE ACCORDION */
-        .expertise-section { max-width: 1200px; margin: 80px auto; padding: 0 20px; }
-        .expertise-section .section-header { text-align: center; margin-bottom: 60px; }
-        .expertise-section .section-header h2 { font-size: 2.8rem; color: #1e3a5f; font-family: Georgia, 'Times New Roman', serif; font-weight: 700; margin-bottom: 18px; }
-        .expertise-section .section-header p { font-size: 1.15rem; color: #546e7a; max-width: 780px; margin: 0 auto; line-height: 1.8; }
-        .accordion-item { background: #ffffff; border-radius: 10px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(30,58,95,0.08); overflow: hidden; transition: box-shadow 0.3s ease; }
-        .accordion-item:hover { box-shadow: 0 4px 16px rgba(30,58,95,0.14); }
-        .accordion-trigger { width: 100%; background: none; border: none; padding: 26px 35px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; text-align: left; gap: 20px; }
-        .accordion-trigger-left { display: flex; align-items: center; gap: 18px; }
-        .accordion-role-badge { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #4a7ba7; background: #e8f0f7; padding: 5px 12px; border-radius: 20px; white-space: nowrap; }
-        .accordion-trigger h3 { font-size: 1.3rem; color: #1e3a5f; font-family: Georgia, 'Times New Roman', serif; font-weight: 700; margin: 0; }
-        .accordion-chevron { width: 28px; height: 28px; border-radius: 50%; background: #e8f0f7; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: transform 0.35s ease, background 0.3s ease; color: #1e3a5f; font-size: 1rem; }
-        .accordion-item.open .accordion-chevron { transform: rotate(180deg); background: #1e3a5f; color: #ffffff; }
-        .accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1); }
-        .accordion-item.open .accordion-body { max-height: 2400px; }
-        .accordion-inner { padding: 28px 35px 35px 35px; border-top: 1px solid #e8f0f7; }
-        .zone-problem { margin-bottom: 28px; }
-        .zone-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #4a7ba7; margin-bottom: 10px; }
-        .zone-problem p { font-size: 1.05rem; color: #2c3e50; line-height: 1.8; font-style: italic; border-left: 3px solid #4a7ba7; padding-left: 18px; margin: 0; }
-        .zone-methods { margin-bottom: 28px; }
-        .methods-subgroup { margin-bottom: 20px; }
-        .methods-subgroup:last-child { margin-bottom: 0; }
-        .methods-subgroup-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #1e3a5f; background: #e8f0f7; display: inline-block; padding: 4px 12px; border-radius: 4px; margin-bottom: 10px; margin-top: 14px; }
-        .methods-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; margin-top: 0; }
-        .method-item { padding: 12px 16px; background: #f8f9fa; border-radius: 7px; border-left: 3px solid #1e3a5f; }
-        .method-name { font-size: 0.92rem; font-weight: 700; color: #1e3a5f; display: block; margin-bottom: 3px; }
-        .method-desc { font-size: 0.85rem; color: #546e7a; line-height: 1.5; }
-        .zone-proof { background: linear-gradient(135deg, #1e3a5f 0%, #4a7ba7 100%); border-radius: 8px; padding: 20px 22px; }
-        .zone-proof p { font-size: 0.97rem; color: rgba(255,255,255,0.95); line-height: 1.7; margin: 0; }
-        .proof-companies { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-        .proof-company { font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.12); padding: 3px 10px; border-radius: 12px; }
-
-        /* PORTFOLIO */
-        .portfolio { max-width: 1400px; margin: 60px auto; padding: 0 20px; }
-        .portfolio h2 { font-family: Georgia, serif; font-size: 2.5rem; color: #1e3a5f; margin-bottom: 50px; text-align: center; }
-        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
-        .project-card-container { display: flex; flex-direction: column; contain: layout paint; height: 370px; }
-        .project-title { font-family: Georgia, serif; font-size: 1.4rem; color: #1e3a5f; margin-bottom: 15px; font-weight: 600; text-align: center; height: 70px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .flip-card { background-color: transparent; width: 100%; height: 300px; position: relative; perspective: 1200px; flex-shrink: 0; }
-        .flip-card-inner { position: absolute; top: 0; left: 0; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; transform-origin: center center; }
-        .project-card-container:hover .flip-card-inner { transform: rotateY(180deg); }
-        .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
-        .flip-card-front { background: white; color: #1e3a5f; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
-        .flip-card-front img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
-        .flip-card-front::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(30,58,95,0.3) 0%, rgba(30,58,95,0.7) 70%, rgba(30,58,95,0.9) 100%); z-index: 1; }
-        .flip-card-front .company { position: relative; z-index: 2; font-size: 1.1rem; color: white; font-weight: 600; padding: 25px; text-align: center; }
-        .flip-card-back { background: linear-gradient(135deg, #1e3a5f 0%, #4a7ba7 100%); color: white; transform: rotateY(180deg); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 30px; }
-        .flip-card-back h3 { font-family: Georgia, serif; font-size: 1.2rem; margin-bottom: 15px; border-bottom: 2px solid white; padding-bottom: 10px; width: 100%; text-align: center; }
-        .flip-card-back p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 15px; text-align: center; }
-        .flip-card-back .impact { font-size: 1.1rem; font-weight: 700; margin-top: 15px; background: rgba(255,255,255,0.2); padding: 12px; border-radius: 5px; text-align: center; }
-        .flip-card-back .learn-more { margin-top: 15px; font-size: 0.9rem; opacity: 0.8; font-style: italic; }
-
-        /* MODALS */
-        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.7); }
-        .modal-content { background-color: white; margin: 50px auto; padding: 40px; border-radius: 15px; width: 90%; max-width: 900px; max-height: 85vh; overflow-y: auto; position: relative; }
-        .close { color: #aaa; float: right; font-size: 35px; font-weight: bold; cursor: pointer; position: absolute; right: 20px; top: 10px; }
-        .close:hover { color: #1e3a5f; }
-        .modal-content h2 { font-family: Georgia, serif; color: #1e3a5f; margin-bottom: 20px; font-size: 2rem; }
-        .modal-content h3 { font-family: Georgia, serif; color: #4a7ba7; margin-top: 30px; margin-bottom: 15px; font-size: 1.5rem; }
-        .modal-content p, .modal-content ul { margin-bottom: 15px; line-height: 1.8; color: #555; }
-        .modal-content ul { padding-left: 25px; }
-        .modal-content li { margin-bottom: 10px; }
-        .modal-content .highlight-box { background: #e8f4f8; padding: 20px; border-left: 5px solid #4a7ba7; margin: 25px 0; border-radius: 5px; }
-        .modal-content .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 25px 0; }
-        .modal-content .metric-box { background: linear-gradient(135deg, #4a7ba7 0%, #1e3a5f 100%); color: white; padding: 20px; border-radius: 8px; text-align: center; }
-        .modal-content .metric-box .number { font-family: Georgia, serif; font-size: 2rem; font-weight: 700; margin-bottom: 5px; }
-
-        /* FOOTER */
-        footer { background: #1e3a5f; color: white; text-align: center; padding: 40px 20px; margin-top: 80px; }
-        footer p { margin-bottom: 10px; }
-        footer a { color: #e8f4f8; text-decoration: none; }
-        footer a:hover { text-decoration: underline; }
-
-        /* RESPONSIVE */
-        @media (max-width: 1024px) { .key-metrics { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 768px) {
-            .hero-container { grid-template-columns: 1fr; gap: 30px; }
-            .hero-right { text-align: center; }
-            .hero h1 { font-size: 2.5rem; }
-            .hero .tagline { font-size: 1.3rem; }
-            .contact-buttons { justify-content: center; }
-            .portfolio-grid { grid-template-columns: 1fr; }
-            .key-metrics { grid-template-columns: 1fr; }
-            .flip-card { height: 280px; }
-            .project-title { font-size: 1.2rem; min-height: 60px; }
-            .accordion-trigger { padding: 20px 22px; }
-            .accordion-inner { padding: 22px 22px 28px; }
-            .methods-grid { grid-template-columns: 1fr; }
-            .accordion-trigger h3 { font-size: 1.1rem; }
-            .accordion-trigger-left { flex-wrap: wrap; gap: 10px; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        /* ANIMATIONS */
-        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        /* Hero Section - Split Layout */
+        .hero {
+            background: linear-gradient(135deg, #1e3a5f 0%, #4a7ba7 100%);
+            color: white;
+            padding: 60px 20px;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-left {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-photo {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            border: 5px solid rgba(255,255,255,0.2);
+        }
+
+        .hero-right {
+            text-align: left;
+        }
+
+        .hero h1 {
+            font-family: Georgia, serif;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .hero .tagline {
+            font-family: Georgia, serif;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            font-weight: 300;
+            color: #e8f4f8;
+        }
+
+        .hero .value-prop {
+            font-size: 1.15rem;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            color: #fff;
+        }
+
+        .contact-buttons {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .contact-buttons a {
+            display: inline-block;
+            padding: 15px 30px;
+            background: white;
+            color: #1e3a5f;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-buttons a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* About Section */
+        .about {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .about h2 {
+            font-family: Georgia, serif;
+            font-size: 2.5rem;
+            color: #1e3a5f;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .about-content {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .core-competencies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .competency {
+            background: #e8f4f8;
+            padding: 10px 20px;
+            border-radius: 25px;
+            color: #1e3a5f;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .key-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .metric {
+            background: linear-gradient(135deg, #4a7ba7 0%, #1e3a5f 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .metric .number {
+            font-family: Georgia, serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .metric .label {
+            font-size: 0.95rem;
+            opacity: 0.95;
+            line-height: 1.4;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            max-width: 1400px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .portfolio h2 {
+            font-family: Georgia, serif;
+            font-size: 2.5rem;
+            color: #1e3a5f;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        /* Project Card Container */
+        .project-card-container {
+            display: flex;
+            flex-direction: column;
+            contain: layout paint;
+            height: 370px;
+        }
+
+        .project-title {
+            font-family: Georgia, serif;
+            font-size: 1.4rem;
+            color: #1e3a5f;
+            margin-bottom: 15px;
+            font-weight: 600;
+            text-align: center;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* Flip Card - NO JUMPING */
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 300px;
+            position: relative;
+            perspective: 1200px;
+            flex-shrink: 0;
+        }
+
+        .flip-card-inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            transform-origin: center center;
+        }
+
+        .project-card-container:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .flip-card-front {
+            background: white;
+            color: #1e3a5f;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .flip-card-front img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
+        .flip-card-front::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, 
+                rgba(30, 58, 95, 0.3) 0%, 
+                rgba(30, 58, 95, 0.7) 70%, 
+                rgba(30, 58, 95, 0.9) 100%);
+            z-index: 1;
+        }
+
+        .flip-card-front .company {
+            position: relative;
+            z-index: 2;
+            font-size: 1.1rem;
+            color: white;
+            font-weight: 600;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .flip-card-back {
+            background: linear-gradient(135deg, #1e3a5f 0%, #4a7ba7 100%);
+            color: white;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .flip-card-back h3 {
+            font-family: Georgia, serif;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            border-bottom: 2px solid white;
+            padding-bottom: 10px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .flip-card-back p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .flip-card-back .impact {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-top: 15px;
+            background: rgba(255,255,255,0.2);
+            padding: 12px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .flip-card-back .learn-more {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        /* Modal for Full Details */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 50px auto;
+            padding: 40px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 10px;
+        }
+
+        .close:hover {
+            color: #1e3a5f;
+        }
+
+        .modal-content h2 {
+            font-family: Georgia, serif;
+            color: #1e3a5f;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .modal-content h3 {
+            font-family: Georgia, serif;
+            color: #4a7ba7;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .modal-content p, .modal-content ul {
+            margin-bottom: 15px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .modal-content ul {
+            padding-left: 25px;
+        }
+
+        .modal-content li {
+            margin-bottom: 10px;
+        }
+
+        .modal-content .highlight-box {
+            background: #e8f4f8;
+            padding: 20px;
+            border-left: 5px solid #4a7ba7;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .modal-content .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .modal-content .metric-box {
+            background: linear-gradient(135deg, #4a7ba7 0%, #1e3a5f 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .modal-content .metric-box .number {
+            font-family: Georgia, serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e3a5f;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 80px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        footer a {
+            color: #e8f4f8;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .key-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .hero-right {
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.3rem;
+            }
+
+            .contact-buttons {
+                justify-content: center;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .key-metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .flip-card {
+                height: 280px;
+            }
+
+            .project-title {
+                font-size: 1.2rem;
+                min-height: 60px;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
 
-    <!-- HERO -->
+    <!-- Hero Section - Split Layout -->
     <section class="hero">
         <div class="hero-container">
             <div class="hero-left">
-                <img src="https://u.cubeupload.com/wbeasley48/Headshot1.png" alt="William Beasley" class="hero-photo">
+                <img src="https://u.cubeupload.com/wbeasley48/1615331581546.jpg" alt="William Beasley" class="hero-photo">
             </div>
             <div class="hero-right">
                 <h1>William Beasley</h1>
                 <div class="tagline">Strategic Pricing Leader</div>
-                <p class="value-prop">10+ years building pricing functions, driving margin optimization, and enabling Sales organizations to win profitably across B2B SaaS, travel & hospitality, telecommunications, and professional services.</p>
+                <p class="value-prop">
+                    10+ years building pricing functions, driving margin optimization, and enabling Sales organizations to win profitably across B2B SaaS, telecommunications, and professional services.
+                </p>
                 <div class="contact-buttons">
                     <a href="https://www.linkedin.com/in/williambeasley48" target="_blank">LinkedIn</a>
-                    <a href="mailto:wnb1@ricealumni.net">Email Me</a>
+                    <a href="/cdn-cgi/l/email-protection#3a4d54580b7a4853595f5b564f57545314545f4e">Email Me</a>
                     <a href="William_Beasley_Strategic_Pricing_Portfolio.pdf" download>Download PDF</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ABOUT -->
+    <!-- About Section -->
     <section class="about fade-in">
         <h2>About Me</h2>
         <div class="about-content">
-            <p>Strategic pricing leader with a proven track record of building and scaling pricing functions, optimizing existing operations, and driving measurable business impact. Expertise spans strategic pricing strategy, Deal Desk operations, CPQ implementation, pricing analytics, and Sales enablement.</p>
-            <p>Operating within the Fortune 100 ecosystem, spearheading pricing strategies for the world's largest enterprise software provider and a global leader in industrial geospatial technology. A unique blend of strategic rigor and hands-on execution that consistently delivers margin improvements across $85M+ portfolios and secures seven-figure consulting projects through data-driven Sales enablement.</p>
-           
+            <p>
+                I'm a strategic pricing leader with a proven track record of building pricing functions from scratch, optimizing existing operations, and driving measurable business impact. My expertise spans strategic pricing strategy, Deal Desk operations, CPQ implementation, pricing analytics, and Sales enablement.
+            </p>
+            <p>
+                Operating within the Fortune 100 ecosystem, I have spearheaded pricing strategies for the world's largest enterprise software provider and a global leader in industrial geospatial technology. I bring a unique blend of strategic rigor and hands-on execution. My approach consistently delivers margin improvements across $85M+ portfolios and personally securing seven-figure consulting projects through data-driven Sales enablement.
+            </p>
+
+            <div class="core-competencies">
+                <span class="competency">Strategic Pricing</span>
+                <span class="competency">Deal Desk Leadership</span>
+                <span class="competency">Pricing Analytics</span>
+                <span class="competency">Sales Enablement</span>
+                <span class="competency">CPQ Implementation</span>
+                <span class="competency">Value-Based Pricing</span>
+                <span class="competency">SaaS Monetization</span>
+                <span class="competency">Cross-Functional Leadership</span>
+            </div>
+
             <div class="key-metrics">
-                <div class="metric"><div class="number">5</div><div class="label">Fortune 50 Clients Led</div></div>
-                <div class="metric"><div class="number">$85M+</div><div class="label">Annual Revenue Portfolio</div></div>
-                <div class="metric"><div class="number">15</div><div class="label">Product Pricing Launches</div></div>
-                <div class="metric"><div class="number">108+</div><div class="label">Pricing Cycles Led</div></div>
-                <div class="metric"><div class="number">3</div><div class="label">Pricing Center Designs</div></div>
-                <div class="metric"><div class="number">8</div><div class="label">CRM/CPQ Systems Enabled</div></div>
-                <div class="metric"><div class="number">18%</div><div class="label">Margin Improvements</div></div>
-                <div class="metric"><div class="number">$10M+</div><div class="label">Transformation Projects</div></div>
-                <div class="metric"><div class="number">85%</div><div class="label">Cycle Time Reductions</div></div>
+                <div class="metric">
+                    <div class="number">5</div>
+                    <div class="label">Fortune 50 Clients Led</div>
+                </div>
+                <div class="metric">
+                    <div class="number">$85M+</div>
+                    <div class="label">Annual Revenue Portfolio</div>
+                </div>
+                <div class="metric">
+                    <div class="number">15</div>
+                    <div class="label">Product Pricing Launches</div>
+                </div>
+                <div class="metric">
+                    <div class="number">108+</div>
+                    <div class="label">Pricing Cycles Led</div>
+                </div>
+                <div class="metric">
+                    <div class="number">3</div>
+                    <div class="label">Pricing COEs Built</div>
+                </div>
+                <div class="metric">
+                    <div class="number">8</div>
+                    <div class="label">CRM/CPQ Systems Enabled</div>
+                </div>
+                <div class="metric">
+                    <div class="number">18%</div>
+                    <div class="label">Margin Improvements</div>
+                </div>
+                <div class="metric">
+                    <div class="number">$10M+</div>
+                    <div class="label">Transformation Projects</div>
+                </div>
+                <div class="metric">
+                    <div class="number">85%</div>
+                    <div class="label">Cycle Time Reductions</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- DEPTH OF EXPERTISE -->
-    <section class="expertise-section fade-in">
-        <div class="section-header">
-            <h2>Depth of Expertise</h2>
-            <p>These eight pillars represent my end-to-end pricing approach.  Proactive problem identification combined with data-driven methodologies to drive sustainable margin expansion in global organizations.</p>
-        </div>
-
-        <!-- 1. STRATEGIC PRICING -->
-        <div class="accordion-item">
-            <button class="accordion-trigger" onclick="toggleAccordion(this)">
-                <div class="accordion-trigger-left">
-                    <span class="accordion-role-badge">Pricing Architecture</span>
-                    <h3>Strategic Pricing &amp; SaaS Monetization</h3>
-                </div>
-                <div class="accordion-chevron">&#8964;</div>
-            </button>
-            <div class="accordion-body">
-                <div class="accordion-inner">
-                    <div class="zone-problem">
-                        <div class="zone-label">The Problem</div>
-                        <p>In practice, most organizations have a pricing motion. What they rarely have is a pricing system built to evolve. Best practices in pricing architecture are not static -- market dynamics shift, product portfolios grow, and Sales motions change. The gap between organizations that price reactively and those that price strategically is almost always an architectural one: governance structures that create accountability, data infrastructure that surfaces the right signals, and a value metric that actually reflects how customers buy.</p>
-                    </div>
-                    <div class="zone-methods">
-                        <div class="zone-label">How It Gets Done</div>
-
-                        <div class="methods-subgroup">
-                            <div class="methods-subgroup-label">Analysis</div>
-                            <div class="methods-grid">
-                                <div class="method-item"><span class="method-name">Price-Volume-Mix (PVM) Analysis</span><span class="method-desc">Decomposing revenue changes to determine whether growth is driven by price, volume, or mix -- separating real pricing performance from favorable market conditions.</span></div>
-                                <div class="method-item"><span class="method-name">Price Realization Tracking</span><span class="method-desc">Measuring the gap between list price and pocket price across segments, products, and reps to understand where approved pricing is actually landing.</span></div>
-                                <div class="method-item"><span class="method-name">Competitive Benchmarking &amp; Price Positioning</span><span class="method-desc">Primary and secondary research to map competitor price points, packaging traps, and market gaps -- not to match the market, but to understand where differentiated pricing is defensible.</span></div>
-                                <div class="method-item"><span class="method-name">Price Elasticity &amp; Willingness-to-Pay Research</span><span class="method-desc">Quantitative and qualitative analysis of price sensitivity by segment to inform both list price architecture and discount band design.</span></div>
-                                <div class="method-item"><span class="method-name">Win/Loss Analysis</span><span class="method-desc">Correlating deal outcomes with pricing decisions to identify where price is genuinely the barrier versus where it's the stated reason for a problem that runs deeper.</span></div>
-                            </div>
-                        </div>
-
-                        <div class="methods-subgroup">
-                            <div class="methods-subgroup-label">Design &amp; Architecture</div>
-                            <div class="methods-grid">
-                                <div class="method-item"><span class="method-name">Value Metric Definition &amp; Alignment</span><span class="method-desc">Selecting the unit -- per-seat, per-API-call, per-row-processed -- that best captures how value is created for the customer and how cost is incurred by the business. These are often different variables.</span></div>
-                                <div class="method-item"><span class="method-name">SKU Rationalization &amp; Rate Card Architecture</span><span class="method-desc">1,000+ SKUs is not a catalog. It's a liability. Collapsing complexity into scalable Good-Better-Best structures that Sales can sell and Finance can manage.</span></div>
-                                <div class="method-item"><span class="method-name">Packaging &amp; Bundling Strategy</span><span class="method-desc">Designing product tiers and bundle structures that increase average contract value, reduce discounting pressure, and align with how customers actually make purchasing decisions.</span></div>
-                                <div class="method-item"><span class="method-name">Discount Band Architecture</span><span class="method-desc">Setting the guardrails -- floor prices, standard ranges, exception thresholds -- that give Sales flexibility without creating a race to the bottom on every deal.</span></div>
-                                <div class="method-item"><span class="method-name">Price Increase Strategy &amp; Execution</span><span class="method-desc">Designing the increase, securing approvals, building Sales communication, and tracking realization -- including managing the inevitable resistance from Sales leadership.</span></div>
-                            </div>
-                        </div>
-
-                        <div class="methods-subgroup">
-                            <div class="methods-subgroup-label">Governance</div>
-                            <div class="methods-grid">
-                                <div class="method-item"><span class="method-name">Pricing Council Design &amp; Facilitation</span><span class="method-desc">Building the governance structure -- membership, cadence, decision rights -- that converts pricing from a reactive bottleneck into a proactive strategic function with executive accountability.</span></div>
-                                <div class="method-item"><span class="method-name">Annual Pricing Cycle Ownership</span><span class="method-desc">End-to-end management from competitive benchmarking through Finance alignment, Sales rollout, and post-launch realization tracking. Not a project -- a repeatable operating rhythm.</span></div>
-                                <div class="method-item"><span class="method-name">Pricing Policy Documentation</span><span class="method-desc">Converting informal norms and tribal knowledge into written policy -- the foundation for consistent decision-making as teams scale and personnel change.</span></div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="zone-proof">
-                        <div>
-                            <div class="zone-label" style="color:rgba(255,255,255,0.7);margin-bottom:8px;">Proven At</div>
-                            <p>At Sabre Corporation, identified a product with less than 5% Deal Desk involvement -- a signal that Sales faced no pricing pressure and the market would absorb an increase. Recommended 10% list price increase over Sales objection. Result: immediate margin uplift on 95% of deals with a win rate impact of only 3 percentage points. The architecture question was never "can we raise price" -- it was "why hadn't anyone looked at this data sooner."</p>
-                            <div class="proof-companies"><span class="proof-company">Sabre Corporation</span><span class="proof-company">AT&amp;T</span><span class="proof-company">Fortune 50 Tech Company</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 2. DEAL DESK -->
-        <div class="accordion-item">
-            <button class="accordion-trigger" onclick="toggleAccordion(this)">
-                <div class="accordion-trigger-left">
-                    <span class="accordion-role-badge">Commercial Governance</span>
-                    <h3>Deal Desk Leadership &amp; Commercial Governance</h3>
-                </div>
-                <div class="accordion-chevron">&#8964;</div>
-            </button>
-            <div class="accordion-body">
-                <div class="accordion-inner">
-                    <div class="zone-problem">
-                        <div class="zone-label">The Problem</div>
-                        <p>In practice, Deal Desk teams are often defined by what they say no to. The more effective frame is what they make possible. The teams worth leading are the ones that Sales trusts enough to bring the hard deals in early -- not because approvals are easy, but because the function engages constructively, moves fast, and surfaces options rather than just verdicts. Building that reputation is the work. Protecting margin while doing it is the discipline.</p>
-                    </div>
-                    <div class="zone-methods">
-                        <div class="zone-label">How It Gets Done</div>
-
-                        <div class="methods-subgroup">
-                            <div class="methods-subgroup-label">Deal Execution</div>
-                            <div class="methods-grid">
-                                <div class="method-item"><span class="method-name">Deal Triage &amp; Intake Design</span><span class="method-desc">Routing logic that distinguishes transactional deals from strategic ones -- ensuring senior attention goes to deals that warrant it, not every request in the queue.</span></div>
-                                <div class="method-item"><span class="method-name">Multi-Product Bundle Structuring</span><span class="method-desc">Pricing SD-WAN, UCaaS, Security, and Professional Services in a single total contract value, where each product carries different margin floors, approval thresholds, and competitive dynamics.</span></div>
-                                <div class="method-item"><span class="method-name">Non-Standard Term Structuring</span><span class="method-desc">Net 90 payment, custom SLA tiers, price escalation caps, performance credits -- pricing the risk of each concession, not just accommodating the request.</span></div>
-                                <div class="method-item"><span class="method-name">Alliance &amp; Channel Deal Economics</span><span class="method-desc">Three-party margin modeling where every discount comes from one partner's pocket. Understanding the economics before the deal is structured, not after.</span></div>
-                                <div class="method-item"><span class="method-name">War Room Facilitation</span><span class="method-desc">When a high-stakes competitive deal compresses the decision window to hours, coordinating Finance, Legal, Network Ops, and executive stakeholders into a structured rapid response. Speed without chaos.</span></div>
-                            </div>
-                        </div>
-
-                        <div class="methods-subgroup">
-                            <div class="methods-subgroup-label">Governance Design</div>
-                            <div class="methods-grid">
-                                <div class="method-item"><span class="method-name">Approval Matrix Design</span><span class="method-desc">Tiered discount governance that balances Sales velocity against margin protection -- the difference between a function that enables deals and one that becomes a bottleneck Sales routes around.</span></div>
-                                <div class="method-item"><span class="method-name">Quote-to-Cash (QTC) Process Governance</span><span class="method-desc">Ensuring the path from deal approval to contract execution to invoice is clean, auditable, and SOX-compliant, especially across multi-system environments.</span></div>
-                                <div class="method-item"><span class="method-name">Escalation Protocol Design</span><span class="method-desc">Defining the conditions, path, and decision-makers for deals that exceed standard authority -- so escalations move fast and don't stall in ambiguity about who owns the call.</span></div>
-                            </div>
-                        </div>
-
-                        <div class="methods-subgroup">
-                            <div class="methods-subgroup-label">Operational Excellence</div>
-                            <div class="methods-grid">
-                                <div class="method-item"><span class="method-name">Deal Velocity Optimization</span><span class="method-desc">SLA design, bottleneck analysis, and process improvement that sustains 95%+ on-time delivery at volume, without sacrificing governance quality.</span></div>
-                                <div class="method-item"><span class="method-name">Win/Loss &amp; Deal Pattern Analysis</span><span class="method-desc">Tracking outcomes at the deal level to identify which pricing decisions are winning business, which are protecting margin unnecessarily, and where the approval matrix needs recalibration.</span></div>
-                                <div class="method-item"><span class="method-name">Cross-Functional Deal Coordination</span><span class="method-desc">Quarterbacking Finance, Legal, Product, and Network Ops on complex deals -- ensuring the right inputs arrive in the right sequence without the deal dying in someone's queue.</span></div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="zone-proof">
-                        <div>
-                            <div class="zone-label" style="color:rgba(255,255,255,0.7);margin-bottom:8px;">Proven At</div>
-                            <p>Managed 1,000+ complex deals annually at AT&amp;T: $85M+ Wireline portfolio, 3-day SLA, 95%+ on-time delivery. The 80% approval rate wasn't a soft metric. It reflected how often Sales brought winnable deals when they knew the function would engage constructively rather than default to no. War Room coordination on a $8.5M automotive deal against Verizon, 72-hour window: Finance, Legal, Network Ops, and VP aligned. AT&amp;T won the account.</p>
-                            <div class="proof-companies"><span class="proof-company">AT&amp;T</span><span class="proof-company">Sabre Corporation</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 3. ANALYTICS -->
-        <div class="accordion-item">
-            <button class="accordion-trigger" onclick="toggleAccordion(this)">
-                <div class="accordion-trigger-left">
-                    <span class="accordion-role-badge">Pricing Intelligence</span>
-                    <h3>Advanced Pricing Analytics &amp; Financial Rigor</h3>
-                </div>
-                <div class="accordion-chevron">&#8964;</div>
-            </button>
-            <div class="accordion-body">
-                <div class="accordion-inner">
-                    <div class="zone-problem">
-                        <div class="zone-label">The Problem</div>
-                        <p>In practice, most pricing teams produce reports. Few produce decisions. The data exists in almost every organization -- scattered across CRM, CPQ, ERP, and Finance systems -- but the work of connecting it, reconciling it, and asking the right questions of it rarely gets done with enough rigor to change behavior. Analytics only earns its place in a pricing function when it shortens the distance between an insight and an action taken by someone with authority to act.</p>
-                    </div>
-                    <div class="zone-methods">
-                        <div class="zone-label">How It Gets Done</div>
-
-                        <div class="methods-subgroup">
-                            <div class="methods-subgroup-label">Analysis Frameworks</div>
-                            <div class="methods-grid">
-                                <div class="method-item"><span class="method-name">Price-Volume-Mix (PVM) Decomposition</span><span class="method-desc">Separating the contribution of pricing decisions from volume changes and product mix shifts -- the essential diagnostic before any pricing recommendation reaches leadership.</span></div>
-                                <div class="method-item"><span class="method-name">Price Realization Analysis</span><span class="method-desc">Measuring the gap between list price and pocket price -- after every discount, rebate, and concession. The waterfall that reveals where approved pricing actually lands.</span></div>
-                                <div class="method-item"><span class="method-name">Discount Leakage Audits</span><span class="method-desc">Identifying specific regions, reps, and products where discounting exceeds peer benchmarks -- with enough specificity to drive a targeted conversation, not a company-wide edict.</span></div>
-                                <div class="method-item"><span class="method-name">Win/Loss Analysis</span><span class="method-desc">Synthesizing CRM data and field feedback to understand why deals are lost -- to price, to a competitor, or to no-decision. Three very different problems requiring very different responses.</span></div>
-                                <div class="method-item"><span class="method-name">Segment &amp; Product Profitability Analysis</span><span class="method-desc">Understanding which customers, geographies, and products are actually profitable -- and which are consuming Deal Desk capacity for deals that shouldn't be prioritized.</span></div>
-                            </div>
-                        </div>
-
-                        <div class="methods-subgroup">
-                            <div class="methods-subgroup-label">Modeling &amp; Forecasting</div>
-                            <div class="methods-grid">
-                                <div class="method-item"><span class="method-name">Dynamic Pricing Models</span><span class="method-desc">Scenario modeling that answers real executive questions: "What happens to revenue if list price increases 5% but churn increases 1%?" Built in Excel for accessibility, not locked in a BI tool no one opens.</span></div>
-                                <div class="method-item"><span class="method-name">Price Elasticity Modeling</span><span class="method-desc">Quantifying how demand shifts with price changes by segment, to inform where headroom exists for increases and where discounting is already compressing volume.</span></div>
-                                <div class="method-item"><span class="method-name">Churn &amp; Retention Price Analysis</span><span class="method-desc">Isolating the pricing component of churn -- distinguishing customers lost to price from customers lost to product, service, or competitive displacement.</span></div>
-                            </div>
-                        </div>
-
-                        <div class="methods-subgroup">
-                            <div class="methods-subgroup-label">Infrastructure &amp; Tools</div>
-                            <div class="methods-grid">
-                                <div class="method-item"><span class="method-name">Executive Dashboard Design (Power BI / Tableau)</span><span class="method-desc">Dashboards built around decisions, not data. The question before every visualization: what action does a VP take differently if this number moves?</span></div>
-                                <div class="method-item"><span class="method-name">Multi-System Data Reconciliation</span><span class="method-desc">When Salesforce Opportunity ID does not equal CPQ Quote ID does not equal Finance Order ID, the analysis only works if someone builds the master linking table and validates it. That's the unglamorous work that makes everything else credible.</span></div>
-                                <div class="method-item"><span class="method-name">Excel Modeling &amp; Macro Development</span><span class="method-desc">Complex pricing tools built in Excel -- nested SKU lookups, margin waterfall calculators, scenario toggles -- designed for Sales and Finance users who need answers fast without a data team in the loop.</span></div>
-                                <div class="method-item"><span class="method-name">Pricing Health Scorecards</span><span class="method-desc">Standardized KPI frameworks that track realization, discount rates, approval metrics, and cycle time in one view -- the single source of truth that leadership can actually align around.</span></div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="zone-proof">
-                        <div>
-                            <div class="zone-label" style="color:rgba(255,255,255,0.7);margin-bottom:8px;">Proven At</div>
-                            <p>Built AT&amp;T's monthly executive pricing dashboard reconciling data across Salesforce, CPQ, and Finance. A 2-5 day monthly reconciliation process that no one had systematized. The output wasn't a report. It drove Office@Hand discount band tightening (+4% realization), auto-approval enforcement (+12% usage), and a segment staffing reallocation that improved both coverage and cycle time. The template became standard for the entire Wireline organization.</p>
-                            <div class="proof-companies"><span class="proof-company">AT&amp;T</span><span class="proof-company">Sabre Corporation</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 4. SALES ENABLEMENT -->
-        <div class="accordion-item">
-            <button class="accordion-trigger" onclick="toggleAccordion(this)">
-                <div class="accordion-trigger-left">
-                    <span class="accordion-role-badge">Sales Partnership</span>
-                    <h3>Sales Enablement &amp; Value Advisory</h3>
-                </div>
-                <div class="accordion-chevron">&#8964;</div>
-            </button>
-            <div class="accordion-body">
-                <div class="accordion-inner">
-                    <div class="zone-problem">
-                        <div class="zone-label">The Problem</div>
-                        <p>In practice, Sales enablement in pricing produces a lot of content and changes very little behavior. The battlecard gets built, the training gets delivered, and reps go back to discounting the same way they did before -- because the material didn't address what actually happens at 4pm on a Tuesday when procurement pushes back. Effective enablement is built backwards from that moment: what does a rep need to say, with what supporting evidence, and how confident do they need to be to hold the price?</p>
-                    </div>
-                    <div class="zone-methods">
-                        <div class="zone-label">How It Gets Done</div>
-
-                        <div class="methods-subgroup">
-                            <div class="methods-subgroup-label">Content &amp; Tools</div>
-                            <div class="methods-grid">
-                                <div class="method-item"><span class="method-name">Competitive Battlecard Development</span><span class="method-desc">Built to answer the specific question Sales faces in a live deal: "Competitor X is offering 30% less -- what do I say?" Not a feature comparison. A counter-positioning playbook with language Sales can actually use.</span></div>
-                                <div class="method-item"><span class="method-name">TCO &amp; ROI Calculator Development</span><span class="method-desc">Tools that quantify the cost of inaction and total cost of ownership -- giving Sales a number to walk into the negotiation with rather than a narrative to defend alone.</span></div>
-                                <div class="method-item"><span class="method-name">Sales Strategy Playbooks</span><span class="method-desc">The authoritative source for how to price, bundle, and position products for specific use cases -- built with field input so it reflects what actually happens in deals, not what the pricing team assumes.</span></div>
-                                <div class="method-item"><span class="method-name">Objection Handling Frameworks</span><span class="method-desc">Structured responses to the most common pricing objections -- "it's too expensive," "your competitor is cheaper," "we need a bigger discount to get approval" -- with escalation paths when standard responses don't hold.</span></div>
-                            </div>
-                        </div>
-
-                        <div class="methods-subgroup">
-                            <div class="methods-subgroup-label">Live Enablement</div>
-                            <div class="methods-grid">
-                                <div class="method-item"><span class="method-name">Pricing Office Hours</span><span class="method-desc">A weekly live forum -- not a training event -- where deal complexity gets decoded in real time. Works only when the facilitator has simultaneous command of margin math, competitive positioning, and product nuance.</span></div>
-                                <div class="method-item"><span class="method-name">New Product Launch Enablement</span><span class="method-desc">Preparing Sales to sell a product that didn't exist last quarter -- pricing rationale, competitive context, objection handling, and quota implications all addressed before the first customer call.</span></div>
-                                <div class="method-item"><span class="method-name">Sales Kickoff (SKO) Pricing Training</span><span class="method-desc">Annual pricing sessions designed for an audience with 15 competing priorities -- built around what changed, why it matters, and what to do differently starting Monday.</span></div>
-                                <div class="method-item"><span class="method-name">Field-to-Product Feedback Loops</span><span class="method-desc">Systematically capturing what Sales hears in the field -- pricing objections, competitive intelligence, customer value perceptions -- and routing it into strategy and product decisions.</span></div>
-                            </div>
-                        </div>
-
-                        <div class="methods-subgroup">
-                            <div class="methods-subgroup-label">Capability Building</div>
-                            <div class="methods-grid">
-                                <div class="method-item"><span class="method-name">Sales Certification Programs</span><span class="method-desc">Formal credentialing that creates accountability for pricing knowledge -- not just exposure. The difference between "we trained everyone" and "everyone can demonstrate the skill."</span></div>
-                                <div class="method-item"><span class="method-name">Value-Based Selling Methodology Training</span><span class="method-desc">Teaching Sales to anchor on customer outcomes rather than product features -- shifting the negotiation from price comparison to value differentiation before procurement enters the conversation.</span></div>
-                                <div class="method-item"><span class="method-name">Deal Structuring Workshops</span><span class="method-desc">Hands-on sessions where Sales works through real deal scenarios -- bundle construction, margin trade-offs, multi-year modeling -- with pricing coaching in the room.</span></div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="zone-proof">
-                        <div>
-                            <div class="zone-label" style="color:rgba(255,255,255,0.7);margin-bottom:8px;">Proven At</div>
-                            <p>When AT&amp;T's Office@Hand Sales were engaging the reseller partner before AT&amp;T Pricing, resulting in zero-margin deals, the solution wasn't a policy memo. It was a mandatory engagement protocol backed by battlecards that addressed the actual competitive scenario (Microsoft Teams pricing perception) and weekly Office Hours that gave Sales a live resource instead of a document to ignore. Margin-eroding deals dropped from 40% to under 10%. The change was behavioral, not procedural.</p>
-                            <div class="proof-companies"><span class="proof-company">AT&amp;T</span><span class="proof-company">Sabre Corporation</span><span class="proof-company">Fortune 50 Tech Company</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 5. CPQ -->
-        <div class="accordion-item">
-            <button class="accordion-trigger" onclick="toggleAccordion(this)">
-                <div class="accordion-trigger-left">
-                    <span class="accordion-role-badge">Systems &amp; Operations</span>
-                    <h3>CPQ Implementation &amp; Operational Systems</h3>
-                </div>
-                <div class="accordion-chevron">&#8964;</div>
-            </button>
-            <div class="accordion-body">
-                <div class="accordion-inner">
-                    <div class="zone-problem">
-                        <div class="zone-label">The Problem</div>
-                        <p>In practice, CPQ implementations fail not because the technology is wrong but because the business requirements were never translated with enough precision. Pricing strategy and system behavior end up misaligned -- approval workflows designed by IT rather than by people who understand what a 34% discount on a custom bundle actually means for margin. The gap between what the business intended and what the system does is where revenue leaks quietly and consistently.</p>
-                    </div>
-                    <div class="zone-methods">
-                        <div class="zone-label">How It Gets Done</div>
-
-                        <div class="methods-subgroup">
-                            <div class="methods-subgroup-label">Strategy &amp; Design</div>
-                            <div class="methods-grid">
-                                <div class="method-item"><span class="method-name">CPQ Architecture &amp; Business Strategy</span><span class="method-desc">Leading the business side of Salesforce CPQ, Oracle CPQ, and custom implementations -- defining pricing logic, product rules, approval hierarchies, and price book structure before a line of configuration is written.</span></div>
-                                <div class="method-item"><span class="method-name">Business Requirements Documentation (BRD)</span><span class="method-desc">Translating 200+ business requirements from Sales Ops, Pricing, Finance, and Product into technical specifications that a development team can build to and a UAT team can verify.</span></div>
-                                <div class="method-item"><span class="method-name">Approval Workflow Design</span><span class="method-desc">Designing the matrix that governance accepts and Sales will actually use -- auto-approve thresholds, manager/director/VP escalation tiers, and special-case routing for custom bundles and non-standard terms.</span></div>
-                                <div class="method-item"><span class="method-name">Product Catalog Governance</span><span class="method-desc">Keeping the catalog clean as the business grows -- preventing SKU sprawl, enforcing naming conventions, and ensuring every product has an owner and a retirement path.</span></div>
-                            </div>
-                        </div>
-
-                        <div class="methods-subgroup">
-                            <div class="methods-subgroup-label">Build &amp; Integration</div>
-                            <div class="methods-grid">
-                                <div class="method-item"><span class="method-name">Partner &amp; Channel Pricing Logic</span><span class="method-desc">The most complex CPQ workstream: tiered channel discounts, rebate structures, co-op funds, and separate quote templates -- all integrated with partner-facing fulfillment and billing systems.</span></div>
-                                <div class="method-item"><span class="method-name">System Integration Design (CPQ / CRM / ERP / Billing)</span><span class="method-desc">Defining integration requirements so a deal approved in CPQ becomes an order in ERP and an invoice in Billing without manual intervention, data loss, or revenue recognition complications.</span></div>
-                                <div class="method-item"><span class="method-name">UAT Coordination &amp; Defect Management</span><span class="method-desc">Running user acceptance testing across business stakeholders -- translating defects from "this doesn't work" into precise technical specifications that development can act on.</span></div>
-                                <div class="method-item"><span class="method-name">Phased Rollout Management</span><span class="method-desc">Pilot to scaled deployment -- sequencing the launch to catch configuration issues before they hit the full Sales organization, with rollback protocols if critical failures emerge.</span></div>
-                            </div>
-                        </div>
-
-                        <div class="methods-subgroup">
-                            <div class="methods-subgroup-label">Optimization &amp; Continuity</div>
-                            <div class="methods-grid">
-                                <div class="method-item"><span class="method-name">CPQ Bottleneck Analysis &amp; Optimization</span><span class="method-desc">Auditing existing CPQ deployments to identify where workflow design is slowing quote turnaround -- rebuilding specific rules causing friction without disrupting live operations.</span></div>
-                                <div class="method-item"><span class="method-name">Custom CPQ Tool Development</span><span class="method-desc">When enterprise CPQ is 18 months away, Excel-based tools with nested SKU lookups, margin functions, and geographic adjustments solve the immediate problem. Built tools that drove 85% cycle time reduction while the long-term solution was procured.</span></div>
-                                <div class="method-item"><span class="method-name">Change Management &amp; Adoption Strategy</span><span class="method-desc">Preparing Sales and Operations for a new quoting system -- training design, communication planning, and the ongoing reinforcement that separates a successful launch from one that gets worked around within 30 days.</span></div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="zone-proof">
-                        <div>
-                            <div class="zone-label" style="color:rgba(255,255,255,0.7);margin-bottom:8px;">Proven At</div>
-                            <p>Served as PM and Functional Lead on a $10M+ Salesforce CPQ implementation for a global industrial technology company: 70+ consultants, 35-person client working team, 200+ business requirements. The partner channel workstream was the most complex -- three-tier discount structures, rebate calculations, and co-op fund management across 50+ partner organizations. While the enterprise build ran, built a custom Excel-based WiFi pricing tool at AT&amp;T that reduced quote turnaround from 1-2 weeks to 3 days, an 85% reduction.</p>
-                            <div class="proof-companies"><span class="proof-company">Global Industrial Technology Company</span><span class="proof-company">AT&amp;T</span><span class="proof-company">Fortune 50 Tech Company</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 6. VALUE-BASED PRICING -->
-        <div class="accordion-item">
-            <button class="accordion-trigger" onclick="toggleAccordion(this)">
-                <div class="accordion-trigger-left">
-                    <span class="accordion-role-badge">Value Strategy</span>
-                    <h3>Value-Based Pricing &amp; Customer Economics</h3>
-                </div>
-                <div class="accordion-chevron">&#8964;</div>
-            </button>
-            <div class="accordion-body">
-                <div class="accordion-inner">
-                    <div class="zone-problem">
-                        <div class="zone-label">The Problem</div>
-                        <p>In practice, most organizations say they price to value and most don't. The language exists without the mechanics. Value-based pricing only works when it's operationalized -- when the customer's economic reality is quantified, when Sales has a specific number to defend rather than a concept to explain, and when that number holds up when procurement pushes back. The gap between philosophy and practice is where most pricing organizations leave margin on the table.</p>
-                    </div>
-                    <div class="zone-methods">
-                        <div class="zone-label">How It Gets Done</div>
-
-                        <div class="methods-subgroup">
-                            <div class="methods-subgroup-label">Research &amp; Quantification</div>
-                            <div class="methods-grid">
-                                <div class="method-item"><span class="method-name">Economic Value Estimation (EVE)</span><span class="method-desc">Quantifying the economic value of a product relative to the next-best alternative -- the foundation of a price that can be defended on the customer's own financial terms, not the seller's.</span></div>
-                                <div class="method-item"><span class="method-name">Value Driver Identification &amp; Mapping</span><span class="method-desc">Identifying which product capabilities actually move the customer's economics -- revenue generation, cost reduction, risk mitigation -- and which are features the pricing team is overvaluing.</span></div>
-                                <div class="method-item"><span class="method-name">Willingness-to-Pay Research</span><span class="method-desc">Primary and secondary research across customer segments to establish where price sensitivity inflects -- informing both list price architecture and the boundaries of discount bands.</span></div>
-                                <div class="method-item"><span class="method-name">Competitive Value Gap Quantification</span><span class="method-desc">Translating feature and capability differences into dollar terms that Sales can deploy when a competitor claims price parity on a functionally inferior product.</span></div>
-                            </div>
-                        </div>
-
-                        <div class="methods-subgroup">
-                            <div class="methods-subgroup-label">Frameworks &amp; Tools</div>
-                            <div class="methods-grid">
-                                <div class="method-item"><span class="method-name">TCO Modeling (Customer Perspective)</span><span class="method-desc">Total cost of ownership analysis built from the customer's viewpoint -- implementation, training, integration, switching costs -- that reframes the price conversation before procurement defines it.</span></div>
-                                <div class="method-item"><span class="method-name">Customer ROI Calculator Development</span><span class="method-desc">Interactive tools that quantify the cost of inaction -- not to replace the sales conversation, but to give the customer's internal champion a number to defend when the CFO asks.</span></div>
-                                <div class="method-item"><span class="method-name">Segment-Specific Value Modeling</span><span class="method-desc">The same product creates different value in manufacturing vs. professional services vs. healthcare. Building the segment models that price accordingly rather than averaging across them.</span></div>
-                            </div>
-                        </div>
-
-                        <div class="methods-subgroup">
-                            <div class="methods-subgroup-label">Sales Application &amp; Feedback</div>
-                            <div class="methods-grid">
-                                <div class="method-item"><span class="method-name">Premium Pricing Justification</span><span class="method-desc">Building the internal and external case for pricing above market -- the data, narrative, and stakeholder alignment required to hold a premium position when Sales and Finance push for parity.</span></div>
-                                <div class="method-item"><span class="method-name">Value-Based Negotiation Support</span><span class="method-desc">Equipping Sales with the frameworks to anchor negotiations on customer outcomes rather than competitor price points -- shifting the conversation before procurement sets the terms.</span></div>
-                                <div class="method-item"><span class="method-name">Value Realization Tracking</span><span class="method-desc">Measuring whether customers are actually capturing the value that justified the price -- a feedback loop into renewal pricing, expansion pricing, and future product monetization decisions.</span></div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="zone-proof">
-                        <div>
-                            <div class="zone-label" style="color:rgba(255,255,255,0.7);margin-bottom:8px;">Proven At</div>
-                            <p>AT&amp;T's Office@Hand Sales faced a consistent procurement tactic: position Microsoft Teams as "free" to force discounting. The counter-strategy wasn't a price concession. It was a TCO framework that quantified total implementation cost, integration complexity, and support economics -- giving Sales a specific number rather than a narrative. Combined with competitive battlecards built around the actual objection, the value-based approach drove margin from 12% to 18% without product changes or price restructuring. The price held. The narrative changed.</p>
-                            <div class="proof-companies"><span class="proof-company">AT&amp;T</span><span class="proof-company">Sabre Corporation</span><span class="proof-company">Fortune 50 Tech Company</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 7. SaaS MONETIZATION -->
-        <div class="accordion-item">
-            <button class="accordion-trigger" onclick="toggleAccordion(this)">
-                <div class="accordion-trigger-left">
-                    <span class="accordion-role-badge">SaaS &amp; Recurring Revenue</span>
-                    <h3>SaaS Monetization &amp; Recurring Revenue Models</h3>
-                </div>
-                <div class="accordion-chevron">&#8964;</div>
-            </button>
-            <div class="accordion-body">
-                <div class="accordion-inner">
-                    <div class="zone-problem">
-                        <div class="zone-label">The Problem</div>
-                        <p>In practice, SaaS pricing decisions get made once and then inherited by thousands of contracts simultaneously. The wrong value metric doesn't create a bad quarter -- it creates a structural profitability problem that takes years to unwind. In my experience, the organizations that get this right aren't just choosing between per-seat and usage-based. They're asking which metric best captures how value is created for the customer and how cost is incurred by the business. Those are often different variables pointing toward different answers.</p>
-                    </div>
-                    <div class="zone-methods">
-                        <div class="zone-label">How It Gets Done</div>
-
-                        <div class="methods-subgroup">
-                            <div class="methods-subgroup-label">Model Design</div>
-                            <div class="methods-grid">
-                                <div class="method-item"><span class="method-name">Value Metric Selection &amp; Alignment</span><span class="method-desc">Evaluating per-seat, per-unit, per-API-call, per-row-processed, and hybrid models against both customer value capture and company cost structure -- choosing the metric that scales with the right variable.</span></div>
-                                <div class="method-item"><span class="method-name">Packaging &amp; Feature Gating</span><span class="method-desc">Determining which capabilities belong in which tier -- and which features, if gated correctly, create natural upgrade pressure rather than customer frustration.</span></div>
-                                <div class="method-item"><span class="method-name">Contract Structure Design</span><span class="method-desc">ELA, ELP, pay-as-you-go, hybrid commit-plus-overage -- designing the contract structure that captures committed revenue while preserving upside from high-usage customers.</span></div>
-                                <div class="method-item"><span class="method-name">Partner &amp; Reseller Economics</span><span class="method-desc">Three-party pricing where the reseller's margin floor, the end customer's price ceiling, and the vendor's cost floor all have to coexist. Modeling the economics before the channel agreement is signed.</span></div>
-                            </div>
-                        </div>
-
-                        <div class="methods-subgroup">
-                            <div class="methods-subgroup-label">Revenue Optimization</div>
-                            <div class="methods-grid">
-                                <div class="method-item"><span class="method-name">Price Migration Strategy</span><span class="method-desc">Moving customers from a legacy model to a new one without triggering churn, contract disputes, or Sales rebellion -- grandfather clauses, migration incentives, and phased transition design.</span></div>
-                                <div class="method-item"><span class="method-name">Net Revenue Retention (NRR) Optimization</span><span class="method-desc">Designing expansion pricing -- upsell triggers, usage thresholds, cross-sell structures -- so that customer growth translates into revenue growth without requiring a new sales motion.</span></div>
-                                <div class="method-item"><span class="method-name">Churn-Adjusted Price Modeling</span><span class="method-desc">Modeling the net revenue impact of price changes when churn elasticity is factored in -- the analysis that separates a well-supported price increase from one that looks good until renewals come in.</span></div>
-                            </div>
-                        </div>
-
-                        <div class="methods-subgroup">
-                            <div class="methods-subgroup-label">Financial Fluency</div>
-                            <div class="methods-grid">
-                                <div class="method-item"><span class="method-name">SaaS Metrics Literacy</span><span class="method-desc">ARR, MRR, ACV, TCV, NRR, GRR, CAC payback, LTV/CAC -- understanding which metrics matter to which stakeholder and how pricing decisions flow through each of them in ways that aren't always obvious.</span></div>
-                                <div class="method-item"><span class="method-name">Revenue Recognition Considerations (ASC 606)</span><span class="method-desc">Understanding how pricing model decisions -- bundling, performance obligations, variable consideration -- affect revenue recognition timing and financial reporting before the deal structure is finalized.</span></div>
-                                <div class="method-item"><span class="method-name">Unit Economics Modeling</span><span class="method-desc">Building the cost-per-unit analysis that validates whether a pricing model is actually profitable at scale -- not just whether it closes deals, but whether those deals are worth closing.</span></div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="zone-proof">
-                        <div>
-                            <div class="zone-label" style="color:rgba(255,255,255,0.7);margin-bottom:8px;">Proven At</div>
-                            <p>At Sabre, the per-passenger pricing model was misaligned with cost structure. API calls were the actual cost driver, not passengers boarded. Designed a two-track migration: a preferred per-API-call model for new contracts and a legacy bridge with overage protection for existing customers. 60% migrated within 18 months. A second-order effect emerged: airlines needed help optimizing their API usage patterns, which created an unplanned professional services revenue stream. The monetization model changed how customers used the product, and how they valued it.</p>
-                            <div class="proof-companies"><span class="proof-company">Sabre Corporation</span><span class="proof-company">AT&amp;T</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 8. CROSS-FUNCTIONAL LEADERSHIP -->
-        <div class="accordion-item">
-            <button class="accordion-trigger" onclick="toggleAccordion(this)">
-                <div class="accordion-trigger-left">
-                    <span class="accordion-role-badge">Organizational Leadership</span>
-                    <h3>Cross-Functional Leadership &amp; Organizational Design</h3>
-                </div>
-                <div class="accordion-chevron">&#8964;</div>
-            </button>
-            <div class="accordion-body">
-                <div class="accordion-inner">
-                    <div class="zone-problem">
-                        <div class="zone-label">The Problem</div>
-                        <p>In practice, pricing leaders rarely have direct authority over the functions they depend on most. Sales sets the expectation. Finance owns the margin target. Product controls the roadmap. Legal approves the terms. The pricing function sits at the intersection of all of them and controls none of them. In my experience, the leaders who build effective pricing organizations understand that the job is influence, not authority -- and that influence is earned through data, delivery, and showing up consistently prepared.</p>
-                    </div>
-                    <div class="zone-methods">
-                        <div class="zone-label">How It Gets Done</div>
-
-                        <div class="methods-subgroup">
-                            <div class="methods-subgroup-label">Structural Design</div>
-                            <div class="methods-grid">
-                                <div class="method-item"><span class="method-name">Pricing Center of Excellence (COE) Design</span><span class="method-desc">Building the org structure, governance model, decision rights, and operating cadence for a pricing function that outlasts its founder -- not a team of one, but a durable organizational capability.</span></div>
-                                <div class="method-item"><span class="method-name">RACI Matrix &amp; Governance Framework Design</span><span class="method-desc">Clarifying who decides, who inputs, who executes, and who needs to know -- for every pricing decision type, at every deal size threshold. Governance that prevents the "who approved this?" conversation.</span></div>
-                                <div class="method-item"><span class="method-name">Pricing Council Facilitation</span><span class="method-desc">Running the executive forum -- CFO, CRO, CPO -- where pricing strategy shifts are reviewed and approved. Preparing the agenda, managing the pre-read, and ensuring decisions get made rather than deferred.</span></div>
-                                <div class="method-item"><span class="method-name">Organizational Alignment &amp; Stakeholder Mapping</span><span class="method-desc">Identifying the decision-makers, influencers, and blockers across functions -- and building the relationships and communication cadences that keep pricing from becoming someone else's afterthought.</span></div>
-                            </div>
-                        </div>
-
-                        <div class="methods-subgroup">
-                            <div class="methods-subgroup-label">Execution &amp; Change</div>
-                            <div class="methods-grid">
-                                <div class="method-item"><span class="method-name">Change Management Strategy</span><span class="method-desc">When pricing governance changes, Sales pushes back. When CPQ launches, reps find workarounds. Managing the adoption curve -- anticipating the resistance, designing the response -- is as important as the change itself.</span></div>
-                                <div class="method-item"><span class="method-name">Executive Communication &amp; Data Storytelling</span><span class="method-desc">Translating pricing analytics into executive narratives -- the difference between "here is the data" and "here is what we should do about it and why it matters now."</span></div>
-                                <div class="method-item"><span class="method-name">Cross-Functional Program Management</span><span class="method-desc">Coordinating Finance, Legal, Product, Sales Ops, and Technology on pricing initiatives where no single function owns the outcome -- keeping the work moving without direct authority over any of them.</span></div>
-                            </div>
-                        </div>
-
-                        <div class="methods-subgroup">
-                            <div class="methods-subgroup-label">Knowledge &amp; Continuity</div>
-                            <div class="methods-grid">
-                                <div class="method-item"><span class="method-name">SOPs &amp; Pricing Playbook Development</span><span class="method-desc">Converting tribal knowledge into repeatable process -- built for the person who joins six months from now, not just the team that exists today.</span></div>
-                                <div class="method-item"><span class="method-name">Train-the-Trainer Program Design</span><span class="method-desc">Building institutional knowledge that survives personnel transitions -- documentation, certification, and backup trainer development designed to outlast the person who built it.</span></div>
-                                <div class="method-item"><span class="method-name">Nonprofit Board Governance</span><span class="method-desc">Directing a $55K annual scholarship program for a 5,000-member 501(c)(3) -- fiduciary accountability, board reporting, and volunteer team leadership without compensation leverage. The influence-without-authority challenge at its most pure.</span></div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="zone-proof">
-                        <div>
-                            <div class="zone-label" style="color:rgba(255,255,255,0.7);margin-bottom:8px;">Proven At</div>
-                            <p>During AT&amp;T's three-phase downsizing, 80 Deal Desk professionals reduced to 50 with 95% turnover. Rebuilt the onboarding program from scattered PowerPoint decks into a 3-week curriculum: 15 training decks, 25+ recorded sessions, formal certification at 85% passing threshold. Designed explicitly to outlast the builder through train-the-trainer methodology. At the Fortune 50 Tech Company engagement, designed the Pricing COE org structure, RACI matrix, and governance model as a deliverable, not just a recommendation. The function needed to operate after the consulting engagement ended.</p>
-                            <div class="proof-companies"><span class="proof-company">AT&amp;T</span><span class="proof-company">Fortune 50 Tech Company</span><span class="proof-company">oxyGEN / AT&amp;T ERG</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
-
-    <!-- PORTFOLIO -->
+    <!-- Portfolio Section -->
     <section class="portfolio fade-in">
         <h2>Portfolio Highlights</h2>
         <div class="portfolio-grid">
 
+            <!-- Card 1: Microsoft Pricing COE -->
             <div class="project-card-container">
                 <div class="project-title">Pricing Center of Excellence Org Design</div>
                 <div class="flip-card" onclick="openModal('modal-ms-coe')">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front"><img src="https://u.cubeupload.com/wbeasley48/GoodCube2.jpg" alt="Fortune 50 COE Project"><div class="company">PwC Consulting</div></div>
-                        <div class="flip-card-back"><h3>Challenge</h3><p>Fortune 50 Professional Services excluded from 75% of opportunities due to 10-day quote turnaround and 1000+ inconsistent SKUs</p><div class="impact">80% cycle time reduction<br>Doubled bid participation</div><p class="learn-more">Click to learn more →</p></div>
+                        <div class="flip-card-front">
+                            <img src="https://u.cubeupload.com/wbeasley48/GoodCube2.jpg" alt="Fortune 50 COE Project">
+                            <div class="company">PwC Consulting</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Challenge</h3>
+                            <p>Fortune 50 Professional Services excluded from 75% of opportunities due to 10-day quote turnaround and 1000+ inconsistent SKUs</p>
+                            <div class="impact">80% cycle time reduction<br>Doubled bid participation</div>
+                            <p class="learn-more">Click to learn more →</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Card 2: Trimble CPQ -->
             <div class="project-card-container">
-                <div class="project-title">CPQ Design &amp; Implementation</div>
+                <div class="project-title">CPQ Design & Implementation</div>
                 <div class="flip-card" onclick="openModal('modal-trimble')">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front"><img src="https://u.cubeupload.com/wbeasley48/GoodCube1.jpg" alt="Fortune 50 CPQ"><div class="company">PwC Consulting</div></div>
-                        <div class="flip-card-back"><h3>Scope</h3><p>PM + Functional Lead for $10M+ Salesforce CPQ program with 70+ consultants, partner channel complexity</p><div class="impact">200+ requirements translated<br>Multi-tiered pricing logic</div><p class="learn-more">Click to learn more →</p></div>
+                        <div class="flip-card-front">
+                            <img src="https://u.cubeupload.com/wbeasley48/GoodCube1.jpg" alt="Trimble CPQ">
+                            <div class="company">PwC - Trimble</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Scope</h3>
+                            <p>PM + Functional Lead for $10M+ Salesforce CPQ program with 70+ consultants, partner channel complexity</p>
+                            <div class="impact">200+ requirements translated<br>Multi-tiered pricing logic</div>
+                            <p class="learn-more">Click to learn more →</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Card 3: Business WiFi -->
             <div class="project-card-container">
-                <div class="project-title">Deal Desk &amp; Pricing Process Optimization</div>
+                <div class="project-title">Deal Desk & Pricing Process Optimization</div>
                 <div class="flip-card" onclick="openModal('modal-wifi')">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front"><img src="https://u.cubeupload.com/wbeasley48/SelfCube4.jpg" alt="Business WiFi"><div class="company">AT&amp;T</div></div>
-                        <div class="flip-card-back"><h3>Challenge</h3><p>1-2 week quote turnaround due to manual pricing across 1000+ SKUs with no CPQ integration</p><div class="impact">85% cycle time reduction<br>1-2 weeks → 3 days</div><p class="learn-more">Click to learn more →</p></div>
+                        <div class="flip-card-front">
+                            <img src="https://u.cubeupload.com/wbeasley48/SelfCube4.jpg" alt="Business WiFi">
+                            <div class="company">AT&T</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Challenge</h3>
+                            <p>1-2 week quote turnaround due to manual pricing across 1000+ SKUs with no CPQ integration</p>
+                            <div class="impact">85% cycle time reduction<br>1-2 weeks → 3 days</div>
+                            <p class="learn-more">Click to learn more →</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Card 4: AT&T Deal Desk -->
             <div class="project-card-container">
                 <div class="project-title">Custom Deal Desk Manager</div>
                 <div class="flip-card" onclick="openModal('modal-att-dealdesk')">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front"><img src="https://u.cubeupload.com/wbeasley48/SelfCube1.jpg" alt="AT&T Deal Desk"><div class="company">AT&amp;T</div></div>
-                        <div class="flip-card-back"><h3>Scope</h3><p>Led pricing operations for $85M+ Wireline portfolio across Enterprise, Manufacturing, and Alliance Channel segments</p><div class="impact">1,000+ deals annually<br>38-42% portfolio margin</div><p class="learn-more">Click to learn more →</p></div>
+                        <div class="flip-card-front">
+                            <img src="https://u.cubeupload.com/wbeasley48/SelfCube1.jpg" alt="AT&T Deal Desk">
+                            <div class="company">AT&T</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Scope</h3>
+                            <p>Led pricing operations for $85M+ Wireline portfolio across Enterprise, Manufacturing, and Alliance Channel segments</p>
+                            <div class="impact">1,000+ deals annually<br>38-42% portfolio margin</div>
+                            <p class="learn-more">Click to learn more →</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Card 5: Executive Dashboards -->
             <div class="project-card-container">
-                <div class="project-title">Executive Dashboards &amp; Reporting</div>
+                <div class="project-title">Executive Dashboards & Reporting</div>
                 <div class="flip-card" onclick="openModal('modal-dashboards')">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front"><img src="https://u.cubeupload.com/wbeasley48/SelfCube2.jpg" alt="Executive Dashboards"><div class="company">AT&amp;T</div></div>
-                        <div class="flip-card-back"><h3>Impact</h3><p>Built Power BI dashboards generating monthly insights that drove Office@Hand realization +4%, auto-approval +12%</p><div class="impact">Data-driven governance<br>VP-level visibility</div><p class="learn-more">Click to learn more →</p></div>
+                        <div class="flip-card-front">
+                            <img src="https://u.cubeupload.com/wbeasley48/cube1.jpg" alt="Executive Dashboards">
+                            <div class="company">AT&T</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Impact</h3>
+                            <p>Built Power BI dashboards generating monthly insights that drove Office@Hand realization +4%, auto-approval +12%</p>
+                            <div class="impact">Data-driven governance<br>VP-level visibility</div>
+                            <p class="learn-more">Click to learn more →</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Card 6: Office@Hand -->
             <div class="project-card-container">
-                <div class="project-title">Pricing &amp; Sales Strategy Redesign</div>
+                <div class="project-title">Pricing & Sales Strategy Redesign</div>
                 <div class="flip-card" onclick="openModal('modal-office-hand')">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front"><img src="https://u.cubeupload.com/wbeasley48/Collabcube1.jpg" alt="Office@Hand Strategy"><div class="company">AT&amp;T</div></div>
-                        <div class="flip-card-back"><h3>Challenge</h3><p>Sales defaulting to heavy discounting vs. Microsoft Teams, RingCentral partnership undermining AT&T margin</p><div class="impact">12% → 18% margin<br>50+ Sales Office Hours</div><p class="learn-more">Click to learn more →</p></div>
+                        <div class="flip-card-front">
+                            <img src="https://u.cubeupload.com/wbeasley48/Collabcube1.jpg" alt="Office@Hand Strategy">
+                            <div class="company">AT&T</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Challenge</h3>
+                            <p>Sales defaulting to heavy discounting vs. Microsoft Teams, RingCentral partnership undermining AT&T margin</p>
+                            <div class="impact">12% → 18% margin<br>50+ Sales Office Hours</div>
+                            <p class="learn-more">Click to learn more →</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Card 7: Sabre API -->
             <div class="project-card-container">
                 <div class="project-title">API Re-Monetization</div>
                 <div class="flip-card" onclick="openModal('modal-sabre')">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front"><img src="https://u.cubeupload.com/wbeasley48/SelfCube3.jpg" alt="API Re-Monetization"><div class="company">Sabre Corporation</div></div>
-                        <div class="flip-card-back"><h3>Innovation</h3><p>Transformed B2B SaaS pricing from per-passenger to per-API-call model, aligning value metric with cost structure</p><div class="impact">10% margin uplift<br>Two-track pricing model</div><p class="learn-more">Click to learn more →</p></div>
+                        <div class="flip-card-front">
+                            <img src="https://u.cubeupload.com/wbeasley48/SelfCube3.jpg" alt="API Re-Monetization">
+                            <div class="company">Sabre Corporation</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Innovation</h3>
+                            <p>Transformed B2B SaaS pricing from per-passenger to per-API-call model, aligning value metric with cost structure</p>
+                            <div class="impact">10% margin uplift<br>Two-track pricing model</div>
+                            <p class="learn-more">Click to learn more →</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Card 8: Onboarding -->
             <div class="project-card-container">
                 <div class="project-title">Deal Desk Onboarding Program</div>
                 <div class="flip-card" onclick="openModal('modal-onboarding')">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front"><img src="https://u.cubeupload.com/wbeasley48/Collabcube2.jpg" alt="Onboarding Program"><div class="company">AT&amp;T</div></div>
-                        <div class="flip-card-back"><h3>Context</h3><p>95% workforce turnover during downsizing - built comprehensive 3-week training program</p><div class="impact">30% ramp time reduction<br>92% certification rate</div><p class="learn-more">Click to learn more →</p></div>
+                        <div class="flip-card-front">
+                            <img src="https://u.cubeupload.com/wbeasley48/Collabcube2.jpg" alt="Onboarding Program">
+                            <div class="company">AT&T</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Context</h3>
+                            <p>95% workforce turnover during downsizing - built comprehensive 3-week training program</p>
+                            <div class="impact">30% ramp time reduction<br>92% certification rate</div>
+                            <p class="learn-more">Click to learn more →</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Card 9: oxyGEN -->
             <div class="project-card-container">
                 <div class="project-title">Non-Profit Program Director</div>
                 <div class="flip-card" onclick="openModal('modal-oxygen')">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front"><img src="https://u.cubeupload.com/wbeasley48/cube1.jpg" alt="oxyGEN Scholarship"><div class="company">AT&amp;T ERG (501c3)</div></div>
-                        <div class="flip-card-back"><h3>Leadership</h3><p>Directed $55K annual STEAM scholarship fund for 5,000-member ERG, managing 500+ applications with nonprofit governance</p><div class="impact">Cross-functional leadership<br>501(c)(3) compliance</div><p class="learn-more">Click to learn more →</p></div>
+                        <div class="flip-card-front">
+                            <img src="https://u.cubeupload.com/wbeasley48/SelfCube2.jpg" alt="oxyGEN Scholarship">
+                            <div class="company">AT&T ERG (501c3)</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Leadership</h3>
+                            <p>Directed $55K annual STEAM scholarship fund for 5,000-member ERG, managing 500+ applications with nonprofit governance</p>
+                            <div class="impact">Cross-functional leadership<br>501(c)(3) compliance</div>
+                            <p class="learn-more">Click to learn more →</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -751,46 +788,438 @@
         </div>
     </section>
 
-    <!-- MODALS -->
-    <div id="modal-ms-coe" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-ms-coe')">&times;</span><h2>Pricing Center of Excellence Org Design</h2><p><strong>Client:</strong> Fortune 50 Technology Company (PwC Consulting) | <strong>Timeline:</strong> Aug 2021 - Dec 2021 | <strong>Value:</strong> $875K</p><h3>Business Challenge</h3><p>The client's Professional Services division was excluded from 75% of enterprise sales opportunities due to operational unreliability: 10-day quote turnaround and 1000+ inconsistent SKUs made them an unreliable sales partner to the broader organization.</p><div class="highlight-box"><strong>The diagnosis:</strong> This wasn't a pricing problem. This was a commercial integration failure. Professional Services had world-class delivery but was operationally unreliable, causing Account Teams to bundle competing professional services firms instead.</div><h3>Approach</h3><ul><li><strong>Phase 1 - Pricing Redesign:</strong> Consolidated 1000+ SKUs into streamlined value-based rate card, shifted from cost-plus to value-based pricing, enhanced CPQ functionality</li><li><strong>Phase 2 - Sales Motion Integration:</strong> Designed Pricing Center of Excellence (org structure, governance, RACI), built sales handoff protocols, created bundled pricing architecture</li><li><strong>Business Development:</strong> Identified and sold $50K scope expansion for sales motion integration work</li></ul><h3>Impact</h3><div class="metric-grid"><div class="metric-box"><div class="number">80%</div><div>Cycle Time Reduction</div><div>(10 days → 2 days)</div></div><div class="metric-box"><div class="number">2x</div><div>Bid Participation</div><div>(25% → 50%+)</div></div><div class="metric-box"><div class="number">90%+</div><div>SKU Reduction</div><div>(1000+ → consolidated)</div></div></div></div></div>
+    <!-- Modals for Full Project Details -->
+    
+    <!-- Modal: Microsoft COE -->
+    <div id="modal-ms-coe" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal-ms-coe')">&times;</span>
+            <h2>Pricing Center of Excellence Org Design</h2>
+            <p><strong>Client:</strong> Fortune 50 Technology Company (PwC Consulting) | <strong>Timeline:</strong> Aug 2021 - Dec 2021 | <strong>Value:</strong> $875K</p>
 
-    <div id="modal-att-dealdesk" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-att-dealdesk')">&times;</span><h2>AT&amp;T Custom Deal Desk Manager</h2><p><strong>Portfolio:</strong> $85M+ Annual Revenue | <strong>Timeline:</strong> 2023-2025 | <strong>Segments:</strong> Enterprise, Manufacturing, Alliance Channel</p><h3>Role Overview</h3><p>Led strategic pricing and Deal Desk operations for ALL Wireline products across Enterprise accounts, Manufacturing industry vertical, and Alliance Channel partnerships.</p><div class="highlight-box"><strong>Core Responsibility:</strong> Managed 20-30 complex deals weekly (1,000+ annually), conducting margin analysis, coordinating cross-functional approvals (Finance, Legal, Product, Network Operations), and negotiating with Sales to balance competitiveness with profitability.</div><h3>Deal Complexity</h3><ul><li><strong>Multi-product bundles:</strong> SD-WAN + Office@Hand + WiFi + Security in single deals</li><li><strong>Non-standard terms:</strong> Net 90 payment, custom SLAs, price escalation caps</li><li><strong>High-value deals:</strong> $500K to $10M+ total contract values</li><li><strong>Alliance channel:</strong> Three-party pricing (Customer → Partner → AT&T)</li></ul><h3>Performance Metrics</h3><div class="metric-grid"><div class="metric-box"><div class="number">95%+</div><div>On-Time Delivery</div><div>(3-day SLA)</div></div><div class="metric-box"><div class="number">80%</div><div>Approval Rate</div></div><div class="metric-box"><div class="number">38-42%</div><div>Portfolio Margin</div><div>(above 35% target)</div></div></div></div></div>
+            <h3>Business Challenge</h3>
+            <p>The client's Professional Services division was excluded from 75% of enterprise sales opportunities due to operational unreliability: 10-day quote turnaround and 1000+ inconsistent SKUs made them an unreliable sales partner to the broader organization.</p>
 
-    <div id="modal-office-hand" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-office-hand')">&times;</span><h2>Office@Hand: Pricing Strategy &amp; Sales Enablement</h2><p><strong>Product:</strong> AT&amp;T-RingCentral UCaaS Partnership | <strong>Timeline:</strong> 2023-2025</p><h3>Strategic Challenge</h3><ul><li>Sales defaulting to heavy discounting when competing against Microsoft Teams (perceived as "free")</li><li>RingCentral collaboration undermining AT&T margin, resulting in deals where AT&T made $0 profit</li></ul><div class="highlight-box"><strong>Partnership Economics:</strong> AT&amp;T paid RingCentral $35/user wholesale cost regardless of customer price. Every discount came from AT&amp;T's pocket. At 30% discount, AT&amp;T made zero margin.</div><h3>Solutions</h3><ul><li><strong>Competitive Battlecards:</strong> Built positioning vs. Microsoft Teams, vs. RingCentral Direct, objection handling frameworks</li><li><strong>Sales Office Hours:</strong> Hosted 50+ weekly sessions (500+ attendees)</li><li><strong>Process Re-Routing:</strong> Mandatory process requiring Sales to engage AT&T Pricing before RingCentral, reducing margin-eroding deals from 40% to under 10%</li></ul><h3>Impact</h3><div class="metric-grid"><div class="metric-box"><div class="number">12% → 18%</div><div>Margin Improvement</div></div><div class="metric-box"><div class="number">80%+</div><div>Sales Adoption</div></div><div class="metric-box"><div class="number">40% → 10%</div><div>Process Violations</div></div></div></div></div>
+            <div class="highlight-box">
+                <strong>The diagnosis:</strong> This wasn't a pricing problem. This was a commercial integration failure. Professional Services had world-class delivery but was operationally unreliable, causing Account Teams to bundle competing professional services firms instead.
+            </div>
 
-    <div id="modal-wifi" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-wifi')">&times;</span><h2>Business WiFi: Process Optimization</h2><p><strong>Product:</strong> AT&amp;T Business WiFi (Aruba Central, Juniper Mist) | <strong>Timeline:</strong> Apr 2024 - Aug 2025</p><h3>The Problem</h3><ul><li>Manual pricing calculation across 1000s of SKUs in quarterly PDFs</li><li>Geographic pricing variations not systematized</li><li>No CPQ integration for WiFi products</li></ul><div class="highlight-box"><strong>Business Impact:</strong> Sales teams were avoiding AT&amp;T WiFi in competitive situations because they couldn't respond fast enough.</div><h3>Solution</h3><ul><li><strong>Custom CPQ Tool:</strong> Built Excel-based tool with nested SKU lookups, cost functions, geographic adjustments</li><li><strong>Hotel Vertical Innovation:</strong> Dynamic rate cards based on room count, public spaces, square footage, class of service</li><li><strong>Process Redesign:</strong> Clarified auto-approval rules, coordinated SKU refresh process</li></ul><h3>Impact</h3><div class="metric-grid"><div class="metric-box"><div class="number">85%</div><div>Cycle Time Reduction</div><div>(1-2 weeks → 3 days)</div></div><div class="metric-box"><div class="number">Immediate</div><div>Sales Adoption</div></div></div></div></div>
+            <h3>My Approach</h3>
+            <ul>
+                <li><strong>Phase 1 - Pricing Redesign:</strong> Consolidated 1000+ SKUs into streamlined value-based rate card, shifted from cost-plus to value-based pricing, enhanced CPQ functionality</li>
+                <li><strong>Phase 2 - Sales Motion Integration:</strong> Designed Pricing Center of Excellence (org structure, governance, RACI), built sales handoff protocols, created bundled pricing architecture</li>
+                <li><strong>Business Development:</strong> Identified and sold $50K scope expansion for sales motion integration work</li>
+            </ul>
 
-    <div id="modal-trimble" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-trimble')">&times;</span><h2>CPQ Design &amp; Implementation</h2><p><strong>Client:</strong> Fortune 500 Technology Company (PwC Consulting) | <strong>Timeline:</strong> May 2022 - Oct 2022 | <strong>Program Size:</strong> $10M+, 70+ consultants</p><h3>Project Overview</h3><p>Served dual role as PM + Functional Lead for Salesforce CPQ implementation supporting direct sales and partner resale go-to-market motions.</p><div class="highlight-box"><strong>Complexity:</strong> Indirect/partner channel required different pricing (channel discounts 20-40%, rebates, co-op funds), different quote templates, and integration with separate fulfillment/billing systems.</div><h3>Responsibilities</h3><ul><li>Converted 200+ business requirements into technical user stories</li><li>Designed multi-layered pricing logic (list → regional → partner tier → volume → deal registration)</li><li>Approval matrix: under 15% auto-approved, 15-25% Manager, 25-35% Director, 35%+ VP</li><li>Integration design: CPQ to CRM, CPQ to ERP, CPQ to Billing</li><li>Phased rollout: pilot → top 50 → long tail</li></ul></div></div>
+            <h3>Impact</h3>
+            <div class="metric-grid">
+                <div class="metric-box">
+                    <div class="number">80%</div>
+                    <div>Cycle Time Reduction</div>
+                    <div>(10 days → 2 days)</div>
+                </div>
+                <div class="metric-box">
+                    <div class="number">2x</div>
+                    <div>Bid Participation</div>
+                    <div>(25% → 50%+)</div>
+                </div>
+                <div class="metric-box">
+                    <div class="number">90%+</div>
+                    <div>SKU Reduction</div>
+                    <div>(1000+ → consolidated)</div>
+                </div>
+            </div>
 
-    <div id="modal-dashboards" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-dashboards')">&times;</span><h2>Executive Pricing Performance Dashboards</h2><p><strong>Timeline:</strong> Jan 2025 - Aug 2025 | <strong>Audience:</strong> VP Custom Deal Desk through SVPs through Quarterly All-Hands</p><h3>The Challenge</h3><p>Pricing data scattered across Salesforce, CPQ, custom tools, and Finance systems. Leadership couldn't answer basic questions like "Are we achieving target pricing?" or "Which products are most profitable?"</p><h3>Solution</h3><ul><li><strong>Pricing Performance:</strong> Price realization, margin tracking, discount distribution</li><li><strong>Discounting Trends:</strong> Discount by segment/product/time, auto-approval vs. exception rates</li><li><strong>Deal Health:</strong> Cycle time, volume metrics, bottleneck analysis</li></ul><div class="highlight-box"><strong>Data Reconciliation:</strong> 2-5 days monthly reconciling Salesforce Opportunity ID, CPQ Quote ID, and Finance Order ID. Built master linking table, validated samples, ensured audit-ready accuracy.</div><h3>Strategic Insights Generated</h3><ul><li>Office@Hand realization below target -- recommended discount band tightening -- +4% improvement</li><li>Auto-approval usage at 62% vs. 80% target -- recommended Sales training -- +12% usage increase</li><li>Enterprise segment over-discounting -- reallocated CDD managers</li></ul></div></div>
+            <h3>Skills Demonstrated</h3>
+            <p>Strategic diagnosis, Pricing COE design, cross-functional collaboration, business development, executive stakeholder management, change management</p>
+        </div>
+    </div>
 
-    <div id="modal-onboarding" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-onboarding')">&times;</span><h2>Deal Desk Onboarding &amp; Enablement Program</h2><p><strong>Timeline:</strong> Feb 2024 - Aug 2024 | <strong>Sessions Delivered:</strong> 40+ | <strong>Context:</strong> 95% workforce turnover during downsizing</p><h3>Organizational Crisis</h3><p>AT&amp;T reduced Custom Deal Desk from 80 professionals to 50 across 3 downsizing phases. Only 5% of original team remained, creating massive institutional knowledge loss.</p><div class="highlight-box"><strong>The Problem:</strong> New hires unprepared, ramp time 8-12 weeks, broken onboarding program. AT&amp;T hiring less experienced replacements who needed to handle the same complex enterprise deals as departing experts.</div><h3>Solution</h3><ul><li><strong>Week 1:</strong> Pricing policy, tools, processes, product overview</li><li><strong>Week 2:</strong> Deal structuring, bundling, negotiation skills, shadowing</li><li><strong>Week 3:</strong> Advanced topics, product deep-dives, certification exam</li></ul><h3>Deliverables</h3><ul><li>15 training decks (800+ slides)</li><li>25+ recorded video tutorials (15+ hours)</li><li>SOPs for common tasks</li><li>Certification exam (50 questions, 85% passing score)</li></ul><h3>Impact</h3><div class="metric-grid"><div class="metric-box"><div class="number">30%</div><div>Ramp Time Reduction</div></div><div class="metric-box"><div class="number">40%</div><div>Error Rate Reduction</div></div><div class="metric-box"><div class="number">92%</div><div>Certification Pass Rate</div></div></div></div></div>
+    <!-- Modal: AT&T Deal Desk -->
+    <div id="modal-att-dealdesk" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal-att-dealdesk')">&times;</span>
+            <h2>AT&T Custom Deal Desk Manager</h2>
+            <p><strong>Portfolio:</strong> $85M+ Annual Revenue | <strong>Timeline:</strong> 2023-2025 | <strong>Segments:</strong> Enterprise, Manufacturing, Alliance Channel</p>
 
-    <div id="modal-sabre" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-sabre')">&times;</span><h2>Sabre: API Re-Monetization</h2><p><strong>Company:</strong> Sabre Corporation (B2B SaaS Airline Solutions) | <strong>Timeline:</strong> 2019-2021</p><h3>The Pricing Misalignment</h3><p>Sabre's Passenger Service System was priced per-passenger-boarded, but profitability was driven by API calls. Airlines with high API usage relative to passengers were unprofitable customers the pricing model couldn't identify.</p><div class="highlight-box"><strong>Strategic Insight:</strong> Costs tied to API calls (reservation creation, cancellations, modifications), not passengers. Value metric misaligned with cost structure.</div><h3>Approach</h3><ul><li>Categorized millions of monthly API calls by value type</li><li>Designed two-track model: preferred per-API-call and legacy bridge with overage fees</li><li>Migration strategy: grandfather Track B, incent new customers to Track A</li></ul><h3>Impact</h3><ul><li>60% migrated to Track A within 18 months</li><li>Overage fees protected margin on remaining Track B customers</li><li>Created unplanned professional services revenue stream (airlines needed API optimization help)</li></ul><h3>Additional Achievement</h3><p><strong>10% Margin Uplift:</strong> Identified underpriced product with under 5% Deal Desk involvement. Recommended 10% price increase over Sales resistance. Result: immediate 10% margin uplift on 95% of deals with win rate impact of only 3 points (85% to 82%).</p></div></div>
+            <h3>Role Overview</h3>
+            <p>Led strategic pricing and Deal Desk operations for ALL Wireline products (Office@Hand, SD-WAN, WiFi, AVPN, Managed Security, Professional Services, 20+ offerings) across Enterprise accounts, Manufacturing industry vertical, and Alliance Channel partnerships.</p>
 
-    <div id="modal-oxygen" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-oxygen')">&times;</span><h2>oxyGEN Scholarship Program Leadership</h2><p><strong>Organization:</strong> oxyGEN (AT&amp;T Employee Resource Group, 501(c)(3) nonprofit) | <strong>Members:</strong> 5,000+ globally</p><h3>Program Overview</h3><p>Served as Director of the Scholarship Program, managing the annual $55K STEAM Scholarship supporting undergraduate students from AT&amp;T employee families.</p><h3>Responsibilities</h3><ul><li>Raised $55K annually from AT&amp;T employee donations and fundraising events</li><li>Managed 500+ applications annually</li><li>Built standardized, auditable selection process using scoring rubrics and blind review</li><li>Collaborated with National Board, maintained nonprofit compliance</li></ul><div class="highlight-box"><strong>Leadership Challenge:</strong> Led cross-functional volunteer team without formal authority. Had to influence through vision, execution excellence, and collaborative approach -- the same dynamic as pricing leadership.</div><h3>Relevance to Pricing Roles</h3><p>Pricing leaders lead cross-functionally without direct authority over Sales, Product, Finance. Must influence through data, relationships, and delivery. This role demonstrated that capability in a high-accountability, low-authority environment.</p></div></div>
+            <div class="highlight-box">
+                <strong>Core Responsibility:</strong> Managed 20-30 complex deals weekly (1,000+ annually), conducting margin analysis, coordinating cross-functional approvals (Finance, Legal, Product, Network Operations), and negotiating with Sales to balance competitiveness with profitability.
+            </div>
 
-    <!-- FOOTER -->
+            <h3>Deal Complexity</h3>
+            <ul>
+                <li><strong>Multi-product bundles:</strong> SD-WAN + Office@Hand + WiFi + Security in single deals</li>
+                <li><strong>Custom configurations:</strong> Manufacturing plants needing fiber + wireless hybrid solutions</li>
+                <li><strong>Non-standard terms:</strong> Net 90 payment, custom SLAs, price escalation caps</li>
+                <li><strong>High-value deals:</strong> $500K to $10M+ total contract values</li>
+                <li><strong>Alliance channel:</strong> Three-party pricing (Customer → Partner → AT&T)</li>
+            </ul>
+
+            <h3>Performance Metrics</h3>
+            <div class="metric-grid">
+                <div class="metric-box">
+                    <div class="number">95%+</div>
+                    <div>On-Time Delivery</div>
+                    <div>(3-day SLA)</div>
+                </div>
+                <div class="metric-box">
+                    <div class="number">80%</div>
+                    <div>Approval Rate</div>
+                    <div>(Sales partnership)</div>
+                </div>
+                <div class="metric-box">
+                    <div class="number">38-42%</div>
+                    <div>Portfolio Margin</div>
+                    <div>(above 35% target)</div>
+                </div>
+            </div>
+
+            <h3>Key Value Delivered</h3>
+            <p>Protected AT&T profitability through pricing discipline while maintaining Sales partnership through responsive service and constructive negotiation. Quarterbacked complex deals requiring coordination across Finance, Legal, Product, and Operations teams.</p>
+        </div>
+    </div>
+
+    <!-- Modal: Office@Hand -->
+    <div id="modal-office-hand" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal-office-hand')">&times;</span>
+            <h2>Office@Hand: Pricing Strategy & Sales Enablement</h2>
+            <p><strong>Product:</strong> AT&T-RingCentral UCaaS Partnership | <strong>Timeline:</strong> 2023-2025</p>
+
+            <h3>Strategic Challenge</h3>
+            <p>Office@Hand (AT&T's resale of RingCentral UCaaS) faced two critical issues:</p>
+            <ul>
+                <li>Sales defaulting to heavy discounting when competing against Microsoft Teams (perceived as "free")</li>
+                <li>RingCentral collaboration undermining AT&T margin - Sales working with RingCentral before AT&T, resulting in deals where AT&T made $0 profit</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>Partnership Economics:</strong> AT&T paid RingCentral $35/user wholesale cost regardless of customer price. Every discount came from AT&T's pocket. At 30% discount, AT&T made zero margin. Limited pricing flexibility required strategic approach.
+            </div>
+
+            <h3>My Solutions</h3>
+            <ul>
+                <li><strong>Competitive Battlecards:</strong> Built positioning vs. Microsoft Teams, vs. RingCentral Direct, objection handling frameworks</li>
+                <li><strong>Sales Office Hours:</strong> Hosted 50+ weekly sessions (500+ attendees) providing real-time pricing guidance and deal structuring advice</li>
+                <li><strong>Process Re-Routing:</strong> Implemented mandatory process requiring Sales to engage AT&T Pricing before RingCentral, reducing margin-eroding deals from 40% to <10%</li>
+                <li><strong>Value-Based Selling Training:</strong> Trained Sales on TCO analysis, feature differentiation, ROI storytelling</li>
+            </ul>
+
+            <h3>Impact</h3>
+            <div class="metric-grid">
+                <div class="metric-box">
+                    <div class="number">12% → 18%</div>
+                    <div>Margin Improvement</div>
+                    <div>(6-point increase)</div>
+                </div>
+                <div class="metric-box">
+                    <div class="number">80%+</div>
+                    <div>Sales Adoption</div>
+                    <div>(battlecard usage)</div>
+                </div>
+                <div class="metric-box">
+                    <div class="number">40% → 10%</div>
+                    <div>Process Violations</div>
+                    <div>(improved compliance)</div>
+                </div>
+            </div>
+
+            <h3>Skills Applied</h3>
+            <p>Partnership pricing management, competitive positioning, Sales enablement, process design, change management through influence, value-based pricing strategy</p>
+        </div>
+    </div>
+
+    <!-- Modal: WiFi -->
+    <div id="modal-wifi" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal-wifi')">&times;</span>
+            <h2>Business WiFi: Process Optimization</h2>
+            <p><strong>Product:</strong> AT&T Business WiFi (Aruba Central, Juniper Mist) | <strong>Timeline:</strong> Apr 2024 - Aug 2025</p>
+
+            <h3>The Problem</h3>
+            <p>Quote turnaround time of 1-2 weeks was causing AT&T to lose competitive deals and frustrating Sales teams. Root causes:</p>
+            <ul>
+                <li>Manual pricing calculation - 1000s of SKUs in quarterly PDFs</li>
+                <li>Inconsistent cost data across multiple files</li>
+                <li>Geographic pricing variations not systematized</li>
+                <li>No CPQ integration for WiFi products</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>Business Impact:</strong> Sales teams were avoiding AT&T WiFi in competitive situations because they couldn't respond fast enough. Customers frustrated by delays. AT&T excluded from opportunities requiring quick turnaround.
+            </div>
+
+            <h3>My Solution</h3>
+            <ul>
+                <li><strong>Custom CPQ Tool:</strong> Built Excel-based tool with nested SKU lookups, cost functions, geographic adjustments, data validation</li>
+                <li><strong>Hotel Vertical Innovation:</strong> Developed guided-selling tool with dynamic rate cards based on room count, public spaces, square footage, class of service (2-month collaborative build)</li>
+                <li><strong>Process Redesign:</strong> Clarified auto-approval rules, coordinated internal/external teams for efficient SKU refreshes (no more quarterly PDFs)</li>
+            </ul>
+
+            <h3>Impact</h3>
+            <div class="metric-grid">
+                <div class="metric-box">
+                    <div class="number">85%</div>
+                    <div>Cycle Time Reduction</div>
+                    <div>(1-2 weeks → 3 days)</div>
+                </div>
+                <div class="metric-box">
+                    <div class="number">Immediate</div>
+                    <div>Sales Adoption</div>
+                    <div>(overwhelmingly positive)</div>
+                </div>
+            </div>
+
+            <h3>Cross-Functional Collaboration</h3>
+            <p>Partnered with Product (pricing strategy), Finance (cost models), Network Operations (technical specs), Professional Services (installation pricing) to build comprehensive solution.</p>
+        </div>
+    </div>
+
+    <!-- Modal: Trimble -->
+    <div id="modal-trimble" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal-trimble')">&times;</span>
+            <h2>Trimble: Salesforce CPQ Implementation</h2>
+            <p><strong>Client:</strong> Trimble Inc. (Construction/Geospatial Technology) | <strong>Timeline:</strong> May 2022 - Oct 2022 | <strong>Program Size:</strong> $10M+, 70+ consultants</p>
+
+            <h3>Project Overview</h3>
+            <p>Served dual role as PM + Functional Lead for Salesforce CPQ implementation supporting Trimble's direct sales and partner resale go-to-market motions in enterprise program with 70+ consultants and 35-person client working team.</p>
+
+            <div class="highlight-box">
+                <strong>Complexity:</strong> Indirect/partner channel was most complex workstream because partners required different pricing (channel discounts 20-40%, rebates, co-op funds), different quote templates, and integration with separate fulfillment/billing systems.
+            </div>
+
+            <h3>My Responsibilities</h3>
+            <ul>
+                <li><strong>Requirements Translation:</strong> Converted 200+ business requirements from Sales Ops, Pricing, Finance, Product into technical user stories for development team</li>
+                <li><strong>Pricing Logic Design:</strong> Multi-layered pricing (list → regional adjustments → partner tier discounts → volume discounts → deal registration → special pricing with approval workflows)</li>
+                <li><strong>Approval Workflows:</strong> Designed matrix balancing speed with governance (<15% auto-approved, 15-25% Manager approval, 25-35% Director, 35%+ VP, custom bundles require Product approval)</li>
+                <li><strong>System Integration:</strong> Defined integration requirements for CPQ ↔ CRM, CPQ → ERP (order fulfillment), CPQ → Billing (partner invoicing, rebates)</li>
+                <li><strong>Change Management:</strong> Multi-tiered training (internal users → partner-facing teams → partner end users), phased rollout (pilot → top 50 → long tail)</li>
+            </ul>
+
+            <h3>Delivery Approach</h3>
+            <p>Led Agile methodology with phased rollouts, managed 5-person workstream, coordinated with other workstreams (direct sales, catalog, integrations), presented to client executives.</p>
+
+            <h3>Impact</h3>
+            <p>Enabled Trimble to scale partner channel without proportional headcount growth, standardized pricing across regions, improved quote accuracy and cycle time (typical CPQ implementations achieve 50-70% turnaround reduction, 80-90% error reduction).</p>
+            
+            <p><em>Read more: <a href="https://www.pwc.com/us/en/library/case-studies/trimble-business-model-reinvention.html" target="_blank" style="color: #4a7ba7;">PwC Case Study: Trimble Business Model Reinvention</a></em></p>
+        </div>
+    </div>
+
+    <!-- Modal: Dashboards -->
+    <div id="modal-dashboards" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal-dashboards')">&times;</span>
+            <h2>Executive Pricing Performance Dashboards</h2>
+            <p><strong>Timeline:</strong> Jan 2025 - Aug 2025 | <strong>Audience:</strong> VP Custom Deal Desk → SVPs → Quarterly All-Hands</p>
+
+            <h3>The Challenge</h3>
+            <p>AT&T's Custom Deal Desk had pricing data scattered across Salesforce, CPQ, custom tools, and Finance systems. Leadership lacked visibility into pricing effectiveness and couldn't answer basic questions like "Are we achieving target pricing?" or "Which products are most profitable?"</p>
+
+            <h3>My Solution</h3>
+            <p>Built comprehensive Power BI dashboard suite tracking:</p>
+            <ul>
+                <li><strong>Pricing Performance:</strong> Price realization (actual vs. list), margin tracking, discount distribution</li>
+                <li><strong>Discounting Trends:</strong> Discount by segment/product/time, auto-approval vs. exception rates, discount creep analysis</li>
+                <li><strong>Deal Health & Operations:</strong> Cycle time, volume metrics, approval vs. rejection rates, bottleneck analysis, CDD manager productivity</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>Data Reconciliation:</strong> Spent 2-5 days monthly reconciling data across systems (Salesforce Opportunity ID ≠ CPQ Quote ID ≠ Finance Order ID). Built master linking table, validated samples, ensured audit-ready accuracy.
+            </div>
+
+            <h3>Strategic Insights Generated</h3>
+            <ul>
+                <li>Office@Hand realization 82% (below target) - recommended discount band tightening → +4% improvement</li>
+                <li>Auto-approval usage only 62% (target 80%) - recommended Sales training → +12% usage increase</li>
+                <li>Enterprise segment over-discounting - reallocated CDD managers → improved coverage and cycle time</li>
+            </ul>
+
+            <h3>Impact</h3>
+            <p>Dashboards drove strategic decisions (pricing changes, staffing reallocations, Sales training priorities) and shortened leadership decision cycles through data-driven governance. My template became standard for entire Wireline organization.</p>
+        </div>
+    </div>
+
+    <!-- Modal: Onboarding -->
+    <div id="modal-onboarding" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal-onboarding')">&times;</span>
+            <h2>Deal Desk Onboarding & Enablement Program</h2>
+            <p><strong>Timeline:</strong> Feb 2024 - Aug 2024 | <strong>Sessions Delivered:</strong> 40+ | <strong>Context:</strong> 95% workforce turnover during downsizing</p>
+
+            <h3>Organizational Crisis</h3>
+            <p>AT&T went through 3 phases of downsizing, reducing Custom Deal Desk from 80 professionals to 50 - only 5% of original team remained. This created massive institutional knowledge loss as experienced managers departed.</p>
+
+            <div class="highlight-box">
+                <strong>The Problem:</strong> New hires unprepared, ramp time 8-12 weeks, broken onboarding program (scattered PowerPoint decks, no structure, inconsistent training). AT&T hiring less experienced, lower-cost replacements who needed to handle same complex enterprise deals as departing experts.
+            </div>
+
+            <h3>My Solution</h3>
+            <p>Designed comprehensive 3-week onboarding program:</p>
+            <ul>
+                <li><strong>Week 1 - Foundations:</strong> Pricing policy, tools, processes, product overview</li>
+                <li><strong>Week 2 - Application:</strong> Deal structuring, bundling, negotiation skills, shadowing rotations</li>
+                <li><strong>Week 3 - Mastery:</strong> Advanced topics, product deep-dives, certification exam</li>
+            </ul>
+
+            <h3>Deliverables Created</h3>
+            <ul>
+                <li>15 training decks (800+ slides)</li>
+                <li>25+ recorded video tutorials (15+ hours)</li>
+                <li>Standard Operating Procedures (SOPs) for common tasks</li>
+                <li>Reference guides and quick-reference materials</li>
+                <li>Certification exam (50 questions, 85% passing score)</li>
+            </ul>
+
+            <h3>Impact</h3>
+            <div class="metric-grid">
+                <div class="metric-box">
+                    <div class="number">30%</div>
+                    <div>Ramp Time Reduction</div>
+                    <div>(8-12 weeks → 4-6 weeks)</div>
+                </div>
+                <div class="metric-box">
+                    <div class="number">40%</div>
+                    <div>Error Rate Reduction</div>
+                    <div>(new hire improvement)</div>
+                </div>
+                <div class="metric-box">
+                    <div class="number">92%</div>
+                    <div>Certification Pass Rate</div>
+                    <div>(23/25 new hires)</div>
+                </div>
+            </div>
+
+            <h3>Sustainability</h3>
+            <p>Trained backup trainers, documented everything on SharePoint, program continued after I left through train-the-trainer approach. Captured institutional knowledge before it disappeared with departing employees.</p>
+        </div>
+    </div>
+
+    <!-- Modal: Sabre -->
+    <div id="modal-sabre" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal-sabre')">&times;</span>
+            <h2>Sabre: API Re-Monetization</h2>
+            <p><strong>Company:</strong> Sabre Corporation (B2B SaaS Airline Solutions) | <strong>Timeline:</strong> 2019-2021</p>
+
+            <h3>The Pricing Misalignment</h3>
+            <p>Sabre's Passenger Service System (PSS) was priced per-passenger-boarded, but profitability was actually driven by API calls (millions monthly). Airlines with high API usage relative to passengers were unprofitable customers, while the pricing model couldn't capture the value.</p>
+
+            <div class="highlight-box">
+                <strong>Strategic Insight:</strong> Product team analysis showed inconsistent profitability. Finance revealed costs tied to API calls (reservation creation, cancellations, modifications) not passengers. Value metric misaligned with cost structure.
+            </div>
+
+            <h3>My Approach</h3>
+            <ul>
+                <li><strong>Data Analysis:</strong> Categorized millions of monthly API calls by value (creation vs. cancellation vs. check-in), worked with Finance for revenue recognition compliance</li>
+                <li><strong>Two-Track Pricing:</strong> (A) Preferred: per-API-call with tiered rates, (B) Legacy bridge: per-passenger with overage fees for excessive API usage</li>
+                <li><strong>Migration Strategy:</strong> Grandfather existing customers on Track B, incent new customers to Track A, provide migration path</li>
+            </ul>
+
+            <h3>Impact</h3>
+            <ul>
+                <li>60% of customers migrated to Track A (per-API-call) within 18 months</li>
+                <li>40% stayed on Track B but overage fees protected margin on high-API-usage customers</li>
+                <li>Accidentally created professional services revenue stream (airlines needed help optimizing API usage)</li>
+            </ul>
+
+            <h3>Additional Achievements at Sabre</h3>
+            <p><strong>10% Margin Uplift Discovery:</strong> Identified underpriced product through analytics - product with <5% Custom Deal Desk involvement meant Sales wasn't negotiating (product too easy to sell). Recommended 10% price increase despite Sales resistance ("You're taking away our one easy sell!"). Secured VP approval, result: immediate 10% margin uplift on 95% of deals with minimal win rate impact (85% → 82%).</p>
+
+            <p><strong>Pricing Council Leadership:</strong> Chaired monthly Pricing Council for PSS products, collaborating with Product, Finance, Sales, Engineering on strategic pricing decisions.</p>
+        </div>
+    </div>
+
+    <!-- Modal: oxyGEN -->
+    <div id="modal-oxygen" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal-oxygen')">&times;</span>
+            <h2>oxyGEN Scholarship Program Leadership</h2>
+            <p><strong>Organization:</strong> oxyGEN (AT&T Employee Resource Group - 501(c)(3) nonprofit) | <strong>Members:</strong> 5,000+ globally</p>
+
+            <h3>Program Overview</h3>
+            <p>oxyGEN is AT&T's ERG focused on developing future leaders through professionalism, self-development, and leadership excellence. As Director of the Scholarship Program, I managed the annual $55K STEAM Scholarship supporting undergraduate students from AT&T employee families.</p>
+
+            <h3>My Responsibilities</h3>
+            <ul>
+                <li><strong>Fundraising:</strong> Raised $55K annually from AT&T employee donations and fundraising events</li>
+                <li><strong>Application Management:</strong> Managed 500+ applications annually</li>
+                <li><strong>Selection Process Design:</strong> Built standardized, auditable process using scoring rubrics, blind review, committee coordination to ensure fairness</li>
+                <li><strong>Board Governance:</strong> Collaborated with National Board, maintained nonprofit compliance, provided regular reporting</li>
+                <li><strong>Award Disbursement:</strong> Coordinated with universities to disburse scholarship funds to recipients</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>Leadership Challenge:</strong> Led cross-functional volunteer team without formal authority (no hiring/firing, no compensation leverage). Had to influence through vision, execution excellence, and collaborative approach.
+            </div>
+
+            <h3>Process Built</h3>
+            <p>Designed comprehensive selection system with multiple review phases:</p>
+            <ul>
+                <li>Application collection and eligibility screening</li>
+                <li>Scoring rubric (critical thinking, creative thinking, communication, impact potential, alignment with oxyGEN mission)</li>
+                <li>Review committee coordination (trained reviewers, managed blind review, aggregated scores)</li>
+                <li>Board presentation and final selection approval</li>
+                <li>Award communication and disbursement tracking</li>
+            </ul>
+
+            <h3>Skills Demonstrated</h3>
+            <p>Nonprofit governance, financial stewardship ($55K fiduciary responsibility), volunteer team leadership, process design, 501(c)(3) compliance, stakeholder management, Board collaboration</p>
+
+            <h3>Relevance to Strategic Pricing Roles</h3>
+            <p>Pricing leaders often lead cross-functionally without direct authority over Sales, Product, Finance. Must influence through data, relationships, and delivery - just like nonprofit leadership. Demonstrated ability to manage budgets responsibly, design fair processes, and build consensus.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
     <footer>
         <p>&copy; 2026 William Beasley | Strategic Pricing Portfolio</p>
-        <p>Dallas, Texas | Atlanta, Georgia | <a href="mailto:wnb1@ricealumni.net">wnb1@ricealumni.net</a></p>
+        <p>Dallas, Texas | Atlanta, Georgia | <a href="/cdn-cgi/l/email-protection#1d6a737f2c5d6f747e787c716870737433737869"><span class="__cf_email__" data-cfemail="087f666a39487a616b6d69647d65666126666d7c">[email&#160;protected]</span></a></p>
         <p><a href="https://www.linkedin.com/in/williambeasley48" target="_blank">LinkedIn Profile</a></p>
     </footer>
 
-    <script>
-        function openModal(modalId) { document.getElementById(modalId).style.display = "block"; document.body.style.overflow = "hidden"; }
-        function closeModal(modalId) { document.getElementById(modalId).style.display = "none"; document.body.style.overflow = "auto"; }
-        window.onclick = function(event) { if (event.target.classList.contains('modal')) { event.target.style.display = "none"; document.body.style.overflow = "auto"; } }
-        function toggleAccordion(trigger) {
-            const item = trigger.closest('.accordion-item');
-            const isOpen = item.classList.contains('open');
-            document.querySelectorAll('.accordion-item.open').forEach(el => el.classList.remove('open'));
-            if (!isOpen) item.classList.add('open');
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Open modal
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+            document.body.style.overflow = "hidden"; // Prevent background scrolling
         }
+
+        // Close modal
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+            document.body.style.overflow = "auto"; // Re-enable scrolling
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        }
+
+        // Scroll animations
         const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const appearOptions = {
+            threshold: 0.2
+        };
+
         const appearOnScroll = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => { if (!entry.isIntersecting) return; entry.target.classList.add('visible'); observer.unobserve(entry.target); });
-        }, { threshold: 0.2 });
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            });
+        }, appearOptions);
+
         fadeElements.forEach(el => appearOnScroll.observe(el));
     </script>
 
