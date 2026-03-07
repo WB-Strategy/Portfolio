@@ -282,6 +282,160 @@
         .philosophy-attribution a:hover { text-decoration: underline; }
         .philosophy-attribution-icon { font-size: 1.6rem; flex-shrink: 0; opacity: 0.5; }
         @media (max-width: 768px) { .dysfunction-grid { grid-template-columns: 1fr; } .philosophy-header h2 { font-size: 1.9rem; } .philosophy-triangle { width: 240px; height: 210px; } .philosophy-attribution { flex-direction: column; text-align: center; padding: 18px; } }
+
+          /* DYSFUNCTION CARD FLIP ENHANCEMENT */
+        .dysfunction-card {
+            perspective: 1000px;
+            cursor: pointer;
+        }
+        .dysfunction-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+            min-height: 320px;
+        }
+        .dysfunction-card.flipped .dysfunction-card-inner {
+            transform: rotateY(180deg);
+        }
+        .dysfunction-card-front,
+        .dysfunction-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 10px;
+            padding: 24px 22px;
+            overflow-y: auto;
+        }
+        .dysfunction-card-front {
+            background: transparent;
+        }
+        .dysfunction-card-back {
+            transform: rotateY(180deg);
+            background: #0c1824;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        .dysfunction-card.finance .dysfunction-card-back { border-top: 3px solid #E09A50; }
+        .dysfunction-card.compete .dysfunction-card-back { border-top: 3px solid #E07070; }
+        .dysfunction-card.value   .dysfunction-card-back { border-top: 3px solid #7EB8C9; }
+
+        .flip-back-header {
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+        .flip-back-eyebrow {
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        .dysfunction-card.finance .flip-back-eyebrow { color: #E09A50; }
+        .dysfunction-card.compete .flip-back-eyebrow { color: #E07070; }
+        .dysfunction-card.value   .flip-back-eyebrow { color: #7EB8C9; }
+
+        .flip-back-title {
+            font-family: Georgia, serif;
+            font-size: 0.97rem;
+            font-weight: 700;
+            color: #F1EDE4;
+            line-height: 1.4;
+        }
+
+        .flip-pillar-group {
+            margin-bottom: 13px;
+        }
+        .flip-pillar-label {
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.3);
+            margin-bottom: 7px;
+            padding-left: 2px;
+        }
+        .flip-activity-list {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .flip-activity-link {
+            display: block;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.72);
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 6px;
+            padding: 7px 10px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.18s, color 0.18s, border-color 0.18s, transform 0.15s;
+            line-height: 1.35;
+            text-align: left;
+        }
+        .flip-activity-link:hover {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            transform: translateX(3px);
+        }
+        .dysfunction-card.finance .flip-activity-link:hover { border-color: rgba(224,154,80,0.4); color: #F5C882; }
+        .dysfunction-card.compete .flip-activity-link:hover { border-color: rgba(224,112,112,0.4); color: #F5A0A0; }
+        .dysfunction-card.value   .flip-activity-link:hover { border-color: rgba(126,184,201,0.4); color: #A8D8E8; }
+
+        .flip-activity-link::after {
+            content: ' →';
+            opacity: 0;
+            transition: opacity 0.15s;
+            font-size: 0.75rem;
+        }
+        .flip-activity-link:hover::after { opacity: 1; }
+
+        .flip-back-btn {
+            margin-top: auto;
+            padding-top: 12px;
+            text-align: center;
+        }
+        .flip-back-btn button {
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            padding: 6px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.18s, color 0.18s;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .flip-back-btn button:hover {
+            background: rgba(255,255,255,0.13);
+            color: rgba(255,255,255,0.85);
+        }
+
+        .dysfunction-flip-trigger {
+            display: block;
+            margin-top: 14px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-align: right;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            text-decoration: none;
+        }
+        .dysfunction-card.finance .dysfunction-flip-trigger { color: #E09A50; }
+        .dysfunction-card.compete .dysfunction-flip-trigger { color: #E07070; }
+        .dysfunction-card.value   .dysfunction-flip-trigger { color: #7EB8C9; }
+        .dysfunction-flip-trigger:hover { opacity: 0.75; }
+        
         /* ANIMATIONS */
         .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
@@ -370,29 +524,202 @@
                 </div>
             </div>
             <div class="dysfunction-label">The Three Ways Pricing Goes Wrong</div>
-            <div class="dysfunction-grid">
-                <div class="dysfunction-card finance">
-                    <div class="dysfunction-number">01</div>
-                    <div class="dysfunction-tag">Finance-First</div>
-                    <div class="dysfunction-name">The Spreadsheet<br>Looks Great</div>
-                    <div class="dysfunction-pattern">The CFO sets margin targets. Finance reverse-engineers a price to hit the number. Sales is left defending prices customers won't pay against competitors priced lower.</div>
-                    <div class="dysfunction-cost">Deals don't close. Revenue misses. The margin target was never real — it was just never tested against the market.</div>
+          <div class="dysfunction-grid">
+
+                <!-- CARD 01: FINANCE-FIRST -->
+                <div class="dysfunction-card finance" id="dys-finance">
+                    <div class="dysfunction-card-inner">
+
+                        <!-- FRONT -->
+                        <div class="dysfunction-card-front">
+                            <div class="dysfunction-number">01</div>
+                            <div class="dysfunction-tag">Finance-First</div>
+                            <div class="dysfunction-name">The Spreadsheet<br>Looks Great</div>
+                            <div class="dysfunction-pattern">The CFO sets margin targets. Finance reverse-engineers a price to hit the number. Sales is left defending prices customers won't pay against competitors priced lower.</div>
+                            <div class="dysfunction-cost">Deals don't close. Revenue misses. The margin target was never real — it was just never tested against the market.</div>
+                            <span class="dysfunction-flip-trigger" onclick="flipCard('dys-finance', event)">See how I address this &rarr;</span>
+                        </div>
+
+                        <!-- BACK -->
+                        <div class="dysfunction-card-back">
+                            <div class="flip-back-header">
+                                <div class="flip-back-eyebrow">My Approach</div>
+                                <div class="flip-back-title">Let the market test the math before Finance sets the price</div>
+                            </div>
+
+                            <div class="flip-pillar-group">
+                                <div class="flip-pillar-label">Strategic Pricing &amp; Architecture</div>
+                                <div class="flip-activity-list">
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(0, 'Price Elasticity')">Price Elasticity &amp; Willingness-to-Pay Research</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(0, 'Price-Volume-Mix')">Price-Volume-Mix (PVM) Analysis</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(0, 'Price Realization Tracking')">Price Realization Tracking</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(0, 'Competitive Benchmarking')">Competitive Benchmarking &amp; Price Positioning</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(0, 'Annual Pricing Cycle')">Annual Pricing Cycle Ownership</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(0, 'Pricing Council')">Pricing Council Design &amp; Facilitation</span>
+                                </div>
+                            </div>
+
+                            <div class="flip-pillar-group">
+                                <div class="flip-pillar-label">Advanced Analytics &amp; Financial Rigor</div>
+                                <div class="flip-activity-list">
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(2, 'Dynamic Pricing Models')">Dynamic Pricing Models</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(2, 'Price Elasticity Modeling')">Price Elasticity Modeling</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(2, 'Churn')">Churn &amp; Retention Price Analysis</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(2, 'Segment &amp; Product Profitability')">Segment &amp; Product Profitability Analysis</span>
+                                </div>
+                            </div>
+
+                            <div class="flip-pillar-group">
+                                <div class="flip-pillar-label">SaaS &amp; Recurring Revenue</div>
+                                <div class="flip-activity-list">
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(6, 'Churn-Adjusted')">Churn-Adjusted Price Modeling</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(6, 'Unit Economics')">Unit Economics Modeling</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(6, 'Net Revenue Retention')">Net Revenue Retention (NRR) Optimization</span>
+                                </div>
+                            </div>
+
+                            <div class="flip-back-btn">
+                                <button onclick="unflipCard('dys-finance', event)">&#8592; Back</button>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-                <div class="dysfunction-card compete">
-                    <div class="dysfunction-number">02</div>
-                    <div class="dysfunction-tag">Competition-Obsessed</div>
-                    <div class="dysfunction-name">We'll Match<br>Whatever They Offer</div>
-                    <div class="dysfunction-pattern">Every deal becomes a price war when Sales holds pricing power. Discounting <em> is the pricing strategy</em>, to protect win rates. Differentiation messaging is abandoned the moment procurement pushes back.</div>
-                    <div class="dysfunction-cost">You win deals and destroy margins simultaneously. The brand becomes commoditized. Revenue grows. Profitability doesn't.</div>
+
+                <!-- CARD 02: COMPETITION-OBSESSED -->
+                <div class="dysfunction-card compete" id="dys-compete">
+                    <div class="dysfunction-card-inner">
+
+                        <!-- FRONT -->
+                        <div class="dysfunction-card-front">
+                            <div class="dysfunction-number">02</div>
+                            <div class="dysfunction-tag">Competition-Obsessed</div>
+                            <div class="dysfunction-name">We'll Match<br>Whatever They Offer</div>
+                            <div class="dysfunction-pattern">Every deal becomes a price war when Sales holds pricing power. Discounting <em>is the pricing strategy</em>, to protect win rates. Differentiation messaging is abandoned the moment procurement pushes back.</div>
+                            <div class="dysfunction-cost">You win deals and destroy margins simultaneously. The brand becomes commoditized. Revenue grows. Profitability doesn't.</div>
+                            <span class="dysfunction-flip-trigger" onclick="flipCard('dys-compete', event)">See how I address this &rarr;</span>
+                        </div>
+
+                        <!-- BACK -->
+                        <div class="dysfunction-card-back">
+                            <div class="flip-back-header">
+                                <div class="flip-back-eyebrow">My Approach</div>
+                                <div class="flip-back-title">Discounting is a symptom. Governance and value narrative are the cure</div>
+                            </div>
+
+                            <div class="flip-pillar-group">
+                                <div class="flip-pillar-label">Strategic Pricing &amp; Architecture</div>
+                                <div class="flip-activity-list">
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(0, 'Discount Band Architecture')">Discount Band Architecture</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(0, 'Win/Loss Analysis')">Win/Loss Analysis</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(0, 'Price Realization Tracking')">Price Realization Tracking</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(0, 'Price Increase Strategy')">Price Increase Strategy &amp; Execution</span>
+                                </div>
+                            </div>
+
+                            <div class="flip-pillar-group">
+                                <div class="flip-pillar-label">Deal Desk &amp; Commercial Governance</div>
+                                <div class="flip-activity-list">
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(1, 'Approval Matrix')">Approval Matrix Design</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(1, 'Escalation Protocol')">Escalation Protocol Design</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(1, 'War Room')">War Room Facilitation</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(1, 'Deal Velocity')">Deal Velocity Optimization</span>
+                                </div>
+                            </div>
+
+                            <div class="flip-pillar-group">
+                                <div class="flip-pillar-label">Advanced Analytics</div>
+                                <div class="flip-activity-list">
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(2, 'Discount Leakage')">Discount Leakage Audits</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(2, 'Win/Loss Analysis')">Win/Loss Analysis</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(2, 'Price Realization Analysis')">Price Realization Analysis</span>
+                                </div>
+                            </div>
+
+                            <div class="flip-pillar-group">
+                                <div class="flip-pillar-label">Sales Enablement &amp; Value Advisory</div>
+                                <div class="flip-activity-list">
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(3, 'Competitive Battlecard')">Competitive Battlecard Development</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(3, 'Objection Handling')">Objection Handling Frameworks</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(3, 'Value-Based Selling Methodology')">Value-Based Selling Methodology Training</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(3, 'Sales Certification')">Sales Certification Programs</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(3, 'Pricing Office Hours')">Pricing Office Hours</span>
+                                </div>
+                            </div>
+
+                            <div class="flip-back-btn">
+                                <button onclick="unflipCard('dys-compete', event)">&#8592; Back</button>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-                <div class="dysfunction-card value">
-                    <div class="dysfunction-number">03</div>
-                    <div class="dysfunction-tag">Value-Blind</div>
-                    <div class="dysfunction-name">Beautiful Positioning,<br>Weak Pricing Power</div>
-                    <div class="dysfunction-pattern">Marketing builds a compelling value story. Sales can't translate it into a number that holds when procurement enters the room. Customers love the narrative. They buy on price.</div>
-                    <div class="dysfunction-cost">Differentiation exists in slides but not in realized prices. Value is created. It's just not captured.</div>
+
+                <!-- CARD 03: VALUE-BLIND -->
+                <div class="dysfunction-card value" id="dys-value">
+                    <div class="dysfunction-card-inner">
+
+                        <!-- FRONT -->
+                        <div class="dysfunction-card-front">
+                            <div class="dysfunction-number">03</div>
+                            <div class="dysfunction-tag">Value-Blind</div>
+                            <div class="dysfunction-name">Beautiful Positioning,<br>Weak Pricing Power</div>
+                            <div class="dysfunction-pattern">Marketing builds a compelling value story. Sales can't translate it into a number that holds when procurement enters the room. Customers love the narrative. They buy on price.</div>
+                            <div class="dysfunction-cost">Differentiation exists in slides but not in realized prices. Value is created. It's just not captured.</div>
+                            <span class="dysfunction-flip-trigger" onclick="flipCard('dys-value', event)">See how I address this &rarr;</span>
+                        </div>
+
+                        <!-- BACK -->
+                        <div class="dysfunction-card-back">
+                            <div class="flip-back-header">
+                                <div class="flip-back-eyebrow">My Approach</div>
+                                <div class="flip-back-title">Move value from the slide deck into the contract</div>
+                            </div>
+
+                            <div class="flip-pillar-group">
+                                <div class="flip-pillar-label">Value-Based Pricing &amp; Customer Economics</div>
+                                <div class="flip-activity-list">
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(5, 'Economic Value Estimation')">Economic Value Estimation (EVE)</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(5, 'Value Driver Identification')">Value Driver Identification &amp; Mapping</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(5, 'Competitive Value Gap')">Competitive Value Gap Quantification</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(5, 'Segment-Specific Value')">Segment-Specific Value Modeling</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(5, 'Premium Pricing')">Premium Pricing Justification</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(5, 'Value-Based Negotiation')">Value-Based Negotiation Support</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(5, 'Value Realization Tracking')">Value Realization Tracking</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(5, 'Willingness-to-Pay')">Willingness-to-Pay Research</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(5, 'Customer ROI')">Customer ROI Calculator Development</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(5, 'TCO Modeling')">TCO Modeling (Customer Perspective)</span>
+                                </div>
+                            </div>
+
+                            <div class="flip-pillar-group">
+                                <div class="flip-pillar-label">Sales Enablement &amp; Value Advisory</div>
+                                <div class="flip-activity-list">
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(3, 'TCO &amp; ROI Calculator')">TCO &amp; ROI Calculator Development</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(3, 'Value-Based Selling Methodology')">Value-Based Selling Methodology Training</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(3, 'Deal Structuring Workshops')">Deal Structuring Workshops</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(3, 'New Product Launch')">New Product Launch Enablement</span>
+                                </div>
+                            </div>
+
+                            <div class="flip-pillar-group">
+                                <div class="flip-pillar-label">Strategic Pricing &amp; Architecture</div>
+                                <div class="flip-activity-list">
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(0, 'Packaging &amp; Bundling')">Packaging &amp; Bundling Strategy</span>
+                                    <span class="flip-activity-link" onclick="jumpToAccordion(0, 'Value Metric Definition')">Value Metric Definition &amp; Alignment</span>
+                                </div>
+                            </div>
+
+                            <div class="flip-back-btn">
+                                <button onclick="unflipCard('dys-value', event)">&#8592; Back</button>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
+
             </div>
+            
         </div>
     </section>
     <!-- DEPTH OF EXPERTISE -->
@@ -1041,7 +1368,38 @@
          VISUAL PANEL CONTENT DEFINITIONS
     ═══════════════════════════════════════════════════════════════ -->
     <script>
+// ── Dysfunction Card Flip ─────────────────────────────────────────
 
+    function flipCard(cardId, event) {
+        if (event) event.stopPropagation();
+        const card = document.getElementById(cardId);
+        card.classList.add('flipped');
+    }
+
+    function unflipCard(cardId, event) {
+        if (event) event.stopPropagation();
+        const card = document.getElementById(cardId);
+        card.classList.remove('flipped');
+    }
+
+    // ── Jump to Accordion + Open It ───────────────────────────────────
+    // accordionIndex: 0=Strategic Pricing, 1=Deal Desk, 2=Analytics,
+    //                 3=Sales Enablement, 4=CPQ, 5=Value-Based, 6=SaaS, 7=Cross-Functional
+
+    function jumpToAccordion(accordionIndex, activityHint) {
+        const items = document.querySelectorAll('.accordion-item');
+        const target = items[accordionIndex];
+        if (!target) return;
+
+        document.querySelectorAll('.accordion-item.open').forEach(el => el.classList.remove('open'));
+        target.classList.add('open');
+
+        setTimeout(() => {
+            const offset = 80;
+            const top = target.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+        }, 80);
+    }
     // ── Visual HTML builders ──────────────────────────────────────────
 
     const VISUALS = {
