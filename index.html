@@ -547,10 +547,11 @@
         .fade-in.visible { opacity: 1; transform: translateY(0); }
     /* ── METRICS BAND ──────────────────────────────────────── */
         .metrics-band {
-            background: var(--navy-deep);
+            background: linear-gradient(135deg, #f5f2ec 0%, #ede9e0 50%, #e8e3d8 100%);
             padding: 52px 20px;
             margin: 0;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+            border-top: 1px solid rgba(30,58,95,0.08);
+            border-bottom: 1px solid rgba(30,58,95,0.08);
         }
         .metrics-band-inner {
             max-width: 1200px;
@@ -561,10 +562,10 @@
             font-weight: 700;
             letter-spacing: 0.22em;
             text-transform: uppercase;
-            color: var(--accent-gold);
+            color: var(--navy-light);
             text-align: center;
             margin-bottom: 36px;
-            opacity: 0.85;
+            opacity: 0.5;
         }
         .metrics-band-grid {
             display: grid;
@@ -574,12 +575,12 @@
         .metric-tile {
             text-align: center;
             padding: 20px 12px;
-            border-right: 1px solid rgba(255,255,255,0.07);
+            border-right: 1px solid rgba(30,58,95,0.1);
             position: relative;
             transition: background 0.25s;
         }
         .metric-tile:last-child { border-right: none; }
-        .metric-tile:hover { background: rgba(255,255,255,0.04); }
+        .metric-tile:hover { background: rgba(30,58,95,0.04); }
         .metric-tile.highlight .metric-tile-number {
             color: var(--accent-gold);
         }
@@ -587,13 +588,13 @@
             font-family: Georgia, serif;
             font-size: 2rem;
             font-weight: 700;
-            color: #ffffff;
+            color: var(--navy-light);
             margin-bottom: 8px;
             line-height: 1;
         }
         .metric-tile-label {
             font-size: 0.72rem;
-            color: rgba(255,255,255,0.45);
+            color: var(--text-muted);
             line-height: 1.5;
             font-family: 'Segoe UI', sans-serif;
         }
