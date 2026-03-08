@@ -573,6 +573,17 @@
         .dysfunction-card.compete .dysfunction-flip-trigger { color: #E07070; }
         .dysfunction-card.value   .dysfunction-flip-trigger { color: #7EB8C9; }
         .dysfunction-flip-trigger:hover { opacity: 0.75; }
+
+          /* ACCORDION JUMP GLOW */
+        @keyframes accordionPulse {
+            0%   { box-shadow: 0 0 0 0 rgba(91,168,196,0); border-left-color: var(--accent-blue); }
+            25%  { box-shadow: 0 0 0 8px rgba(91,168,196,0.25); border-left-color: var(--accent-blue); }
+            60%  { box-shadow: 0 0 0 16px rgba(91,168,196,0.1); border-left-color: var(--accent-blue); }
+            100% { box-shadow: 0 2px 12px rgba(12,28,46,0.08); border-left-color: var(--accent-blue); }
+        }
+        .accordion-item.jump-glow {
+            animation: accordionPulse 1.1s ease-out forwards;
+        }
         
         /* ANIMATIONS */
         .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s; }
@@ -1766,6 +1777,16 @@
             const top = target.getBoundingClientRect().top + window.scrollY - offset;
             window.scrollTo({ top: top, behavior: 'smooth' });
         }, 80);
+
+        // Glow pulse after scroll lands
+        setTimeout(() => {
+            target.classList.remove('jump-glow');
+            void target.offsetWidth; // force reflow so re-triggering works
+            target.classList.add('jump-glow');
+            target.addEventListener('animationend', () => {
+                target.classList.remove('jump-glow');
+            }, { once: true });
+        }, 520);
     }
     // ── Visual HTML builders ──────────────────────────────────────────
 
