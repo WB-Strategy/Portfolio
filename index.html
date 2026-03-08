@@ -584,6 +584,102 @@
         .accordion-item.jump-glow {
             animation: accordionPulse 1.1s ease-out forwards;
         }
+        /* CREDITS */
+        .credits-section {
+            max-width: 900px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+        .credits-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            width: 100%;
+            padding: 14px 0;
+            color: var(--text-muted);
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+        .credits-toggle:hover { color: var(--navy-light); }
+        .credits-toggle-line {
+            flex: 1;
+            height: 1px;
+            background: rgba(30,58,95,0.12);
+        }
+        .credits-toggle-chevron {
+            font-size: 0.8rem;
+            transition: transform 0.35s ease;
+            display: inline-block;
+        }
+        .credits-section.open .credits-toggle-chevron {
+            transform: rotate(180deg);
+        }
+        .credits-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .credits-section.open .credits-body {
+            max-height: 600px;
+        }
+        .credits-inner {
+            background: white;
+            border-radius: 10px;
+            border-top: 3px solid var(--accent-gold);
+            box-shadow: 0 2px 16px rgba(12,28,46,0.07);
+            padding: 32px 36px 36px;
+            margin-bottom: 8px;
+        }
+        .credits-intro {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 28px;
+            font-style: italic;
+        }
+        .credits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
+        .credits-company {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .credits-company-name {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--navy-light);
+            margin-bottom: 4px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid rgba(30,58,95,0.1);
+        }
+        .credits-person {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        .credits-person span {
+            font-size: 0.72rem;
+            color: rgba(30,58,95,0.4);
+            display: block;
+        }
+        @media (max-width: 600px) {
+            .credits-inner { padding: 24px 20px 28px; }
+            .credits-grid { grid-template-columns: 1fr; }
+        }
+
         
         /* ANIMATIONS */
         .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s; }
@@ -1734,7 +1830,44 @@
     <div id="modal-onboarding" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-onboarding')">&times;</span><h2>Deal Desk Onboarding &amp; Enablement Program</h2><p><strong>Timeline:</strong> Feb 2024 - Aug 2024 | <strong>Sessions Delivered:</strong> 40+ | <strong>Context:</strong> 95% workforce turnover during downsizing</p><h3>Organizational Crisis</h3><p>AT&amp;T reduced Custom Deal Desk from 80 professionals to 50 across 3 downsizing phases. Only 5% of original team remained, creating massive institutional knowledge loss.</p><div class="highlight-box"><strong>The Problem:</strong> New hires unprepared, ramp time 8-12 weeks, broken onboarding program. AT&amp;T hiring less experienced replacements who needed to handle the same complex enterprise deals as departing experts.</div><h3>Solution</h3><ul><li><strong>Week 1:</strong> Pricing policy, tools, processes, product overview</li><li><strong>Week 2:</strong> Deal structuring, bundling, negotiation skills, shadowing</li><li><strong>Week 3:</strong> Advanced topics, product deep-dives, certification exam</li></ul><h3>Deliverables</h3><ul><li>15 training decks (800+ slides)</li><li>25+ recorded video tutorials (15+ hours)</li><li>SOPs for common tasks</li><li>Certification exam (50 questions, 85% passing score)</li></ul><h3>Impact</h3><div class="metric-grid"><div class="metric-box"><div class="number">30%</div><div>Ramp Time Reduction</div></div><div class="metric-box"><div class="number">40%</div><div>Error Rate Reduction</div></div><div class="metric-box"><div class="number">92%</div><div>Certification Pass Rate</div></div></div></div></div>
     <div id="modal-sabre" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-sabre')">&times;</span><h2>Sabre: API Re-Monetization</h2><p><strong>Company:</strong> Sabre Corporation (B2B SaaS Airline Solutions) | <strong>Timeline:</strong> 2019-2021</p><h3>The Pricing Misalignment</h3><p>Sabre's Passenger Service System was priced per-passenger-boarded, but profitability was driven by API calls. Airlines with high API usage relative to passengers were unprofitable customers the pricing model couldn't identify.</p><div class="highlight-box"><strong>Strategic Insight:</strong> Costs tied to API calls (reservation creation, cancellations, modifications), not passengers. Value metric misaligned with cost structure.</div><h3>Approach</h3><ul><li>Categorized millions of monthly API calls by value type</li><li>Designed two-track model: preferred per-API-call and legacy bridge with overage fees</li><li>Migration strategy: grandfather Track B, incent new customers to Track A</li></ul><h3>Impact</h3><ul><li>60% migrated to Track A within 18 months</li><li>Overage fees protected margin on remaining Track B customers</li><li>Created unplanned professional services revenue stream</li></ul><h3>Additional Achievement</h3><p><strong>10% Margin Uplift:</strong> Identified underpriced product with under 5% Deal Desk involvement. Recommended 10% price increase over Sales resistance. Result: immediate 10% margin uplift on 95% of deals with win rate impact of only 3 points (85% to 82%).</p></div></div>
     <div id="modal-oxygen" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal-oxygen')">&times;</span><h2>oxyGEN Scholarship Program Leadership</h2><p><strong>Organization:</strong> oxyGEN (AT&amp;T Employee Resource Group, 501(c)(3) nonprofit) | <strong>Members:</strong> 5,000+ globally</p><h3>Program Overview</h3><p>Served as Director of the Scholarship Program, managing the annual $55K STEAM Scholarship supporting undergraduate students from AT&amp;T employee families.</p><h3>Responsibilities</h3><ul><li>Raised $55K annually from AT&amp;T employee donations and fundraising events</li><li>Managed 500+ applications annually</li><li>Built standardized, auditable selection process using scoring rubrics and blind review</li><li>Collaborated with National Board, maintained nonprofit compliance</li></ul><div class="highlight-box"><strong>Leadership Challenge:</strong> Led cross-functional volunteer team without formal authority. Had to influence through vision, execution excellence, and collaborative approach -- the same dynamic as pricing leadership.</div><h3>Relevance to Pricing Roles</h3><p>Pricing leaders lead cross-functionally without direct authority over Sales, Product, Finance. Must influence through data, relationships, and delivery. This role demonstrated that capability in a high-accountability, low-authority environment.</p></div></div>
-
+  <!-- CREDITS -->
+    <section class="credits-section" id="credits-section">
+        <button class="credits-toggle" onclick="toggleCredits()">
+            <div class="credits-toggle-line"></div>
+            Credits &amp; Acknowledgments
+            <span class="credits-toggle-chevron">&#8964;</span>
+            <div class="credits-toggle-line"></div>
+        </button>
+        <div class="credits-body">
+            <div class="credits-inner">
+                <p class="credits-intro">None of the above is entirely my original work. Over a decade in pricing, the frameworks I rely on, the instincts I trust, and the judgment I've developed were shaped by bosses, colleagues, and mentors who were generous with their time and candid with their feedback. I am grateful to each of them.</p>
+                <div class="credits-grid">
+                    <div class="credits-company">
+                        <div class="credits-company-name">AT&amp;T</div>
+                        <div class="credits-person">Will Wrench<span>Director</span></div>
+                        <div class="credits-person">Robert Flowers<span>AVP</span></div>
+                        <div class="credits-person">Julie Kutchinski<span>VP</span></div>
+                    </div>
+                    <div class="credits-company">
+                        <div class="credits-company-name">PwC</div>
+                        <div class="credits-person">Colin Carroll<span>Managing Partner</span></div>
+                        <div class="credits-person">Jason Robert<span>Managing Director</span></div>
+                        <div class="credits-person">Eric Goldsborough<span>Managing Partner</span></div>
+                        <div class="credits-person">CJ Bangah<span>Managing Partner</span></div>
+                    </div>
+                    <div class="credits-company">
+                        <div class="credits-company-name">Sabre Corporation</div>
+                        <div class="credits-person">Vinit Doshi<span>VP</span></div>
+                        <div class="credits-person">Tom Woods<span>Director</span></div>
+                        <div class="credits-person">Kate McClendon<span>Director</span></div>
+                        <div class="credits-person">Matt Amason<span>Director</span></div>
+                        <div class="credits-person">Russ Pickett<span>Director</span></div>
+                        <div class="credits-person">Autumn Miller<span>Senior Manager</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- FOOTER -->
     <footer>
         <p>&copy; 2026 William Beasley | Strategic Pricing Portfolio</p>
@@ -1859,7 +1992,12 @@
             setTimeout(() => toast.remove(), 320);
         }, 5000);
     }
-        
+         // ── Credits Toggle ────────────────────────────────────────────────
+
+    function toggleCredits() {
+        const section = document.getElementById('credits-section');
+        section.classList.toggle('open');
+    }
 // ── Dysfunction Card Flip ─────────────────────────────────────────
 
     function flipCard(cardId, event) {
