@@ -146,6 +146,10 @@
             opacity: 0;
             flex-shrink: 0;
             position: relative;
+            display: none;
+        }
+        .visual-panel.open {
+            display: flex;
         }
         .visual-panel.open {
             width: 420px; min-width: 420px; opacity: 1;
@@ -2370,6 +2374,7 @@
         inner.innerHTML = VISUALS[vizId]();
 
         // Open panel
+        panel.style.display = 'flex';
         panel.classList.add('open');
         panel.dataset.activeViz = vizId;
 
@@ -2397,6 +2402,7 @@
       inner.style.transform = 'translateX(12px)';
       setTimeout(() => {
         panel.classList.remove('open');
+        panel.style.display = 'none';
         panel.dataset.activeViz = '';
       }, 280);
     }
