@@ -1178,14 +1178,34 @@
                                 <div class="method-item"><span class="method-name">Partner &amp; Reseller Economics</span><span class="method-desc">Three-party pricing where the reseller's margin floor, the end customer's price ceiling, and the vendor's cost floor all have to coexist. Modeling the economics before the channel agreement is signed.</span></div>
                             </div>
                         </div>
-                        <div class="methods-subgroup">
+                         <div class="methods-subgroup">
                             <div class="methods-subgroup-label">Revenue Optimization</div>
-                            <div class="methods-grid">
-                            <div class="method-item has-visual" onclick="showVisual('area-saas-revenue','viz-migration',this)"><span class="method-name">Price Migration Strategy</span><span class="method-desc">Moving customers from a legacy model to a new one without triggering churn, contract disputes, or Sales rebellion -- grandfather clauses, migration incentives, and phased transition design.</span><span class="method-visual-hint">▶ See example output</span></div>
-                                <div class="method-item"><span class="method-name">Net Revenue Retention (NRR) Optimization</span><span class="method-desc">Designing expansion pricing -- upsell triggers, usage thresholds, cross-sell structures -- so that customer growth translates into revenue growth without requiring a new sales motion.</span></div>
-                                <div class="method-item"><span class="method-name">Churn-Adjusted Price Modeling</span><span class="method-desc">Modeling the net revenue impact of price changes when churn elasticity is factored in -- the analysis that separates a well-supported price increase from one that looks good until renewals come in.</span></div>
+                            <div class="methods-area" id="area-saas-revenue">
+                                <div class="methods-and-panel">
+                                    <div class="methods-grid-wrap">
+                                        <div class="methods-grid">
+                                            <div class="method-item has-visual" onclick="showVisual('area-saas-revenue','viz-migration',this)">
+                                                <span class="method-name">Price Migration Strategy</span>
+                                                <span class="method-desc">Moving customers from a legacy model to a new one without triggering churn, contract disputes, or Sales rebellion -- grandfather clauses, migration incentives, and phased transition design.</span>
+                                                <span class="method-visual-hint">▶ See example output</span>
+                                            </div>
+                                            <div class="method-item">
+                                                <span class="method-name">Net Revenue Retention (NRR) Optimization</span>
+                                                <span class="method-desc">Designing expansion pricing -- upsell triggers, usage thresholds, cross-sell structures -- so that customer growth translates into revenue growth without requiring a new sales motion.</span>
+                                            </div>
+                                            <div class="method-item">
+                                                <span class="method-name">Churn-Adjusted Price Modeling</span>
+                                                <span class="method-desc">Modeling the net revenue impact of price changes when churn elasticity is factored in -- the analysis that separates a well-supported price increase from one that looks good until renewals come in.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="visual-panel" id="panel-area-saas-revenue">
+                                        <button class="visual-panel-close" onclick="closeVisual('area-saas-revenue')">✕</button>
+                                        <div class="visual-panel-inner" id="panel-inner-area-saas-revenue"></div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </div>                    
                         <div class="methods-subgroup">
                             <div class="methods-subgroup-label">Financial Fluency</div>
                             <div class="methods-grid">
@@ -1221,13 +1241,36 @@
                     </div>
                     <div class="zone-methods">
                         <div class="zone-label">How It Gets Done</div>
-                        <div class="methods-subgroup">
+                    <div class="methods-subgroup">
                             <div class="methods-subgroup-label">Structural Design</div>
-                            <div class="methods-grid">
-                                <div class="method-item"><span class="method-name">Pricing Center of Excellence (COE) Design</span><span class="method-desc">Building the org structure, governance model, decision rights, and operating cadence for a pricing function that outlasts its founder.</span></div>
-                                <div class="method-item has-visual" onclick="showVisual('area-crossfunc-structural','viz-raci',this)"><span class="method-name">RACI Matrix &amp; Governance Framework Design</span><span class="method-desc">Clarifying who decides, who inputs, who executes, and who needs to know -- for every pricing decision type, at every deal size threshold.</span><span class="method-visual-hint">▶ See example output</span></div>
-                                <div class="method-item"><span class="method-name">Pricing Council Facilitation</span><span class="method-desc">Running the executive forum -- CFO, CRO, CPO -- where pricing strategy shifts are reviewed and approved. Preparing the agenda, managing the pre-read, and ensuring decisions get made rather than deferred.</span></div>
-                                <div class="method-item"><span class="method-name">Organizational Alignment &amp; Stakeholder Mapping</span><span class="method-desc">Identifying the decision-makers, influencers, and blockers across functions -- and building the relationships and communication cadences that keep pricing from becoming someone else's afterthought.</span></div>
+                            <div class="methods-area" id="area-crossfunc-structural">
+                                <div class="methods-and-panel">
+                                    <div class="methods-grid-wrap">
+                                        <div class="methods-grid">
+                                            <div class="method-item">
+                                                <span class="method-name">Pricing Center of Excellence (COE) Design</span>
+                                                <span class="method-desc">Building the org structure, governance model, decision rights, and operating cadence for a pricing function that outlasts its founder.</span>
+                                            </div>
+                                            <div class="method-item has-visual" onclick="showVisual('area-crossfunc-structural','viz-raci',this)">
+                                                <span class="method-name">RACI Matrix &amp; Governance Framework Design</span>
+                                                <span class="method-desc">Clarifying who decides, who inputs, who executes, and who needs to know -- for every pricing decision type, at every deal size threshold.</span>
+                                                <span class="method-visual-hint">▶ See example output</span>
+                                            </div>
+                                            <div class="method-item">
+                                                <span class="method-name">Pricing Council Facilitation</span>
+                                                <span class="method-desc">Running the executive forum -- CFO, CRO, CPO -- where pricing strategy shifts are reviewed and approved. Preparing the agenda, managing the pre-read, and ensuring decisions get made rather than deferred.</span>
+                                            </div>
+                                            <div class="method-item">
+                                                <span class="method-name">Organizational Alignment &amp; Stakeholder Mapping</span>
+                                                <span class="method-desc">Identifying the decision-makers, influencers, and blockers across functions -- and building the relationships and communication cadences that keep pricing from becoming someone else's afterthought.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="visual-panel" id="panel-area-crossfunc-structural">
+                                        <button class="visual-panel-close" onclick="closeVisual('area-crossfunc-structural')">✕</button>
+                                        <div class="visual-panel-inner" id="panel-inner-area-crossfunc-structural"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="methods-subgroup">
