@@ -5,11 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>William Beasley | Strategic Pricing Portfolio</title>
     <style>
+          /* ── DESIGN SYSTEM TOKENS ─────────────────────────────── */
+        :root {
+            --navy-deep:    #0c1c2e;
+            --navy-mid:     #152d4a;
+            --navy-light:   #1e3a5f;
+            --steel:        #2e5480;
+            --steel-light:  #3d6a96;
+
+            --accent-blue:  #5BA8C4;
+            --accent-gold:  #D4A853;
+            --accent-green: #4DB87A;
+            --accent-purple:#9B7EC8;
+
+            --text-primary: #1a2535;
+            --text-muted:   #546e7a;
+            --surface:      #ffffff;
+            --bg-warm:      #f2f0eb;
+            --bg-card:      #ffffff;
+
+            --hero-gradient: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-light) 55%, var(--steel) 100%);
+        }
+
+        /* ── HERO TEXTURE OVERLAY ──────────────────────────────── */
+        /* SVG noise grain — gives the hero tactile depth */
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 256px 256px;
+            pointer-events: none;
+            z-index: 0;
+            mix-blend-mode: overlay;
+        }
+        .hero { position: relative; }
+        .hero-container { position: relative; z-index: 1; }
+
+        /* ── SUBTLE TRIANGLE ECHO IN HERO ─────────────────────── */
+        /* Very faint geometric callback to the philosophy triangle */
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            right: 0;
+            width: 45%;
+            height: 100%;
+            background: linear-gradient(135deg,
+                transparent 0%,
+                transparent 60%,
+                rgba(93, 168, 196, 0.04) 60%,
+                rgba(93, 168, 196, 0.04) 100%
+            );
+            pointer-events: none;
+            z-index: 0;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: #f8f9fa; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: var(--text-primary); background: var(--bg-warm); }
 
         /* HERO */
-        .hero { background: linear-gradient(135deg, #1e3a5f 0%, #4a7ba7 100%); color: white; padding: 60px 20px; }
+        .hero { background: var(--hero-gradient); color: white; padding: 60px 20px; }
         .hero-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 60px; align-items: center; }
         .hero-left { display: flex; justify-content: center; align-items: center; }
         .hero-photo { width: 100%; max-width: 350px; height: auto; border-radius: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.3); border: 5px solid rgba(255,255,255,0.2); }
@@ -18,26 +74,27 @@
         .hero .tagline { font-family: Georgia, serif; font-size: 1.8rem; margin-bottom: 25px; font-weight: 300; color: #e8f4f8; }
         .hero .value-prop { font-size: 1.15rem; margin-bottom: 30px; line-height: 1.8; color: #fff; }
         .contact-buttons { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 15px; }
-        .contact-buttons a { display: inline-block; padding: 15px 30px; background: white; color: #1e3a5f; text-decoration: none; border-radius: 5px; font-weight: 600; transition: transform 0.3s, box-shadow 0.3s; }
-        .contact-buttons a:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        .contact-buttons a { display: inline-block; padding: 15px 30px; background: rgba(255,255,255,0.12); color: #ffffff; text-decoration: none; border-radius: 5px; font-weight: 600; border: 1px solid rgba(255,255,255,0.25); transition: transform 0.3s, box-shadow 0.3s, background 0.3s; backdrop-filter: blur(4px); }
+        .contact-buttons a:first-child { background: var(--accent-gold); color: var(--navy-deep); border-color: var(--accent-gold); }       .contact-buttons a:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,0.25); background: rgba(255,255,255,0.2); }
+        .contact-buttons a:first-child:hover { background: #e0b35a; box-shadow: 0 10px 24px rgba(212,168,83,0.35); }
 
         /* ABOUT */
         .about { max-width: 1200px; margin: 60px auto; padding: 0 20px; }
-        .about h2 { font-family: Georgia, serif; font-size: 2.5rem; color: #1e3a5f; margin-bottom: 30px; text-align: center; }
-        .about-content { background: white; padding: 40px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-bottom: 40px; }
-        .about-content p { font-size: 1.1rem; margin-bottom: 20px; color: #555; }
+        .about h2 { font-family: Georgia, serif; font-size: 2.5rem; color: var(--navy-light); margin-bottom: 30px; text-align: center; }
+        .about-content { background: var(--surface); padding: 40px; border-radius: 10px; box-shadow: 0 4px 24px rgba(12,28,46,0.10); margin-bottom: 40px; border-top: 3px solid var(--accent-gold); }        .about-content p { font-size: 1.1rem; margin-bottom: 20px; color: #555; }
         .key-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; }
-        .metric { background: linear-gradient(135deg, #4a7ba7 0%, #1e3a5f 100%); color: white; padding: 25px; border-radius: 10px; text-align: center; }
+        .metric { background: linear-gradient(135deg, var(--steel-light) 0%, var(--navy-deep) 100%); color: white; padding: 25px; border-radius: 10px; text-align: center; box-shadow: 0 4px 20px rgba(12,28,46,0.18); }
         .metric .number { font-family: Georgia, serif; font-size: 2.2rem; font-weight: 700; margin-bottom: 10px; }
         .metric .label { font-size: 0.95rem; opacity: 0.95; line-height: 1.4; }
 
         /* EXPERTISE ACCORDION */
         .expertise-section { max-width: 1200px; margin: 80px auto; padding: 0 20px; }
         .expertise-section .section-header { text-align: center; margin-bottom: 60px; }
-        .expertise-section .section-header h2 { font-size: 2.8rem; color: #1e3a5f; font-family: Georgia, 'Times New Roman', serif; font-weight: 700; margin-bottom: 18px; }
+        .expertise-section .section-header h2 { font-size: 2.8rem; color: var(--navy-light); font-family: Georgia, 'Times New Roman', serif; font-weight: 700; margin-bottom: 18px; }
         .expertise-section .section-header p { font-size: 1.15rem; color: #546e7a; max-width: 780px; margin: 0 auto; line-height: 1.8; }
-        .accordion-item { background: #ffffff; border-radius: 10px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(30,58,95,0.08); overflow: visible; transition: box-shadow 0.3s ease; }
-        .accordion-item:hover { box-shadow: 0 4px 16px rgba(30,58,95,0.14); }
+        .accordion-item { background: var(--surface); border-radius: 10px; margin-bottom: 14px; box-shadow: 0 2px 12px rgba(12,28,46,0.08); overflow: visible; transition: box-shadow 0.3s ease, border-color 0.3s ease; border-left: 3px solid transparent; }
+        .accordion-item:hover { box-shadow: 0 6px 24px rgba(12,28,46,0.13); border-left-color: var(--steel-light); }
+        .accordion-item.open { border-left-color: var(--accent-blue); }
         .accordion-trigger { width: 100%; background: none; border: none; padding: 26px 35px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; text-align: left; gap: 20px; }
         .accordion-trigger-left { display: flex; align-items: center; gap: 18px; }
         .accordion-role-badge { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #4a7ba7; background: #e8f0f7; padding: 5px 12px; border-radius: 20px; white-space: nowrap; }
@@ -169,7 +226,7 @@
 
         /* PORTFOLIO */
         .portfolio { max-width: 1400px; margin: 60px auto; padding: 0 20px; }
-        .portfolio h2 { font-family: Georgia, serif; font-size: 2.5rem; color: #1e3a5f; margin-bottom: 50px; text-align: center; }
+        .portfolio h2 { font-family: Georgia, serif; font-size: 2.5rem; color: var(--navy-light); margin-bottom: 50px; text-align: center; }
         .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
         .project-card-container { display: flex; flex-direction: column; contain: layout paint; height: 370px; }
         .project-title { font-family: Georgia, serif; font-size: 1.4rem; color: #1e3a5f; margin-bottom: 15px; font-weight: 600; text-align: center; height: 70px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -203,7 +260,7 @@
         .modal-content .metric-box .number { font-family: Georgia, serif; font-size: 2rem; font-weight: 700; margin-bottom: 5px; }
 
         /* FOOTER */
-        footer { background: #1e3a5f; color: white; text-align: center; padding: 40px 20px; margin-top: 80px; }
+        footer { background: var(--navy-deep); color: white; text-align: center; padding: 40px 20px; margin-top: 80px; border-top: 3px solid var(--accent-gold); }
         footer p { margin-bottom: 10px; }
         footer a { color: #e8f4f8; text-decoration: none; }
         footer a:hover { text-decoration: underline; }
@@ -234,8 +291,7 @@
             .visual-panel-inner { width: 100% !important; }
         }
       /* PRICING PHILOSOPHY */
-        .philosophy-section { background: #1e3a5f; padding: 80px 20px; margin: 0; }
-        .philosophy-inner { max-width: 1200px; margin: 0 auto; }
+        .philosophy-section { background: linear-gradient(160deg, var(--navy-deep) 0%, var(--navy-light) 100%); padding: 80px 20px; margin: 0; }        .philosophy-inner { max-width: 1200px; margin: 0 auto; }
         .philosophy-header { text-align: center; margin-bottom: 16px; }
         .philosophy-overline { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #7EB8C9; margin-bottom: 14px; display: block; }
         .philosophy-header h2 { font-family: Georgia, serif; font-size: 2.4rem; color: #F1EDE4; font-weight: 700; margin-bottom: 20px; }
@@ -318,21 +374,21 @@
         }
 
         /* Bucket color theming */
-        .expertise-bucket.strategy .expertise-bucket-label  { color: #7EB8C9; }
-        .expertise-bucket.strategy .expertise-bucket-line   { background: linear-gradient(to right, #7EB8C940, transparent); }
-        .expertise-bucket.strategy .expertise-bucket-count  { color: #7EB8C9; }
+        .expertise-bucket.strategy .expertise-bucket-label  { color: var(--accent-blue); }
+        .expertise-bucket.strategy .expertise-bucket-line   { background: linear-gradient(to right, rgba(91,168,196,0.45), transparent); }
+        .expertise-bucket.strategy .expertise-bucket-count  { color: var(--accent-blue); }
 
-        .expertise-bucket.governance .expertise-bucket-label { color: #C8A96E; }
-        .expertise-bucket.governance .expertise-bucket-line  { background: linear-gradient(to right, #C8A96E40, transparent); }
-        .expertise-bucket.governance .expertise-bucket-count { color: #C8A96E; }
+        .expertise-bucket.governance .expertise-bucket-label { color: var(--accent-gold); }
+        .expertise-bucket.governance .expertise-bucket-line  { background: linear-gradient(to right, rgba(212,168,83,0.45), transparent); }
+        .expertise-bucket.governance .expertise-bucket-count { color: var(--accent-gold); }
 
-        .expertise-bucket.systems .expertise-bucket-label   { color: #7EC99A; }
-        .expertise-bucket.systems .expertise-bucket-line    { background: linear-gradient(to right, #7EC99A40, transparent); }
-        .expertise-bucket.systems .expertise-bucket-count   { color: #7EC99A; }
+        .expertise-bucket.systems .expertise-bucket-label   { color: var(--accent-green); }
+        .expertise-bucket.systems .expertise-bucket-line    { background: linear-gradient(to right, rgba(77,184,122,0.45), transparent); }
+        .expertise-bucket.systems .expertise-bucket-count   { color: var(--accent-green); }
 
-        .expertise-bucket.intelligence .expertise-bucket-label { color: #B89FD4; }
-        .expertise-bucket.intelligence .expertise-bucket-line  { background: linear-gradient(to right, #B89FD440, transparent); }
-        .expertise-bucket.intelligence .expertise-bucket-count { color: #B89FD4; }
+        .expertise-bucket.intelligence .expertise-bucket-label { color: var(--accent-purple); }
+        .expertise-bucket.intelligence .expertise-bucket-line  { background: linear-gradient(to right, rgba(155,126,200,0.45), transparent); }
+        .expertise-bucket.intelligence .expertise-bucket-count { color: var(--accent-purple); }
           /* DYSFUNCTION CARD FLIP ENHANCEMENT */
         .dysfunction-card {
             perspective: 1000px;
@@ -489,6 +545,68 @@
         /* ANIMATIONS */
         .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
+    /* ── METRICS BAND ──────────────────────────────────────── */
+        .metrics-band {
+            background: var(--navy-deep);
+            padding: 52px 20px;
+            margin: 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .metrics-band-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .metrics-band-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            text-align: center;
+            margin-bottom: 36px;
+            opacity: 0.85;
+        }
+        .metrics-band-grid {
+            display: grid;
+            grid-template-columns: repeat(9, 1fr);
+            gap: 0;
+        }
+        .metric-tile {
+            text-align: center;
+            padding: 20px 12px;
+            border-right: 1px solid rgba(255,255,255,0.07);
+            position: relative;
+            transition: background 0.25s;
+        }
+        .metric-tile:last-child { border-right: none; }
+        .metric-tile:hover { background: rgba(255,255,255,0.04); }
+        .metric-tile.highlight .metric-tile-number {
+            color: var(--accent-gold);
+        }
+        .metric-tile-number {
+            font-family: Georgia, serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+        .metric-tile-label {
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.45);
+            line-height: 1.5;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        @media (max-width: 900px) {
+            .metrics-band-grid { grid-template-columns: repeat(3, 1fr); }
+            .metric-tile { border-bottom: 1px solid rgba(255,255,255,0.07); }
+            .metric-tile:nth-child(3n) { border-right: none; }
+        }
+        @media (max-width: 480px) {
+            .metrics-band-grid { grid-template-columns: repeat(2, 1fr); }
+            .metric-tile:nth-child(3n) { border-right: 1px solid rgba(255,255,255,0.07); }
+            .metric-tile:nth-child(2n) { border-right: none; }
+        }
     </style>
 </head>
 <body>
@@ -502,7 +620,7 @@
             <div class="hero-right">
                 <h1>William Beasley</h1>
                 <div class="tagline">Strategic Pricing Leader</div>
-                <p class="value-prop">10+ years building pricing functions, driving margin optimization, and enabling Sales organizations to win profitably across B2B SaaS, travel &amp; hospitality, telecommunications, and professional services.</p>
+                <p class="value-prop">William Beasley is a strategic pricing leader with more than a decade building pricing functions and commercial operations across B2B SaaS, telecommunications, travel technology, and professional services. He has led pricing strategy for Fortune 50 enterprise software and global industrial technology companies, with a track record spanning Deal Desk operations, CPQ implementation, and Sales enablement at scale.</p>
                 <div class="contact-buttons">
                     <a href="https://www.linkedin.com/in/williambeasley48" target="_blank">LinkedIn</a>
                     <a href="mailto:wnb1@ricealumni.net">Email Me</a>
@@ -512,22 +630,47 @@
         </div>
     </section>
 
-    <!-- ABOUT -->
-    <section class="about fade-in">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <p>Strategic pricing leader with a proven track record of building and scaling pricing functions, optimizing existing operations, and driving measurable business impact. Expertise spans strategic pricing strategy, Deal Desk operations, CPQ implementation, pricing analytics, and Sales enablement.</p>
-            <p>Operating within the Fortune 100 ecosystem, spearheading pricing strategies for the world's largest enterprise software provider and a global leader in industrial geospatial technology. A unique blend of strategic rigor and hands-on execution that consistently delivers margin improvements across $85M+ portfolios and secures seven-figure consulting projects through data-driven Sales enablement.</p>
-            <div class="key-metrics">
-                <div class="metric"><div class="number">5</div><div class="label">Fortune 50 Clients Led</div></div>
-                <div class="metric"><div class="number">$85M+</div><div class="label">Annual Revenue Portfolio</div></div>
-                <div class="metric"><div class="number">15</div><div class="label">Product Pricing Launches</div></div>
-                <div class="metric"><div class="number">108+</div><div class="label">Pricing Cycles Led</div></div>
-                <div class="metric"><div class="number">3</div><div class="label">Pricing Center Designs</div></div>
-                <div class="metric"><div class="number">8</div><div class="label">CRM/CPQ Systems Enabled</div></div>
-                <div class="metric"><div class="number">18%</div><div class="label">Margin Improvements</div></div>
-                <div class="metric"><div class="number">$10M+</div><div class="label">Transformation Projects</div></div>
-                <div class="metric"><div class="number">85%</div><div class="label">Cycle Time Reductions</div></div>
+     <!-- IMPACT METRICS BAND -->
+    <section class="metrics-band fade-in">
+        <div class="metrics-band-inner">
+            <div class="metrics-band-label">Career Impact at a Glance</div>
+            <div class="metrics-band-grid">
+                <div class="metric-tile">
+                    <div class="metric-tile-number">5</div>
+                    <div class="metric-tile-label">Fortune 50<br>Clients Led</div>
+                </div>
+                <div class="metric-tile">
+                    <div class="metric-tile-number">$85M+</div>
+                    <div class="metric-tile-label">Annual Revenue<br>Portfolio</div>
+                </div>
+                <div class="metric-tile">
+                    <div class="metric-tile-number">108+</div>
+                    <div class="metric-tile-label">Pricing Cycles<br>Led</div>
+                </div>
+                <div class="metric-tile">
+                    <div class="metric-tile-number">15</div>
+                    <div class="metric-tile-label">Product Pricing<br>Launches</div>
+                </div>
+                <div class="metric-tile">
+                    <div class="metric-tile-number">3</div>
+                    <div class="metric-tile-label">Pricing Center<br>Designs</div>
+                </div>
+                <div class="metric-tile">
+                    <div class="metric-tile-number">8</div>
+                    <div class="metric-tile-label">CRM/CPQ<br>Systems Enabled</div>
+                </div>
+                <div class="metric-tile highlight">
+                    <div class="metric-tile-number">18%</div>
+                    <div class="metric-tile-label">Margin<br>Improvements</div>
+                </div>
+                <div class="metric-tile">
+                    <div class="metric-tile-number">$10M+</div>
+                    <div class="metric-tile-label">Transformation<br>Projects</div>
+                </div>
+                <div class="metric-tile highlight">
+                    <div class="metric-tile-number">85%</div>
+                    <div class="metric-tile-label">Cycle Time<br>Reductions</div>
+                </div>
             </div>
         </div>
     </section>
