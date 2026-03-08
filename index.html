@@ -668,7 +668,7 @@
                 <div class="contact-buttons">
                     <a href="https://www.linkedin.com/in/williambeasley48" target="_blank">LinkedIn</a>
                     <a href="mailto:wnb1@ricealumni.net">Email Me</a>
-                    <a href="William_Beasley_Strategic_Pricing_Portfolio.pdf" download>Download PDF</a>
+                     <a href="#" id="surprise-btn" onclick="showPricingQuote(event)">💡 Pricing Wisdom</a>
                 </div>
             </div>
         </div>
@@ -1746,6 +1746,96 @@
          VISUAL PANEL CONTENT DEFINITIONS
     ═══════════════════════════════════════════════════════════════ -->
     <script>
+
+        // ── Surprise Quote Button ─────────────────────────────────────────
+
+    const PRICING_QUOTES = [
+        "Pricing isn't perfect. It's a process iterating towards perfection.",
+        "If Sales could set prices, every deal would close at cost.",
+        "The discount you approve today is the floor you defend tomorrow.",
+        "A price increase is just a value conversation that hasn't happened yet.",
+        "Most pricing failures aren't math problems. They're communication problems.",
+        "The best pricing model is the one your Sales team actually uses.",
+        "If everyone is winning every deal, you're not charging enough.",
+        "Finance sets the floor. The market sets the ceiling. Pricing lives in the tension.",
+        "A 5% price increase on existing volume beats a 20% new logo push. Every time.",
+        "Win rate is a vanity metric. Margin-adjusted win rate is the one that matters.",
+        "The customer who says 'it's too expensive' is telling you the value story didn't land.",
+        "Discounting is a symptom. The disease is usually a value narrative gap.",
+        "CPQ doesn't fix bad pricing logic. It just automates it faster.",
+        "The deal you lose on price was probably lost on value three calls earlier.",
+        "Pricing is the only lever that improves revenue without increasing cost.",
+        "A pricing committee that can't say no isn't a committee. It's a rubber stamp.",
+        "List price is a hypothesis. Pocket price is what the market actually thinks.",
+        "The answer to 'can we match their price' is almost never yes and almost always 'what are we not communicating?'",
+        "Good pricing governance is invisible to Sales. Bad pricing governance is all they talk about.",
+        "If the discount matrix needs a footnote, the matrix needs a redesign.",
+    ];
+
+    let _quoteIndex = Math.floor(Math.random() * PRICING_QUOTES.length);
+    let _toastTimeout = null;
+
+    function showPricingQuote(event) {
+        event.preventDefault();
+
+        // Cycle to next quote
+        _quoteIndex = (_quoteIndex + 1) % PRICING_QUOTES.length;
+        const quote = PRICING_QUOTES[_quoteIndex];
+
+        // Remove existing toast if present
+        const existing = document.getElementById('pricing-toast');
+        if (existing) existing.remove();
+        if (_toastTimeout) clearTimeout(_toastTimeout);
+
+        // Build toast
+        const toast = document.createElement('div');
+        toast.id = 'pricing-toast';
+        toast.innerHTML = `
+            <div style="
+                position: fixed;
+                bottom: 32px;
+                left: 50%;
+                transform: translateX(-50%) translateY(20px);
+                background: #0c1c2e;
+                border: 1px solid rgba(91,168,196,0.35);
+                border-left: 3px solid #5BA8C4;
+                border-radius: 10px;
+                padding: 16px 22px;
+                max-width: 480px;
+                width: calc(100vw - 48px);
+                box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+                font-family: 'Segoe UI', sans-serif;
+                font-size: 0.95rem;
+                color: rgba(255,255,255,0.88);
+                line-height: 1.65;
+                z-index: 9999;
+                opacity: 0;
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            ">
+                <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#5BA8C4;margin-bottom:8px;">Pricing Wisdom</div>
+                ${quote}
+                <div style="font-size:0.7rem;color:rgba(255,255,255,0.25);margin-top:10px;text-align:right;">click again for another →</div>
+            </div>
+        `;
+        document.body.appendChild(toast);
+
+        // Animate in
+        const inner = toast.firstElementChild;
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                inner.style.opacity = '1';
+                inner.style.transform = 'translateX(-50%) translateY(0)';
+            });
+        });
+
+        // Auto-dismiss after 5 seconds
+        _toastTimeout = setTimeout(() => {
+            inner.style.opacity = '0';
+            inner.style.transform = 'translateX(-50%) translateY(20px)';
+            setTimeout(() => toast.remove(), 320);
+        }, 5000);
+    }
+        
 // ── Dysfunction Card Flip ─────────────────────────────────────────
 
     function flipCard(cardId, event) {
